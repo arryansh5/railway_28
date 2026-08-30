@@ -1,0 +1,25 @@
+{
+    "scenario_id": "SCENARIO_07",
+    "scenario_name": "Early Recovery After Delay",
+    "description": "Train starts with a 10-minute initial departure delay (configured in engine). No mid-route disruptions. Tests whether the simulator correctly tracks a persistently late train across all stations and records compounding delay.",
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "SIGNAL_CHANGE",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_NDLS_GZB",
+            "station_id": null,
+            "position_km": 5.0,
+            "start_time": "06:45:00",
+            "end_time": "06:55:00",
+            "signal_state": "RED",
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "Platform exit signal RED for 10 minutes at NDLS departure"
+        }
+    ]
+}

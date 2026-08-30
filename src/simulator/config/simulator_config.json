@@ -1,0 +1,28 @@
+{
+    "simulation_timestep_seconds": 30.0,
+    "random_seed": 42,
+    "physics": {
+        "max_acceleration_mps2": 0.5,
+        "max_braking_deceleration_mps2": 0.6,
+        "braking_safety_margin_m": 150.0,
+        "station_stop_tolerance_m": 10.0,
+        "cruising_speed_factor": 0.95
+    },
+    "signal_speed_mapping_kmph": {
+        "GREEN": 999.0,
+        "YELLOW": 45.0,
+        "RED": 0.0
+    },
+    "congestion_speed_mapping_kmph": {
+        "LOW": 999.0,
+        "MEDIUM": 60.0,
+        "HIGH": 25.0
+    },
+    "fog_speed_mapping_kmph": {
+        "DEFAULT_FOG_RESTRICTION": 40.0
+    },
+    "output": {
+        "csv_filepath": "Data/simulations/simulation_output.csv",
+        "json_filepath": "Data/simulations/simulation_output.json"
+    }
+}

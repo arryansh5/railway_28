@@ -1,0 +1,58 @@
+{
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "SPEED_RESTRICTION",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_GZB_MTC",
+            "station_id": null,
+            "position_km": 45.0,
+            "start_time": "07:15:00",
+            "end_time": "07:45:00",
+            "signal_state": null,
+            "restriction_speed_kmph": 50.0,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "MEDIUM",
+            "enabled": true,
+            "description": "Synthetic track work speed restriction (50 km/h)"
+        },
+        {
+            "event_id": "EVT_002",
+            "event_type": "SIGNAL_CHANGE",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_MOZ_SRE",
+            "station_id": null,
+            "position_km": 180.0,
+            "start_time": "09:00:00",
+            "end_time": "09:04:00",
+            "signal_state": "RED",
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "Synthetic RED signal outer halt near Saharanpur"
+        },
+        {
+            "event_id": "EVT_003",
+            "event_type": "FOG",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_HW_DDN",
+            "station_id": null,
+            "position_km": null,
+            "start_time": "11:00:00",
+            "end_time": "12:30:00",
+            "signal_state": null,
+            "restriction_speed_kmph": 40.0,
+            "halt_duration_min": null,
+            "fog_visibility_km": 0.5,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "Synthetic dense fog restriction (40 km/h) in hill section"
+        }
+    ]
+}

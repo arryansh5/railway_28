@@ -1,0 +1,43 @@
+{
+    "scenario_id": "SCENARIO_08",
+    "scenario_name": "Back-to-Back RED Signals",
+    "description": "Two consecutive RED signal holds in different sections. Tests whether the engine handles multiple signal events sequentially — braking, stopping, waiting, then resuming twice. Also tests delay compounding.",
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "SIGNAL_CHANGE",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_GZB_MTC",
+            "station_id": null,
+            "position_km": 50.0,
+            "start_time": "07:20:00",
+            "end_time": "07:25:00",
+            "signal_state": "RED",
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "RED signal hold 1 — near km 50 between Ghaziabad and Meerut"
+        },
+        {
+            "event_id": "EVT_002",
+            "event_type": "SIGNAL_CHANGE",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_MTC_MOZ",
+            "station_id": null,
+            "position_km": 100.0,
+            "start_time": "07:55:00",
+            "end_time": "08:02:00",
+            "signal_state": "RED",
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "RED signal hold 2 — near km 100 between Meerut and Muzaffarnagar"
+        }
+    ]
+}

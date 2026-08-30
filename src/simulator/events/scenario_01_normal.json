@@ -1,0 +1,6 @@
+{
+    "scenario_id": "SCENARIO_01",
+    "scenario_name": "Normal Journey - No Disruptions",
+    "description": "Baseline clean run with zero disruptions. All events disabled. Used to verify normal physics behaviour.",
+    "events": []
+}

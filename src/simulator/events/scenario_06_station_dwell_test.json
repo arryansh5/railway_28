@@ -1,0 +1,25 @@
+{
+    "scenario_id": "SCENARIO_06",
+    "scenario_name": "Station Overrun Dwell Test",
+    "description": "No track disruptions. Tests whether the engine correctly brakes before each station, dwells for the correct period, and departs cleanly. Pure station lifecycle test.",
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "CONGESTION",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_NDLS_GZB",
+            "station_id": null,
+            "position_km": null,
+            "start_time": "06:45:00",
+            "end_time": "07:00:00",
+            "signal_state": null,
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": "LOW",
+            "severity": "LOW",
+            "enabled": true,
+            "description": "Light congestion leaving Delhi - mild speed effect only"
+        }
+    ]
+}

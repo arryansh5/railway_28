@@ -1,0 +1,61 @@
+{
+    "scenario_id": "SCENARIO_10",
+    "scenario_name": "Hill Section Worst Case",
+    "description": "The final two sections (Roorkee to Haridwar and Haridwar to Dehradun) hit by a combination of congestion and dense fog. Since these are single-track hill sections with low base speed limits, any restriction causes maximum delay. Tests the engine near terminal destination.",
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "CONGESTION",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_RK_HW",
+            "station_id": null,
+            "position_km": null,
+            "start_time": "10:21:00",
+            "end_time": "11:10:00",
+            "signal_state": null,
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": "HIGH",
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "HIGH congestion on Roorkee-Haridwar hill section single track"
+        },
+        {
+            "event_id": "EVT_002",
+            "event_type": "FOG",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_HW_DDN",
+            "station_id": null,
+            "position_km": null,
+            "start_time": "11:14:00",
+            "end_time": "13:00:00",
+            "signal_state": null,
+            "restriction_speed_kmph": 30.0,
+            "halt_duration_min": null,
+            "fog_visibility_km": 0.2,
+            "congestion_level": null,
+            "severity": "CRITICAL",
+            "enabled": true,
+            "description": "Extremely dense fog in Haridwar-Dehradun hill section - 0.2 km visibility, max speed 30 km/h"
+        },
+        {
+            "event_id": "EVT_003",
+            "event_type": "UNSCHEDULED_HALT",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_HW_DDN",
+            "station_id": null,
+            "position_km": 285.0,
+            "start_time": "11:45:00",
+            "end_time": "11:55:00",
+            "signal_state": null,
+            "restriction_speed_kmph": null,
+            "halt_duration_min": 10.0,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "Unscheduled 10-minute halt near km 285 due to track inspection in fog"
+        }
+    ]
+}
