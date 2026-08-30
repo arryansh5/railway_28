@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.env
+
+# Testing & Linting
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor & IDEs
+.vscode/
+.idea/
+*tempCodeRunnerFile.py
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
