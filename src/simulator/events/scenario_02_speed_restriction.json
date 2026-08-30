@@ -1,0 +1,25 @@
+{
+    "scenario_id": "SCENARIO_02",
+    "scenario_name": "Speed Restriction Only",
+    "description": "Track maintenance TSR (Temporary Speed Restriction) of 50 km/h between Ghaziabad and Meerut. Tests smooth deceleration and re-acceleration.",
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "SPEED_RESTRICTION",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_GZB_MTC",
+            "station_id": null,
+            "position_km": 45.0,
+            "start_time": "07:15:00",
+            "end_time": "07:45:00",
+            "signal_state": null,
+            "restriction_speed_kmph": 50.0,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "MEDIUM",
+            "enabled": true,
+            "description": "Track maintenance TSR 50 km/h near km 45"
+        }
+    ]
+}

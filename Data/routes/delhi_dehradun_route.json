@@ -55,6 +55,8 @@
     {
       "station_id": "NDLS",
       "station_name": "New Delhi",
+      "latitude": 28.6431,
+      "longitude": 77.2197,
       "sequence": 1,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -77,6 +79,8 @@
     {
       "station_id": "GZB",
       "station_name": "Ghaziabad Junction",
+      "latitude": 28.6679,
+      "longitude": 77.4378,
       "sequence": 2,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -99,6 +103,8 @@
     {
       "station_id": "MTC",
       "station_name": "Meerut City Junction",
+      "latitude": 28.9800,
+      "longitude": 77.7006,
       "sequence": 3,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -121,6 +127,8 @@
     {
       "station_id": "MOZ",
       "station_name": "Muzaffarnagar",
+      "latitude": 29.4727,
+      "longitude": 77.7085,
       "sequence": 4,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -143,6 +151,8 @@
     {
       "station_id": "SRE",
       "station_name": "Saharanpur Junction",
+      "latitude": 29.9640,
+      "longitude": 77.5460,
       "sequence": 5,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -165,6 +175,8 @@
     {
       "station_id": "RK",
       "station_name": "Roorkee",
+      "latitude": 29.8543,
+      "longitude": 77.8880,
       "sequence": 6,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -187,6 +199,8 @@
     {
       "station_id": "HW",
       "station_name": "Haridwar Junction",
+      "latitude": 29.9457,
+      "longitude": 78.1487,
       "sequence": 7,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",
@@ -209,6 +223,8 @@
     {
       "station_id": "DDN",
       "station_name": "Dehradun",
+      "latitude": 30.3157,
+      "longitude": 78.0322,
       "sequence": 8,
       "origin_station_id": "NDLS",
       "destination_station_id": "DDN",

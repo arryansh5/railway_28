@@ -1,0 +1,43 @@
+{
+    "scenario_id": "SCENARIO_03",
+    "scenario_name": "Signal Events (RED + YELLOW)",
+    "description": "Tests signal-based speed control. RED signal brings train to full stop. YELLOW signal reduces speed to 45 km/h. Engine must respond using physics braking — no teleporting.",
+    "events": [
+        {
+            "event_id": "EVT_001",
+            "event_type": "SIGNAL_CHANGE",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_MOZ_SRE",
+            "station_id": null,
+            "position_km": 175.0,
+            "start_time": "08:55:00",
+            "end_time": "09:02:00",
+            "signal_state": "RED",
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "HIGH",
+            "enabled": true,
+            "description": "Synthetic RED signal before Saharanpur outer km 175"
+        },
+        {
+            "event_id": "EVT_002",
+            "event_type": "SIGNAL_CHANGE",
+            "route_id": "ROUTE_NDLS_DDN_01",
+            "section_id": "SEC_RK_HW",
+            "station_id": null,
+            "position_km": 235.0,
+            "start_time": "10:25:00",
+            "end_time": "10:32:00",
+            "signal_state": "YELLOW",
+            "restriction_speed_kmph": null,
+            "halt_duration_min": null,
+            "fog_visibility_km": null,
+            "congestion_level": null,
+            "severity": "MEDIUM",
+            "enabled": true,
+            "description": "YELLOW caution signal between Roorkee and Haridwar"
+        }
+    ]
+}
