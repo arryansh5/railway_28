@@ -268,7 +268,11 @@ def validate_route_metadata(route):
 
 
 if __name__ == "__main__":
-    route = load_route(r"D:\Projects\railway\Data\routes\delhi_dehradun_route.json")
+    import sys
+    from pathlib import Path
+    default_path = Path(__file__).resolve().parent.parent.parent / "Data" / "routes" / "delhi_dehradun_route.json"
+    route_path = sys.argv[1] if len(sys.argv) > 1 else str(default_path)
+    route = load_route(route_path)
     print(f"Route loaded : {route['route_name']}")
     print(f"route id     : {route['route_id']}")
     print(f"stations     : {len(route['stations'])}")
