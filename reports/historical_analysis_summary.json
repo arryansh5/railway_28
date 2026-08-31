@@ -1,0 +1,68 @@
+{
+  "corridor_focus": "NR & NCR (Northern / North Central Railway)",
+  "sample_size": 130233,
+  "hourly_congestion_probability": {
+    "0": 0.7736,
+    "1": 0.7738,
+    "2": 0.7729,
+    "3": 0.7738,
+    "4": 0.7734,
+    "5": 0.7737,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 0.7734,
+    "10": 0.7735,
+    "11": 0.7737,
+    "12": 0.7734,
+    "13": 0.7736,
+    "14": 0.7736,
+    "15": 0.7734,
+    "16": 0.7734,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 0.7736,
+    "22": 0.7735,
+    "23": 0.7735
+  },
+  "seasonal_fog_probability": {
+    "Autumn": 0.3399,
+    "Monsoon": 0.34,
+    "Post-Monsoon": 0.3399,
+    "Pre-Monsoon": 0.34,
+    "Summer": 0.3399,
+    "Winter/Fog": 0.5404
+  },
+  "primary_delay_cause_distribution": {
+    "Track Congestion": 0.1886,
+    "Flooding / Waterlogging": 0.1492,
+    "On Time": 0.1369,
+    "Late Incoming Rake": 0.1136,
+    "Track Maintenance / PSR": 0.0987,
+    "Station Congestion": 0.0563,
+    "Signal Failure": 0.0471,
+    "Fog / Low Visibility": 0.0449,
+    "Freight Priority": 0.0281,
+    "Unscheduled Halt": 0.0272,
+    "Passenger Emergency": 0.0272,
+    "Crew Availability": 0.0271,
+    "Level Crossing Delay": 0.0269,
+    "Loco / Engine Failure": 0.0194,
+    "Technical Inspection": 0.0087
+  },
+  "delay_severity_distribution": {
+    "HEAVY_DELAY": 0.8631,
+    "MINOR_DELAY": 0.0824,
+    "ON_TIME": 0.0545,
+    "MODERATE_DELAY": 0.0001
+  },
+  "empirical_means": {
+    "mean_delay_minutes": 116.38,
+    "median_delay_minutes": 120.0,
+    "p90_delay_minutes": 180.0,
+    "mean_congestion_index": 0.91,
+    "mean_fog_index": 0.85
+  }
+}

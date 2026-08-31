@@ -1,0 +1,11 @@
+{
+  "dataset_path": "D:\\Projects\\railway\\Data\\ml\\ml_ready_dataset.csv",
+  "total_observations": 1440,
+  "total_columns": 51,
+  "validation_passed": true,
+  "anti_leakage_audit": "PASSED (Zero future state leakage detected)",
+  "errors_count": 0,
+  "errors": [],
+  "warnings_count": 0,
+  "warnings": []
+}
