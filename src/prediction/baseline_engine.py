@@ -178,10 +178,20 @@ class BaselineETAEngine:
             destination_eta=dest_eta
         )
 
-    def predict_section_runtime(self, state: TrainState) -> ETAPrediction:
+    def predict_section_runtime(
+        self, state: TrainState,
+        section_medians: Optional[Dict[str, float]] = None
+    ) -> ETAPrediction:
         """
-        Baseline 3: Section Running Time Aggregator.
-        Calculates ETA by summing remaining scheduled section run-times + scheduled dwells from current state.
+        Baseline 3: Historical Section Median Aggregator.
+        Calculates ETA by accumulating from the current timestamp forward, using
+        historical section median running times (when available) + scheduled dwells.
+
+        Args:
+            state: Current train state snapshot.
+            section_medians: Optional dict mapping section_id -> historical median
+                running time in minutes. If not provided, falls back to scheduled
+                section running times.
         """
         upcoming_meta = self.get_upcoming_stations(state)
         upcoming_etas: List[StationETA] = []
@@ -190,7 +200,7 @@ class BaselineETAEngine:
             return ETAPrediction(
                 train_id=state.train_id,
                 route_id=state.route_id,
-                model_name="SECTION_RUNNING_TIME",
+                model_name="HISTORICAL_MEDIAN",
                 prediction_timestamp=state.timestamp,
                 current_delay_min=state.current_delay_min,
                 current_position_km=state.current_position_km,
@@ -198,42 +208,129 @@ class BaselineETAEngine:
                 destination_eta=None
             )
 
-        # Baseline timestamp anchor
-        base_time = state.timestamp
+        # Accumulate time forward from the current timestamp
+        cumulative_min = 0.0
 
-        for st in upcoming_meta:
+        for i, st in enumerate(upcoming_meta):
+            stn_id = st["station_id"]
             sch_arr = st.get("scheduled_arrival_time", "")
             sch_dep = st.get("scheduled_departure_time", "")
             sch_arr_offset = float(st.get("scheduled_arrival_offset_min", 0.0))
 
-            # Delay propagated via section scheduled times
-            delay = state.current_delay_min
-            pred_arr = self._add_minutes_to_timestr(sch_arr, delay)
-            pred_dep = self._add_minutes_to_timestr(sch_dep, delay)
+            # Find the section leading into this station
+            sec = self._find_section_to_station(stn_id)
+            if sec:
+                sec_id = sec["section_id"]
+                if section_medians and sec_id in section_medians:
+                    section_time = section_medians[sec_id]
+                else:
+                    section_time = float(sec.get("scheduled_running_time_min", 0.0))
+            else:
+                section_time = 0.0
+
+            cumulative_min += section_time
+
+            # Add dwell time at intermediate stations (not the terminal)
+            dwell = 0.0
+            if not st.get("is_terminal", False) and i < len(upcoming_meta) - 1:
+                dwell = float(st.get("scheduled_dwell_min", 0.0))
+
+            # Predicted arrival = current time + cumulative travel
+            pred_arr = self._add_minutes_to_timestr(state.timestamp, cumulative_min)
+
+            # Predicted departure = arrival + dwell
+            pred_dep = self._add_minutes_to_timestr(state.timestamp, cumulative_min + dwell)
+
+            # Predicted delay = difference between predicted and scheduled arrival
+            predicted_delay = cumulative_min - (sch_arr_offset - self._time_offset_from_origin(state))
 
             eta = StationETA(
-                station_id=st["station_id"],
-                station_name=st.get("station_name", st["station_id"]),
+                station_id=stn_id,
+                station_name=st.get("station_name", stn_id),
                 sequence=st.get("sequence", 0),
                 distance_from_origin_km=float(st.get("distance_from_origin_km", 0.0)),
                 scheduled_arrival_time=sch_arr,
                 scheduled_departure_time=sch_dep,
                 predicted_arrival_time=pred_arr,
                 predicted_departure_time=pred_dep,
-                predicted_arrival_offset_min=round(sch_arr_offset + delay, 2),
-                predicted_delay_min=round(delay, 2)
+                predicted_arrival_offset_min=round(cumulative_min, 2),
+                predicted_delay_min=round(predicted_delay, 2)
             )
             upcoming_etas.append(eta)
+
+            # Add dwell to cumulative for next section
+            cumulative_min += dwell
 
         dest_eta = upcoming_etas[-1] if upcoming_etas else None
 
         return ETAPrediction(
             train_id=state.train_id,
             route_id=state.route_id,
-            model_name="SECTION_RUNNING_TIME",
+            model_name="HISTORICAL_MEDIAN",
             prediction_timestamp=state.timestamp,
             current_delay_min=state.current_delay_min,
             current_position_km=state.current_position_km,
             upcoming_stations=upcoming_etas,
             destination_eta=dest_eta
         )
+
+    def _find_section_to_station(self, station_id: str) -> Optional[Dict[str, Any]]:
+        """Find the section that leads into the given station (to_station_id == station_id)."""
+        for sec in self.sections:
+            if sec.get("to_station_id") == station_id:
+                return sec
+        return None
+
+    def _time_offset_from_origin(self, state: TrainState) -> float:
+        """
+        Calculate the current elapsed time offset from the origin departure in minutes.
+        Uses the station at/near the current position to estimate offset.
+        """
+        # If at origin, offset is 0
+        if state.current_position_km <= 0.0:
+            return 0.0
+
+        # Find the station at or just before the current position
+        for s in reversed(self.stations):
+            dist = float(s.get("distance_from_origin_km", 0.0))
+            if dist <= state.current_position_km:
+                offset = float(s.get("scheduled_departure_offset_min", 0.0))
+                return offset + state.current_delay_min
+        return 0.0
+
+    @staticmethod
+    def predict_section_time(
+        row: Dict[str, Any],
+        method: str = "SCHEDULED"
+    ) -> float:
+        """
+        Predict section running time for a single dataset row.
+
+        Args:
+            row: Dictionary with dataset columns.
+            method: One of 'SCHEDULED', 'SCHEDULE_PLUS_DELAY', 'HISTORICAL_MEDIAN'.
+
+        Returns:
+            Predicted section running time in minutes.
+        """
+        scheduled = float(row.get("scheduled_running_time_min", 0.0))
+
+        if method == "SCHEDULED":
+            return scheduled
+
+        elif method == "SCHEDULE_PLUS_DELAY":
+            # Use scheduled time but adjust for known previous-section delay trend.
+            # If the previous section added delay, assume this section will too (proportionally).
+            prev_delta = float(row.get("previous_section_delay_min", 0.0))
+            # Clamp: don't predict negative travel time
+            return max(0.0, scheduled + prev_delta * 0.5)
+
+        elif method == "HISTORICAL_MEDIAN":
+            median = row.get("historical_section_median_min")
+            if median is not None and float(median) > 0:
+                return float(median)
+            return scheduled
+
+        else:
+            return scheduled
+

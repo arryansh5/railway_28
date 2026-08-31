@@ -30,7 +30,7 @@ class ETAPrediction:
     """Full route-level ETA prediction forecast."""
     train_id: str
     route_id: str
-    model_name: str  # "SCHEDULED", "SCHEDULE_PLUS_DELAY", "SECTION_RUNNING_TIME"
+    model_name: str  # "SCHEDULED", "SCHEDULE_PLUS_DELAY", "HISTORICAL_MEDIAN"
     prediction_timestamp: str
     current_delay_min: float
     current_position_km: float
