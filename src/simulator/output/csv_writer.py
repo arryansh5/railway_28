@@ -1,48 +1,76 @@
 """
 csv_writer.py — Phase 3: Physics-Based RTIS Simulator
-Writes simulation observation logs to CSV and JSON files.
+Writes simulation observation logs to CSV and JSON files with file lock resilience.
 """
 
 import csv
 import json
+import time
 from pathlib import Path
 from typing import List, Dict
 
 
-def write_observations_to_csv(observations: List[Dict], output_filepath: str) -> None:
+def write_observations_to_csv(observations: List[Dict], output_filepath: str) -> str:
     """
     Writes a list of observation dictionaries to a CSV file.
+    If the target file is locked by Excel/editor, automatically falls back to a timestamped file.
 
     Parameters:
     - observations: List of observation dicts from observation_generator
     - output_filepath: Destination CSV path (e.g. 'Data/simulations/journey_01_30s.csv')
+    
+    Returns:
+    - Actual file path written to.
     """
     if not observations:
-        return
+        return output_filepath
 
     path = Path(output_filepath)
     path.parent.mkdir(parents=True, exist_ok=True)
 
     fieldnames = list(observations[0].keys())
 
-    with open(path, mode="w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(observations)
+    target_path = path
+    try:
+        with open(target_path, mode="w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(observations)
+    except PermissionError:
+        # Fallback to alternative filename if locked by Excel/Viewer
+        fallback_name = f"{path.stem}_{int(time.time())}{path.suffix}"
+        target_path = path.parent / fallback_name
+        print(f"[CSVWriter] WARNING: '{path.name}' is currently open/locked. Writing to fallback: '{target_path.name}'")
+        with open(target_path, mode="w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(observations)
+
+    return str(target_path)
 
 
-def write_observations_to_json(observations: List[Dict], output_filepath: str) -> None:
+def write_observations_to_json(observations: List[Dict], output_filepath: str) -> str:
     """
-    Writes a list of observation dictionaries to a formatted JSON file.
+    Writes a list of observation dictionaries to a formatted JSON file with fallback.
     """
     if not observations:
-        return
+        return output_filepath
 
     path = Path(output_filepath)
     path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(path, mode="w", encoding="utf-8") as f:
-        json.dump({"observations": observations}, f, indent=2)
+    target_path = path
+    try:
+        with open(target_path, mode="w", encoding="utf-8") as f:
+            json.dump({"observations": observations}, f, indent=2)
+    except PermissionError:
+        fallback_name = f"{path.stem}_{int(time.time())}{path.suffix}"
+        target_path = path.parent / fallback_name
+        print(f"[JSONWriter] WARNING: '{path.name}' is locked. Writing to fallback: '{target_path.name}'")
+        with open(target_path, mode="w", encoding="utf-8") as f:
+            json.dump({"observations": observations}, f, indent=2)
+
+    return str(target_path)
 
 
 if __name__ == "__main__":
@@ -93,6 +121,6 @@ if __name__ == "__main__":
     ]
 
     test_csv = r"D:\Projects\railway\Data\simulations\test_output.csv"
-    write_observations_to_csv(sample_obs, test_csv)
+    written_to = write_observations_to_csv(sample_obs, test_csv)
     print("=== CSV Writer Test ===")
-    print(f"Successfully wrote {len(sample_obs)} rows to {test_csv}")
+    print(f"Successfully wrote {len(sample_obs)} rows to {written_to}")

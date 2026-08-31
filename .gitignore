@@ -24,3 +24,4 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+indian-railways-predict-train-delay/*.csv

@@ -1,0 +1,387 @@
+{
+  "dataset_name": "Indian Railways Historical Delay Dataset (1.5M)",
+  "national_baseline": {
+    "total_records": 1043531,
+    "overall_on_time_pct": 28.13,
+    "median_delay_min": 110.0,
+    "mean_delay_min": 97.74,
+    "p90_delay_min": 173.0,
+    "fog_risk_probability": 0.0367,
+    "peak_hour_delay_ratio": 0.99
+  },
+  "primary_focus_zones": [
+    "NR",
+    "NCR"
+  ],
+  "time_factors": {
+    "peak_hour_mean_delay": 97.47,
+    "non_peak_hour_mean_delay": 97.98,
+    "festival_season_mean_delay": 102.89,
+    "night_departure_mean_delay": 102.15,
+    "hourly_delay_multipliers": {
+      "0": 1.057,
+      "1": 1.049,
+      "2": 1.054,
+      "3": 1.045,
+      "4": 1.049,
+      "5": 1.008,
+      "6": 1.01,
+      "7": 1.006,
+      "8": 1.01,
+      "9": 1.007,
+      "10": 0.993,
+      "11": 0.992,
+      "12": 0.989,
+      "13": 0.985,
+      "14": 0.984,
+      "15": 0.988,
+      "16": 0.99,
+      "17": 0.986,
+      "18": 0.989,
+      "19": 0.991,
+      "20": 0.99,
+      "21": 0.986,
+      "22": 1.038,
+      "23": 1.04
+    },
+    "seasonal_delay_multipliers": {
+      "Autumn": 0.696,
+      "Monsoon": 1.297,
+      "Post-Monsoon": 0.805,
+      "Pre-Monsoon": 0.74,
+      "Summer": 0.666,
+      "Winter/Fog": 1.083
+    }
+  },
+  "network_factors": {
+    "hdn_route_mean_delay": 100.68,
+    "non_hdn_route_mean_delay": 96.48,
+    "double_track_mean_delay": 91.48,
+    "single_track_mean_delay": 109.36,
+    "avg_psr_count": 3.0
+  },
+  "weather_factors": {
+    "fog_risk_probability": 0.0367,
+    "mean_fog_risk_score": 0.028,
+    "mean_zone_fog_index": 0.339,
+    "mean_season_severity_score": 0.594
+  },
+  "congestion_factors": {
+    "mean_zone_congestion_index": 0.773,
+    "high_congestion_mean_delay": 111.95
+  },
+  "operational_factors": {
+    "late_incoming_rake_mean_delay": 130.39,
+    "on_time_incoming_rake_mean_delay": 80.23,
+    "special_train_mean_delay": 97.92,
+    "regular_train_mean_delay": 97.72,
+    "train_type_delay_profile": {
+      "DEMU/MEMU": 121.02,
+      "Duronto Express": 74.34,
+      "Garib Rath Express": 88.96,
+      "Gatimaan Express": 55.13,
+      "Humsafar Express": 85.59,
+      "Intercity Express": 100.5,
+      "Jan Shatabdi Express": 83.02,
+      "Mail/Express": 109.93,
+      "Passenger Train": 130.38,
+      "Rajdhani Express": 62.06,
+      "Sampark Kranti Express": 86.5,
+      "Shatabdi Express": 63.88,
+      "Superfast Express": 92.29,
+      "Tejas Express": 57.75,
+      "Vande Bharat Express": 50.96
+    }
+  },
+  "total_zones_analyzed": 16,
+  "zone_profiles": {
+    "CR": {
+      "record_count": 65078,
+      "on_time_pct": 21.45,
+      "median_delay_min": 116.0,
+      "mean_delay_min": 106.61,
+      "p90_delay_min": 177.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.05,
+      "mean_zone_congestion_index": 0.85,
+      "late_rake_mean_delay": 139.14,
+      "hdn_route_mean_delay": 109.33,
+      "festival_season_mean_delay": 111.4,
+      "top_delay_causes": {
+        "On Time": 13960,
+        "Track Congestion": 11444,
+        "Flooding / Waterlogging": 9581
+      }
+    },
+    "ECR": {
+      "record_count": 65044,
+      "on_time_pct": 15.3,
+      "median_delay_min": 119.0,
+      "mean_delay_min": 114.0,
+      "p90_delay_min": 179.0,
+      "fog_risk_probability": 0.0846,
+      "mean_zone_fog_index": 0.55,
+      "mean_zone_congestion_index": 0.88,
+      "late_rake_mean_delay": 143.65,
+      "hdn_route_mean_delay": 116.39,
+      "festival_season_mean_delay": 117.97,
+      "top_delay_causes": {
+        "Track Congestion": 12195,
+        "On Time": 9952,
+        "Flooding / Waterlogging": 9529
+      }
+    },
+    "ECoR": {
+      "record_count": 65088,
+      "on_time_pct": 33.99,
+      "median_delay_min": 105.0,
+      "mean_delay_min": 89.84,
+      "p90_delay_min": 169.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.18,
+      "mean_zone_congestion_index": 0.7,
+      "late_rake_mean_delay": 125.27,
+      "hdn_route_mean_delay": 93.56,
+      "festival_season_mean_delay": 95.6,
+      "top_delay_causes": {
+        "On Time": 22124,
+        "Track Congestion": 9778,
+        "Flooding / Waterlogging": 8944
+      }
+    },
+    "ER": {
+      "record_count": 65173,
+      "on_time_pct": 10.62,
+      "median_delay_min": 122.0,
+      "mean_delay_min": 120.42,
+      "p90_delay_min": 181.0,
+      "fog_risk_probability": 0.0843,
+      "mean_zone_fog_index": 0.32,
+      "mean_zone_congestion_index": 0.95,
+      "late_rake_mean_delay": 147.31,
+      "hdn_route_mean_delay": 122.47,
+      "festival_season_mean_delay": 123.56,
+      "top_delay_causes": {
+        "Track Congestion": 12561,
+        "Flooding / Waterlogging": 9612,
+        "Late Incoming Rake": 8788
+      }
+    },
+    "NCR": {
+      "record_count": 65143,
+      "on_time_pct": 15.06,
+      "median_delay_min": 119.0,
+      "mean_delay_min": 114.68,
+      "p90_delay_min": 179.0,
+      "fog_risk_probability": 0.0814,
+      "mean_zone_fog_index": 0.82,
+      "mean_zone_congestion_index": 0.9,
+      "late_rake_mean_delay": 143.8,
+      "hdn_route_mean_delay": 116.8,
+      "festival_season_mean_delay": 118.05,
+      "top_delay_causes": {
+        "Track Congestion": 12071,
+        "On Time": 9810,
+        "Flooding / Waterlogging": 9689
+      }
+    },
+    "NER": {
+      "record_count": 65645,
+      "on_time_pct": 20.19,
+      "median_delay_min": 116.0,
+      "mean_delay_min": 107.44,
+      "p90_delay_min": 176.0,
+      "fog_risk_probability": 0.0847,
+      "mean_zone_fog_index": 0.78,
+      "mean_zone_congestion_index": 0.82,
+      "late_rake_mean_delay": 138.66,
+      "hdn_route_mean_delay": 110.01,
+      "festival_season_mean_delay": 112.21,
+      "top_delay_causes": {
+        "On Time": 13253,
+        "Track Congestion": 11650,
+        "Flooding / Waterlogging": 9539
+      }
+    },
+    "NFR": {
+      "record_count": 65207,
+      "on_time_pct": 46.49,
+      "median_delay_min": 86.0,
+      "mean_delay_min": 74.05,
+      "p90_delay_min": 161.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.22,
+      "mean_zone_congestion_index": 0.58,
+      "late_rake_mean_delay": 108.8,
+      "hdn_route_mean_delay": 77.66,
+      "festival_season_mean_delay": 80.35,
+      "top_delay_causes": {
+        "On Time": 30314,
+        "Track Congestion": 8122,
+        "Flooding / Waterlogging": 7932
+      }
+    },
+    "NR": {
+      "record_count": 65090,
+      "on_time_pct": 12.32,
+      "median_delay_min": 121.0,
+      "mean_delay_min": 118.07,
+      "p90_delay_min": 181.0,
+      "fog_risk_probability": 0.0841,
+      "mean_zone_fog_index": 0.88,
+      "mean_zone_congestion_index": 0.92,
+      "late_rake_mean_delay": 145.79,
+      "hdn_route_mean_delay": 119.94,
+      "festival_season_mean_delay": 121.4,
+      "top_delay_causes": {
+        "Track Congestion": 12495,
+        "Flooding / Waterlogging": 9740,
+        "On Time": 8016
+      }
+    },
+    "NWR": {
+      "record_count": 65412,
+      "on_time_pct": 27.39,
+      "median_delay_min": 110.0,
+      "mean_delay_min": 98.05,
+      "p90_delay_min": 172.0,
+      "fog_risk_probability": 0.0841,
+      "mean_zone_fog_index": 0.58,
+      "mean_zone_congestion_index": 0.75,
+      "late_rake_mean_delay": 131.3,
+      "hdn_route_mean_delay": 100.84,
+      "festival_season_mean_delay": 102.97,
+      "top_delay_causes": {
+        "On Time": 17914,
+        "Track Congestion": 10574,
+        "Flooding / Waterlogging": 9156
+      }
+    },
+    "SCR": {
+      "record_count": 65267,
+      "on_time_pct": 36.45,
+      "median_delay_min": 103.0,
+      "mean_delay_min": 87.27,
+      "p90_delay_min": 168.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.04,
+      "mean_zone_congestion_index": 0.72,
+      "late_rake_mean_delay": 122.71,
+      "hdn_route_mean_delay": 91.32,
+      "festival_season_mean_delay": 92.72,
+      "top_delay_causes": {
+        "On Time": 23788,
+        "Track Congestion": 9499,
+        "Flooding / Waterlogging": 8732
+      }
+    },
+    "SECR": {
+      "record_count": 65297,
+      "on_time_pct": 36.23,
+      "median_delay_min": 102.0,
+      "mean_delay_min": 87.2,
+      "p90_delay_min": 168.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.28,
+      "mean_zone_congestion_index": 0.68,
+      "late_rake_mean_delay": 122.18,
+      "hdn_route_mean_delay": 90.43,
+      "festival_season_mean_delay": 93.35,
+      "top_delay_causes": {
+        "On Time": 23655,
+        "Track Congestion": 9503,
+        "Flooding / Waterlogging": 8813
+      }
+    },
+    "SER": {
+      "record_count": 65170,
+      "on_time_pct": 32.96,
+      "median_delay_min": 107.0,
+      "mean_delay_min": 91.73,
+      "p90_delay_min": 170.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.22,
+      "mean_zone_congestion_index": 0.74,
+      "late_rake_mean_delay": 126.72,
+      "hdn_route_mean_delay": 95.05,
+      "festival_season_mean_delay": 97.7,
+      "top_delay_causes": {
+        "On Time": 21481,
+        "Track Congestion": 10032,
+        "Flooding / Waterlogging": 8973
+      }
+    },
+    "SR": {
+      "record_count": 65353,
+      "on_time_pct": 43.7,
+      "median_delay_min": 93.0,
+      "mean_delay_min": 78.15,
+      "p90_delay_min": 164.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.02,
+      "mean_zone_congestion_index": 0.65,
+      "late_rake_mean_delay": 113.46,
+      "hdn_route_mean_delay": 81.51,
+      "festival_season_mean_delay": 85.37,
+      "top_delay_causes": {
+        "On Time": 28559,
+        "Track Congestion": 8655,
+        "Flooding / Waterlogging": 8306
+      }
+    },
+    "SWR": {
+      "record_count": 65377,
+      "on_time_pct": 49.66,
+      "median_delay_min": 64.0,
+      "mean_delay_min": 70.52,
+      "p90_delay_min": 160.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.02,
+      "mean_zone_congestion_index": 0.6,
+      "late_rake_mean_delay": 105.63,
+      "hdn_route_mean_delay": 73.93,
+      "festival_season_mean_delay": 77.76,
+      "top_delay_causes": {
+        "On Time": 32467,
+        "Flooding / Waterlogging": 7947,
+        "Track Congestion": 7769
+      }
+    },
+    "WCR": {
+      "record_count": 65218,
+      "on_time_pct": 23.15,
+      "median_delay_min": 114.0,
+      "mean_delay_min": 103.57,
+      "p90_delay_min": 174.0,
+      "fog_risk_probability": 0.0841,
+      "mean_zone_fog_index": 0.42,
+      "mean_zone_congestion_index": 0.8,
+      "late_rake_mean_delay": 136.12,
+      "hdn_route_mean_delay": 106.12,
+      "festival_season_mean_delay": 108.39,
+      "top_delay_causes": {
+        "On Time": 15097,
+        "Track Congestion": 11152,
+        "Flooding / Waterlogging": 9455
+      }
+    },
+    "WR": {
+      "record_count": 64969,
+      "on_time_pct": 24.97,
+      "median_delay_min": 113.0,
+      "mean_delay_min": 102.43,
+      "p90_delay_min": 175.0,
+      "fog_risk_probability": 0.0,
+      "mean_zone_fog_index": 0.05,
+      "mean_zone_congestion_index": 0.83,
+      "late_rake_mean_delay": 135.86,
+      "hdn_route_mean_delay": 105.47,
+      "festival_season_mean_delay": 107.83,
+      "top_delay_causes": {
+        "On Time": 16224,
+        "Track Congestion": 10940,
+        "Flooding / Waterlogging": 9321
+      }
+    }
+  }
+}
