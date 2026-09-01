@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "title": "Indian Railways Historical Risk Calibration Matrix",
+    "corridor": "New Delhi (NDLS) -> Dehradun (DDN)",
+    "primary_zones": ["NR", "NCR"],
+    "version": "1.0.0"
+  },
+  "baseline_priors": {
+    "mean_delay_minutes": 116.38,
+    "median_delay_minutes": 120.0,
+    "p90_delay_minutes": 180.0,
+    "mean_congestion_index": 0.91,
+    "mean_fog_index": 0.85
+  },
+  "hourly_congestion_risk": {
+    "00": 0.15, "01": 0.10, "02": 0.10, "03": 0.15, "04": 0.20, "05": 0.30,
+    "06": 0.45, "07": 0.65, "08": 0.80, "09": 0.85, "10": 0.75, "11": 0.60,
+    "12": 0.50, "13": 0.50, "14": 0.55, "15": 0.65, "16": 0.75, "17": 0.85,
+    "18": 0.90, "19": 0.85, "20": 0.70, "21": 0.55, "22": 0.40, "23": 0.25
+  },
+  "seasonal_fog_risk": {
+    "Winter/Fog": 0.75,
+    "Monsoon": 0.35,
+    "Summer": 0.05,
+    "Autumn": 0.10
+  },
+  "primary_delay_causes": {
+    "CONGESTION": 0.40,
+    "FOG": 0.30,
+    "SIGNAL_FAILURE": 0.15,
+    "TRACK_MAINTENANCE": 0.10,
+    "OTHER": 0.05
+  },
+  "risk_multipliers": {
+    "peak_hour_multiplier": 1.20,
+    "night_departure_multiplier": 1.05,
+    "hdn_route_multiplier": 1.15,
+    "late_rake_multiplier": 1.35,
+    "special_train_multiplier": 1.10
+  },
+  "speed_impact_thresholds": {
+    "HIGH_CONGESTION": {
+      "probability_threshold": 0.70,
+      "restriction_speed_kmph": 25.0,
+      "level": "HIGH"
+    },
+    "MEDIUM_CONGESTION": {
+      "probability_threshold": 0.45,
+      "restriction_speed_kmph": 60.0,
+      "level": "MEDIUM"
+    },
+    "FOG_RESTRICTION": {
+      "probability_threshold": 0.40,
+      "restriction_speed_kmph": 40.0,
+      "level": "MEDIUM"
+    }
+  }
+}
