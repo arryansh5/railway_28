@@ -1,0 +1,3341 @@
+{
+  "metadata": {
+    "stage": "Phase 6 \u2014 Step 2: Historical Pattern Analysis",
+    "source_dataset": "D:\\Projects\\railway\\indian-railways-predict-train-delay\\ir_train.csv",
+    "step1_audit_reference": "D:\\Projects\\railway\\reports\\dataset_audit_report.json",
+    "records_analyzed": 1043531,
+    "corridor_proxy": "Northern Railway (NR) & North Central Railway (NCR)",
+    "methodology": "Pure empirical conditional counting with sample counts (N). Zero synthetic multipliers.",
+    "generated_timestamp": "2026-09-02T02:11:50.713687"
+  },
+  "target_delay_distribution": {
+    "overall_metrics": {
+      "sample_count": 1043531,
+      "delayed_count": 749997,
+      "p_delayed_pct": 71.87,
+      "heavy_delayed_count": 749883,
+      "p_heavy_delay_pct": 71.86,
+      "mean_delay_min": 97.74,
+      "median_delay_min": 110.0,
+      "p90_delay_min": 173.0,
+      "status": "VALID_SAMPLE"
+    },
+    "delay_bucket_distribution": {
+      "CATASTROPHIC (>120m)": {
+        "count": 429827,
+        "percentage": 41.19
+      },
+      "SEVERE (45-120m)": {
+        "count": 320056,
+        "percentage": 30.67
+      },
+      "MINOR (5-15m)": {
+        "count": 176326,
+        "percentage": 16.9
+      },
+      "ON_TIME (<=5m)": {
+        "count": 117207,
+        "percentage": 11.23
+      },
+      "MODERATE (15-45m)": {
+        "count": 114,
+        "percentage": 0.01
+      }
+    }
+  },
+  "weather_and_fog_patterns": {
+    "fog_delay_comparison": {
+      "fog_active (is_fog_risk=1)": {
+        "sample_count": 38317,
+        "delayed_count": 36675,
+        "p_delayed_pct": 95.71,
+        "heavy_delayed_count": 36675,
+        "p_heavy_delay_pct": 95.71,
+        "mean_delay_min": 128.49,
+        "median_delay_min": 125.0,
+        "p90_delay_min": 184.0,
+        "status": "VALID_SAMPLE"
+      },
+      "fog_inactive (is_fog_risk=0)": {
+        "sample_count": 1005214,
+        "delayed_count": 713322,
+        "p_delayed_pct": 70.96,
+        "heavy_delayed_count": 713208,
+        "p_heavy_delay_pct": 70.95,
+        "mean_delay_min": 96.57,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      },
+      "monsoon_active (is_monsoon_season=1)": {
+        "sample_count": 348395,
+        "delayed_count": 323442,
+        "p_delayed_pct": 92.84,
+        "heavy_delayed_count": 323442,
+        "p_heavy_delay_pct": 92.84,
+        "mean_delay_min": 126.75,
+        "median_delay_min": 126.0,
+        "p90_delay_min": 185.0,
+        "status": "VALID_SAMPLE"
+      },
+      "monsoon_inactive (is_monsoon_season=0)": {
+        "sample_count": 695136,
+        "delayed_count": 426555,
+        "p_delayed_pct": 61.36,
+        "heavy_delayed_count": 426441,
+        "p_heavy_delay_pct": 61.35,
+        "mean_delay_min": 83.2,
+        "median_delay_min": 98.0,
+        "p90_delay_min": 165.0,
+        "status": "VALID_SAMPLE"
+      }
+    },
+    "fog_index_to_delay_relationship": {
+      "LOW (<0.20)": {
+        "sample_count": 391132,
+        "fog_count": 0,
+        "empirical_fog_rate_pct": 0.0,
+        "p_delayed_pct": 64.94,
+        "mean_delay_min": 89.11
+      },
+      "MODERATE (0.20-0.50)": {
+        "sample_count": 326065,
+        "fog_count": 10980,
+        "empirical_fog_rate_pct": 3.37,
+        "p_delayed_pct": 70.11,
+        "mean_delay_min": 95.39
+      },
+      "HIGH (0.50-0.80)": {
+        "sample_count": 196101,
+        "fog_count": 16563,
+        "empirical_fog_rate_pct": 8.45,
+        "p_delayed_pct": 79.03,
+        "mean_delay_min": 106.48
+      },
+      "VERY_HIGH (>=0.80)": {
+        "sample_count": 130233,
+        "fog_count": 10774,
+        "empirical_fog_rate_pct": 8.27,
+        "p_delayed_pct": 86.31,
+        "mean_delay_min": 116.38
+      }
+    },
+    "fog_probability_by_season_and_hour": {
+      "Autumn": {
+        "0": {
+          "sample_count": 1255,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.45,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 797,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 73.54,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 555,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 75.69,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 548,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 75.54,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 1108,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.03,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 3930,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 69.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 5098,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.03,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 6626,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 66.65,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 5209,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.36,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 3953,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 65.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 3071,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.31,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 2625,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 65.83,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 3064,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 3386,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 66.37,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 3625,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 67.81,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 3830,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 65.62,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 5182,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 67.19,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 6532,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 66.97,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 6534,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 67.78,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 5269,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 4764,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.68,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 3919,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 67.77,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 2712,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 75.74,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 1829,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 74.85,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Monsoon": {
+        "0": {
+          "sample_count": 5262,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 128.63,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 3223,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 129.07,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 2147,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 128.04,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 2248,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 127.93,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 4292,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 129.03,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 15873,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.67,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 21317,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.9,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 26437,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.53,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 21338,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.46,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 16070,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 127.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 12838,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.65,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 10677,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 12849,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.4,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 13828,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 15033,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 15773,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 125.8,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 21244,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 127.27,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 26757,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.36,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 26742,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.48,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 21524,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.25,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 19156,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.59,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 15896,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 126.35,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 10612,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 129.51,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 7259,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 128.33,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Post-Monsoon": {
+        "0": {
+          "sample_count": 1336,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 84.63,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 821,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 81.94,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 544,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 87.14,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 545,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 84.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 1073,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 84.01,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 4061,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.37,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 5435,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 78.84,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 6807,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.17,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 5414,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 79.42,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 4074,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 3286,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 79.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 2850,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 81.46,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 3248,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 79.56,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 3598,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 76.84,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 3764,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 76.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 4154,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.59,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 5401,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.28,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 6829,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 76.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 6726,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.06,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 5304,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 80.15,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 4922,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 79.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 4100,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.11,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 2728,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 84.51,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 1863,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 84.31,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Pre-Monsoon": {
+        "0": {
+          "sample_count": 1389,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 80.16,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 784,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 83.16,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 529,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 84.29,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 547,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 75.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 1107,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 76.11,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 4012,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 70.82,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 5370,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.14,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 6897,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 71.17,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 5438,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.29,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 4103,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 70.86,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 3269,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.66,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 2783,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.41,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 3199,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.26,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 3525,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 70.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 3830,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 70.12,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 4076,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 73.48,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 5379,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.27,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 6842,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 70.52,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 6800,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.24,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 5370,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 70.4,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 4887,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 72.76,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 4124,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 71.13,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 2607,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.99,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 1891,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 77.81,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Summer": {
+        "0": {
+          "sample_count": 2693,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 69.91,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 1662,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.48,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 1070,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.49,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 995,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 66.61,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 2060,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 68.99,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 7966,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.26,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 10782,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.4,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 13134,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 63.91,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 10716,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.13,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 7965,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 63.92,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 6266,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 63.72,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 5292,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 65.47,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 6497,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 65.03,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 6965,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.95,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 7425,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.26,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 7949,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 65.82,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 10817,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.18,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 13557,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.99,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 13252,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.45,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 10606,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 9685,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.51,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 7963,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 64.81,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 5372,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 69.64,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 3714,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 73.04,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Winter/Fog": {
+        "0": {
+          "sample_count": 4045,
+          "fog_count": 1727,
+          "p_fog_pct": 42.69,
+          "mean_delay_min": 114.87,
+          "mean_delay_when_fog_min": 130.37
+        },
+        "1": {
+          "sample_count": 2329,
+          "fog_count": 1052,
+          "p_fog_pct": 45.17,
+          "mean_delay_min": 113.66,
+          "mean_delay_when_fog_min": 128.75
+        },
+        "2": {
+          "sample_count": 1604,
+          "fog_count": 705,
+          "p_fog_pct": 43.95,
+          "mean_delay_min": 113.46,
+          "mean_delay_when_fog_min": 128.94
+        },
+        "3": {
+          "sample_count": 1587,
+          "fog_count": 696,
+          "p_fog_pct": 43.86,
+          "mean_delay_min": 112.41,
+          "mean_delay_when_fog_min": 129.37
+        },
+        "4": {
+          "sample_count": 3198,
+          "fog_count": 1393,
+          "p_fog_pct": 43.56,
+          "mean_delay_min": 114.34,
+          "mean_delay_when_fog_min": 130.11
+        },
+        "5": {
+          "sample_count": 11907,
+          "fog_count": 5216,
+          "p_fog_pct": 43.81,
+          "mean_delay_min": 110.15,
+          "mean_delay_when_fog_min": 127.47
+        },
+        "6": {
+          "sample_count": 15714,
+          "fog_count": 6876,
+          "p_fog_pct": 43.76,
+          "mean_delay_min": 110.08,
+          "mean_delay_when_fog_min": 128.11
+        },
+        "7": {
+          "sample_count": 19507,
+          "fog_count": 8620,
+          "p_fog_pct": 44.19,
+          "mean_delay_min": 110.98,
+          "mean_delay_when_fog_min": 128.68
+        },
+        "8": {
+          "sample_count": 15741,
+          "fog_count": 6795,
+          "p_fog_pct": 43.17,
+          "mean_delay_min": 110.42,
+          "mean_delay_when_fog_min": 128.81
+        },
+        "9": {
+          "sample_count": 11789,
+          "fog_count": 5237,
+          "p_fog_pct": 44.42,
+          "mean_delay_min": 110.68,
+          "mean_delay_when_fog_min": 128.03
+        },
+        "10": {
+          "sample_count": 9273,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 103.0,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 7769,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.58,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 9436,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 101.23,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 10367,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.91,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 11209,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 101.81,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 11842,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.97,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 15705,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 19624,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.99,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 19647,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.75,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 16098,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.59,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 14082,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 103.64,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 11954,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 102.4,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 7859,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 107.97,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 5385,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "mean_delay_min": 108.97,
+          "mean_delay_when_fog_min": 0.0
+        }
+      }
+    }
+  },
+  "congestion_patterns": {
+    "congestion_tier_impact": {
+      "MEDIUM (0.40-0.70)": {
+        "sample_count": 326322,
+        "delayed_count": 189203,
+        "p_delayed_pct": 57.98,
+        "heavy_delayed_count": 189158,
+        "p_heavy_delay_pct": 57.97,
+        "mean_delay_min": 79.95,
+        "median_delay_min": 95.0,
+        "p90_delay_min": 164.0,
+        "status": "VALID_SAMPLE"
+      },
+      "HIGH (0.70-0.85)": {
+        "sample_count": 456759,
+        "delayed_count": 335041,
+        "p_delayed_pct": 73.35,
+        "heavy_delayed_count": 334984,
+        "p_heavy_delay_pct": 73.34,
+        "mean_delay_min": 99.59,
+        "median_delay_min": 112.0,
+        "p90_delay_min": 173.0,
+        "status": "VALID_SAMPLE"
+      },
+      "EXTREME (>=0.85)": {
+        "sample_count": 260450,
+        "delayed_count": 225753,
+        "p_delayed_pct": 86.68,
+        "heavy_delayed_count": 225741,
+        "p_heavy_delay_pct": 86.67,
+        "mean_delay_min": 116.79,
+        "median_delay_min": 120.0,
+        "p90_delay_min": 180.0,
+        "status": "VALID_SAMPLE"
+      }
+    },
+    "hourly_congestion_cause_rate": {
+      "0": {
+        "sample_count": 15980,
+        "mean_zone_congestion_index": 0.7736,
+        "congestion_delay_cause_count": 3479,
+        "p_congestion_cause_pct": 21.77,
+        "p_delayed_pct": 76.46,
+        "mean_delay_min": 103.34
+      },
+      "1": {
+        "sample_count": 9616,
+        "mean_zone_congestion_index": 0.7726,
+        "congestion_delay_cause_count": 2050,
+        "p_congestion_cause_pct": 21.32,
+        "p_delayed_pct": 76.23,
+        "mean_delay_min": 102.49
+      },
+      "2": {
+        "sample_count": 6449,
+        "mean_zone_congestion_index": 0.7736,
+        "congestion_delay_cause_count": 1404,
+        "p_congestion_cause_pct": 21.77,
+        "p_delayed_pct": 76.93,
+        "mean_delay_min": 102.99
+      },
+      "3": {
+        "sample_count": 6470,
+        "mean_zone_congestion_index": 0.7703,
+        "congestion_delay_cause_count": 1393,
+        "p_congestion_cause_pct": 21.53,
+        "p_delayed_pct": 76.01,
+        "mean_delay_min": 102.13
+      },
+      "4": {
+        "sample_count": 12838,
+        "mean_zone_congestion_index": 0.7716,
+        "congestion_delay_cause_count": 2758,
+        "p_congestion_cause_pct": 21.48,
+        "p_delayed_pct": 75.9,
+        "mean_delay_min": 102.49
+      },
+      "5": {
+        "sample_count": 47749,
+        "mean_zone_congestion_index": 0.7729,
+        "congestion_delay_cause_count": 9831,
+        "p_congestion_cause_pct": 20.59,
+        "p_delayed_pct": 72.73,
+        "mean_delay_min": 98.51
+      },
+      "6": {
+        "sample_count": 63716,
+        "mean_zone_congestion_index": 0.7727,
+        "congestion_delay_cause_count": 13222,
+        "p_congestion_cause_pct": 20.75,
+        "p_delayed_pct": 72.73,
+        "mean_delay_min": 98.75
+      },
+      "7": {
+        "sample_count": 79408,
+        "mean_zone_congestion_index": 0.7734,
+        "congestion_delay_cause_count": 16404,
+        "p_congestion_cause_pct": 20.66,
+        "p_delayed_pct": 72.5,
+        "mean_delay_min": 98.32
+      },
+      "8": {
+        "sample_count": 63856,
+        "mean_zone_congestion_index": 0.7731,
+        "congestion_delay_cause_count": 12992,
+        "p_congestion_cause_pct": 20.35,
+        "p_delayed_pct": 72.65,
+        "mean_delay_min": 98.71
+      },
+      "9": {
+        "sample_count": 47954,
+        "mean_zone_congestion_index": 0.7737,
+        "congestion_delay_cause_count": 9881,
+        "p_congestion_cause_pct": 20.61,
+        "p_delayed_pct": 72.55,
+        "mean_delay_min": 98.46
+      },
+      "10": {
+        "sample_count": 38003,
+        "mean_zone_congestion_index": 0.7738,
+        "congestion_delay_cause_count": 8077,
+        "p_congestion_cause_pct": 21.25,
+        "p_delayed_pct": 71.27,
+        "mean_delay_min": 97.03
+      },
+      "11": {
+        "sample_count": 31996,
+        "mean_zone_congestion_index": 0.7735,
+        "congestion_delay_cause_count": 6726,
+        "p_congestion_cause_pct": 21.02,
+        "p_delayed_pct": 71.21,
+        "mean_delay_min": 96.98
+      },
+      "12": {
+        "sample_count": 38293,
+        "mean_zone_congestion_index": 0.7736,
+        "congestion_delay_cause_count": 7987,
+        "p_congestion_cause_pct": 20.86,
+        "p_delayed_pct": 71.04,
+        "mean_delay_min": 96.64
+      },
+      "13": {
+        "sample_count": 41669,
+        "mean_zone_congestion_index": 0.7733,
+        "congestion_delay_cause_count": 8715,
+        "p_congestion_cause_pct": 20.91,
+        "p_delayed_pct": 70.68,
+        "mean_delay_min": 96.31
+      },
+      "14": {
+        "sample_count": 44886,
+        "mean_zone_congestion_index": 0.7728,
+        "congestion_delay_cause_count": 9402,
+        "p_congestion_cause_pct": 20.95,
+        "p_delayed_pct": 70.58,
+        "mean_delay_min": 96.17
+      },
+      "15": {
+        "sample_count": 47624,
+        "mean_zone_congestion_index": 0.772,
+        "congestion_delay_cause_count": 9815,
+        "p_congestion_cause_pct": 20.61,
+        "p_delayed_pct": 70.93,
+        "mean_delay_min": 96.59
+      },
+      "16": {
+        "sample_count": 63728,
+        "mean_zone_congestion_index": 0.7734,
+        "congestion_delay_cause_count": 13382,
+        "p_congestion_cause_pct": 21.0,
+        "p_delayed_pct": 70.85,
+        "mean_delay_min": 96.75
+      },
+      "17": {
+        "sample_count": 80141,
+        "mean_zone_congestion_index": 0.7723,
+        "congestion_delay_cause_count": 16528,
+        "p_congestion_cause_pct": 20.62,
+        "p_delayed_pct": 70.76,
+        "mean_delay_min": 96.42
+      },
+      "18": {
+        "sample_count": 79701,
+        "mean_zone_congestion_index": 0.7732,
+        "congestion_delay_cause_count": 16770,
+        "p_congestion_cause_pct": 21.04,
+        "p_delayed_pct": 70.85,
+        "mean_delay_min": 96.7
+      },
+      "19": {
+        "sample_count": 64171,
+        "mean_zone_congestion_index": 0.7734,
+        "congestion_delay_cause_count": 13560,
+        "p_congestion_cause_pct": 21.13,
+        "p_delayed_pct": 71.08,
+        "mean_delay_min": 96.84
+      },
+      "20": {
+        "sample_count": 57496,
+        "mean_zone_congestion_index": 0.7726,
+        "congestion_delay_cause_count": 11976,
+        "p_congestion_cause_pct": 20.83,
+        "p_delayed_pct": 70.89,
+        "mean_delay_min": 96.76
+      },
+      "21": {
+        "sample_count": 47956,
+        "mean_zone_congestion_index": 0.7728,
+        "congestion_delay_cause_count": 9973,
+        "p_congestion_cause_pct": 20.8,
+        "p_delayed_pct": 70.75,
+        "mean_delay_min": 96.42
+      },
+      "22": {
+        "sample_count": 31890,
+        "mean_zone_congestion_index": 0.7729,
+        "congestion_delay_cause_count": 7144,
+        "p_congestion_cause_pct": 22.4,
+        "p_delayed_pct": 74.9,
+        "mean_delay_min": 101.48
+      },
+      "23": {
+        "sample_count": 21941,
+        "mean_zone_congestion_index": 0.7736,
+        "congestion_delay_cause_count": 4966,
+        "p_congestion_cause_pct": 22.63,
+        "p_delayed_pct": 75.26,
+        "mean_delay_min": 101.67
+      }
+    },
+    "infrastructure_congestion_impact": {
+      "HDN_route (is_hdn_route=1)": {
+        "sample_count": 312989,
+        "delayed_count": 233309,
+        "p_delayed_pct": 74.54,
+        "heavy_delayed_count": 233265,
+        "p_heavy_delay_pct": 74.53,
+        "mean_delay_min": 100.68,
+        "median_delay_min": 112.0,
+        "p90_delay_min": 173.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Non_HDN_route (is_hdn_route=0)": {
+        "sample_count": 730542,
+        "delayed_count": 516688,
+        "p_delayed_pct": 70.73,
+        "heavy_delayed_count": 516618,
+        "p_heavy_delay_pct": 70.72,
+        "mean_delay_min": 96.48,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Double_Track (track_doubled=1)": {
+        "sample_count": 678116,
+        "delayed_count": 448705,
+        "p_delayed_pct": 66.17,
+        "heavy_delayed_count": 448667,
+        "p_heavy_delay_pct": 66.16,
+        "mean_delay_min": 91.48,
+        "median_delay_min": 107.0,
+        "p90_delay_min": 171.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Single_Track (track_doubled=0)": {
+        "sample_count": 365415,
+        "delayed_count": 301292,
+        "p_delayed_pct": 82.45,
+        "heavy_delayed_count": 301216,
+        "p_heavy_delay_pct": 82.43,
+        "mean_delay_min": 109.36,
+        "median_delay_min": 115.0,
+        "p90_delay_min": 176.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Single_Track_on_HDN (Single + HDN)": {
+        "sample_count": 109812,
+        "delayed_count": 92905,
+        "p_delayed_pct": 84.6,
+        "heavy_delayed_count": 92880,
+        "p_heavy_delay_pct": 84.58,
+        "mean_delay_min": 111.54,
+        "median_delay_min": 116.0,
+        "p90_delay_min": 176.0,
+        "status": "VALID_SAMPLE"
+      }
+    }
+  },
+  "operational_and_asset_patterns": {
+    "operational_factors": {
+      "Late_Incoming_Rake (late_incoming_rake=1)": {
+        "sample_count": 364196,
+        "delayed_count": 316981,
+        "p_delayed_pct": 87.04,
+        "heavy_delayed_count": 316981,
+        "p_heavy_delay_pct": 87.04,
+        "mean_delay_min": 130.39,
+        "median_delay_min": 136.0,
+        "p90_delay_min": 193.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Normal_Incoming_Rake (late_incoming_rake=0)": {
+        "sample_count": 679335,
+        "delayed_count": 433016,
+        "p_delayed_pct": 63.74,
+        "heavy_delayed_count": 432902,
+        "p_heavy_delay_pct": 63.72,
+        "mean_delay_min": 80.23,
+        "median_delay_min": 95.0,
+        "p90_delay_min": 154.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Shared_Rake (is_rake_shared=1)": {
+        "sample_count": 469543,
+        "delayed_count": 349794,
+        "p_delayed_pct": 74.5,
+        "heavy_delayed_count": 349735,
+        "p_heavy_delay_pct": 74.48,
+        "mean_delay_min": 100.69,
+        "median_delay_min": 112.0,
+        "p90_delay_min": 174.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Dedicated_Rake (is_rake_shared=0)": {
+        "sample_count": 573988,
+        "delayed_count": 400203,
+        "p_delayed_pct": 69.72,
+        "heavy_delayed_count": 400148,
+        "p_heavy_delay_pct": 69.71,
+        "mean_delay_min": 95.32,
+        "median_delay_min": 109.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Special_Train (is_special_train=1)": {
+        "sample_count": 104524,
+        "delayed_count": 75323,
+        "p_delayed_pct": 72.06,
+        "heavy_delayed_count": 75313,
+        "p_heavy_delay_pct": 72.05,
+        "mean_delay_min": 97.92,
+        "median_delay_min": 111.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Regular_Timetable_Train (is_special_train=0)": {
+        "sample_count": 939006,
+        "delayed_count": 674674,
+        "p_delayed_pct": 71.85,
+        "heavy_delayed_count": 674570,
+        "p_heavy_delay_pct": 71.84,
+        "mean_delay_min": 97.72,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 173.0,
+        "status": "VALID_SAMPLE"
+      }
+    },
+    "psr_tier_impact": {
+      "LOW_PSR (0-1)": {
+        "sample_count": 207398,
+        "delayed_count": 145922,
+        "p_delayed_pct": 70.36,
+        "heavy_delayed_count": 145899,
+        "p_heavy_delay_pct": 70.35,
+        "mean_delay_min": 96.05,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      },
+      "MODERATE_PSR (2-3)": {
+        "sample_count": 468430,
+        "delayed_count": 335443,
+        "p_delayed_pct": 71.61,
+        "heavy_delayed_count": 335393,
+        "p_heavy_delay_pct": 71.6,
+        "mean_delay_min": 97.43,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 173.0,
+        "status": "VALID_SAMPLE"
+      },
+      "HIGH_PSR (4-6)": {
+        "sample_count": 332803,
+        "delayed_count": 242655,
+        "p_delayed_pct": 72.91,
+        "heavy_delayed_count": 242619,
+        "p_heavy_delay_pct": 72.9,
+        "mean_delay_min": 98.96,
+        "median_delay_min": 111.0,
+        "p90_delay_min": 173.0,
+        "status": "VALID_SAMPLE"
+      },
+      "SEVERE_PSR (>6)": {
+        "sample_count": 34900,
+        "delayed_count": 25977,
+        "p_delayed_pct": 74.43,
+        "heavy_delayed_count": 25972,
+        "p_heavy_delay_pct": 74.42,
+        "mean_delay_min": 100.34,
+        "median_delay_min": 112.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      }
+    },
+    "primary_delay_causes": {
+      "Crew Availability": {
+        "sample_count": 21547,
+        "delayed_count": 21547,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 21543,
+        "p_heavy_delay_pct": 99.98,
+        "mean_delay_min": 118.94,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 167.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Flooding / Waterlogging": {
+        "sample_count": 145269,
+        "delayed_count": 145269,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 145269,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 135.8,
+        "median_delay_min": 129.0,
+        "p90_delay_min": 187.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Fog / Low Visibility": {
+        "sample_count": 14569,
+        "delayed_count": 14569,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 14569,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 134.16,
+        "median_delay_min": 128.0,
+        "p90_delay_min": 186.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Freight Priority": {
+        "sample_count": 21879,
+        "delayed_count": 21879,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 21864,
+        "p_heavy_delay_pct": 99.93,
+        "mean_delay_min": 118.95,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 167.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Late Incoming Rake": {
+        "sample_count": 112555,
+        "delayed_count": 112555,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 112555,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 145.04,
+        "median_delay_min": 137.0,
+        "p90_delay_min": 193.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Level Crossing Delay": {
+        "sample_count": 21825,
+        "delayed_count": 21825,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 21815,
+        "p_heavy_delay_pct": 99.95,
+        "mean_delay_min": 118.63,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Loco / Engine Failure": {
+        "sample_count": 17230,
+        "delayed_count": 17230,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 17217,
+        "p_heavy_delay_pct": 99.92,
+        "mean_delay_min": 117.44,
+        "median_delay_min": 109.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "On Time": {
+        "sample_count": 293533,
+        "delayed_count": 0,
+        "p_delayed_pct": 0.0,
+        "heavy_delayed_count": 0,
+        "p_heavy_delay_pct": 0.0,
+        "mean_delay_min": 7.01,
+        "median_delay_min": 7.0,
+        "p90_delay_min": 13.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Passenger Emergency": {
+        "sample_count": 21895,
+        "delayed_count": 21895,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 21883,
+        "p_heavy_delay_pct": 99.95,
+        "mean_delay_min": 119.02,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Signal Failure": {
+        "sample_count": 28276,
+        "delayed_count": 28276,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 28266,
+        "p_heavy_delay_pct": 99.96,
+        "mean_delay_min": 122.28,
+        "median_delay_min": 114.0,
+        "p90_delay_min": 172.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Station Congestion": {
+        "sample_count": 49995,
+        "delayed_count": 49995,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 49983,
+        "p_heavy_delay_pct": 99.98,
+        "mean_delay_min": 133.84,
+        "median_delay_min": 127.0,
+        "p90_delay_min": 184.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Technical Inspection": {
+        "sample_count": 7700,
+        "delayed_count": 7700,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 7694,
+        "p_heavy_delay_pct": 99.92,
+        "mean_delay_min": 117.24,
+        "median_delay_min": 109.0,
+        "p90_delay_min": 163.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Track Congestion": {
+        "sample_count": 168440,
+        "delayed_count": 168440,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 168419,
+        "p_heavy_delay_pct": 99.99,
+        "mean_delay_min": 134.74,
+        "median_delay_min": 128.0,
+        "p90_delay_min": 186.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Track Maintenance / PSR": {
+        "sample_count": 97108,
+        "delayed_count": 97108,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 97108,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 136.1,
+        "median_delay_min": 129.0,
+        "p90_delay_min": 188.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Unscheduled Halt": {
+        "sample_count": 21709,
+        "delayed_count": 21709,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 21698,
+        "p_heavy_delay_pct": 99.95,
+        "mean_delay_min": 118.97,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 167.0,
+        "status": "VALID_SAMPLE"
+      }
+    }
+  },
+  "compound_interaction_patterns": {
+    "LateRake_AND_Fog": {
+      "sample_count": 13398,
+      "delayed_count": 13309,
+      "p_delayed_pct": 99.34,
+      "heavy_delayed_count": 13309,
+      "p_heavy_delay_pct": 99.34,
+      "mean_delay_min": 151.73,
+      "median_delay_min": 144.0,
+      "p90_delay_min": 201.0,
+      "status": "VALID_SAMPLE"
+    },
+    "LateRake_AND_HighCongestion": {
+      "sample_count": 272792,
+      "delayed_count": 247867,
+      "p_delayed_pct": 90.86,
+      "heavy_delayed_count": 247867,
+      "p_heavy_delay_pct": 90.86,
+      "mean_delay_min": 136.39,
+      "median_delay_min": 138.0,
+      "p90_delay_min": 195.0,
+      "status": "VALID_SAMPLE"
+    },
+    "Fog_AND_PeakHour": {
+      "sample_count": 22291,
+      "delayed_count": 21291,
+      "p_delayed_pct": 95.51,
+      "heavy_delayed_count": 21291,
+      "p_heavy_delay_pct": 95.51,
+      "mean_delay_min": 128.55,
+      "median_delay_min": 125.0,
+      "p90_delay_min": 184.0,
+      "status": "VALID_SAMPLE"
+    },
+    "HighCongestion_AND_PeakHour": {
+      "sample_count": 366103,
+      "delayed_count": 281924,
+      "p_delayed_pct": 77.01,
+      "heavy_delayed_count": 281888,
+      "p_heavy_delay_pct": 77.0,
+      "mean_delay_min": 104.36,
+      "median_delay_min": 114.0,
+      "p90_delay_min": 175.0,
+      "status": "VALID_SAMPLE"
+    },
+    "Clean_Conditions (No LateRake, No Fog, Normal Congestion)": {
+      "sample_count": 169830,
+      "delayed_count": 77125,
+      "p_delayed_pct": 45.41,
+      "heavy_delayed_count": 77092,
+      "p_heavy_delay_pct": 45.39,
+      "mean_delay_min": 58.63,
+      "median_delay_min": 13.0,
+      "p90_delay_min": 141.0,
+      "status": "VALID_SAMPLE"
+    }
+  },
+  "northern_corridor_proxy_patterns": {
+    "NR_sample_size": 65090,
+    "NCR_sample_size": 65143,
+    "combined_NR_NCR_sample_size": 130233,
+    "combined_metrics": {
+      "sample_count": 130233,
+      "delayed_count": 112407,
+      "p_delayed_pct": 86.31,
+      "heavy_delayed_count": 112399,
+      "p_heavy_delay_pct": 86.31,
+      "mean_delay_min": 116.38,
+      "median_delay_min": 120.0,
+      "p90_delay_min": 180.0,
+      "status": "VALID_SAMPLE"
+    },
+    "NR_NCR_fog_by_hour_and_season": {
+      "Autumn": {
+        "0": {
+          "sample_count": 163,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.39,
+          "mean_delay_min": 93.89,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 76,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 82.89,
+          "mean_delay_min": 107.13,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 66,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 81.82,
+          "mean_delay_min": 110.91,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 77,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.73,
+          "mean_delay_min": 105.65,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 144,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 76.39,
+          "mean_delay_min": 97.69,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 518,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.08,
+          "mean_delay_min": 94.31,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 634,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.4,
+          "mean_delay_min": 93.86,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 844,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.73,
+          "mean_delay_min": 93.76,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 645,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.87,
+          "mean_delay_min": 93.93,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 501,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.66,
+          "mean_delay_min": 92.74,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 387,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 74.68,
+          "mean_delay_min": 93.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 321,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.85,
+          "mean_delay_min": 85.69,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 387,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.03,
+          "mean_delay_min": 94.26,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 426,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.6,
+          "mean_delay_min": 89.85,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 434,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.82,
+          "mean_delay_min": 89.35,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 467,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.45,
+          "mean_delay_min": 89.09,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 649,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.96,
+          "mean_delay_min": 95.88,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 817,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.5,
+          "mean_delay_min": 93.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 826,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.4,
+          "mean_delay_min": 88.62,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 668,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.06,
+          "mean_delay_min": 91.2,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 594,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.55,
+          "mean_delay_min": 91.97,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 513,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.15,
+          "mean_delay_min": 92.46,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 331,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 77.04,
+          "mean_delay_min": 98.6,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 215,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 75.35,
+          "mean_delay_min": 97.32,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Monsoon": {
+        "0": {
+          "sample_count": 696,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.71,
+          "mean_delay_min": 135.44,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 386,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.45,
+          "mean_delay_min": 136.49,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 275,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 99.64,
+          "mean_delay_min": 136.72,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 278,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.56,
+          "mean_delay_min": 138.17,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 509,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 99.21,
+          "mean_delay_min": 137.33,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 2005,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.25,
+          "mean_delay_min": 136.5,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 2648,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.56,
+          "mean_delay_min": 135.75,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 3430,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.19,
+          "mean_delay_min": 135.67,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 2655,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.38,
+          "mean_delay_min": 135.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 1915,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.54,
+          "mean_delay_min": 136.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 1647,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.54,
+          "mean_delay_min": 136.2,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 1339,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.51,
+          "mean_delay_min": 136.12,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 1631,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.77,
+          "mean_delay_min": 137.2,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 1785,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.15,
+          "mean_delay_min": 134.55,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 1844,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.05,
+          "mean_delay_min": 136.37,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 1931,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.34,
+          "mean_delay_min": 135.61,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 2659,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.42,
+          "mean_delay_min": 138.12,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 3384,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.49,
+          "mean_delay_min": 135.63,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 3330,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.05,
+          "mean_delay_min": 135.58,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 2689,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.4,
+          "mean_delay_min": 135.75,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 2355,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 97.83,
+          "mean_delay_min": 135.06,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 1990,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.04,
+          "mean_delay_min": 134.91,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 1252,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 99.68,
+          "mean_delay_min": 135.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 904,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 98.67,
+          "mean_delay_min": 135.5,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Post-Monsoon": {
+        "0": {
+          "sample_count": 180,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 80.56,
+          "mean_delay_min": 103.69,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 107,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 83.18,
+          "mean_delay_min": 107.19,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 83,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 83.13,
+          "mean_delay_min": 103.78,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 64,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 78.12,
+          "mean_delay_min": 105.61,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 131,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 84.73,
+          "mean_delay_min": 111.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 525,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.33,
+          "mean_delay_min": 95.75,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 643,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 75.43,
+          "mean_delay_min": 101.47,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 855,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 79.77,
+          "mean_delay_min": 102.81,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 690,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 78.55,
+          "mean_delay_min": 105.24,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 554,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 74.55,
+          "mean_delay_min": 97.11,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 382,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 76.7,
+          "mean_delay_min": 102.29,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 335,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 82.69,
+          "mean_delay_min": 109.03,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 401,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 80.3,
+          "mean_delay_min": 105.43,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 445,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 80.67,
+          "mean_delay_min": 106.34,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 495,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 77.98,
+          "mean_delay_min": 102.78,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 551,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 76.59,
+          "mean_delay_min": 99.49,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 701,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 79.74,
+          "mean_delay_min": 104.03,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 837,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 78.61,
+          "mean_delay_min": 104.53,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 817,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 80.42,
+          "mean_delay_min": 107.64,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 658,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 81.31,
+          "mean_delay_min": 106.1,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 644,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 79.35,
+          "mean_delay_min": 104.35,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 540,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 78.7,
+          "mean_delay_min": 103.35,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 328,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 80.79,
+          "mean_delay_min": 107.92,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 234,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 81.62,
+          "mean_delay_min": 105.28,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Pre-Monsoon": {
+        "0": {
+          "sample_count": 163,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 79.14,
+          "mean_delay_min": 100.81,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 93,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 82.8,
+          "mean_delay_min": 107.25,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 58,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 82.76,
+          "mean_delay_min": 107.67,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 78,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 83.33,
+          "mean_delay_min": 108.45,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 142,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 76.06,
+          "mean_delay_min": 104.08,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 529,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.59,
+          "mean_delay_min": 94.18,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 644,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 75.62,
+          "mean_delay_min": 100.15,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 807,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 74.1,
+          "mean_delay_min": 94.45,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 660,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 75.61,
+          "mean_delay_min": 99.83,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 494,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 74.9,
+          "mean_delay_min": 96.46,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 421,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.21,
+          "mean_delay_min": 93.19,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 317,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 74.13,
+          "mean_delay_min": 96.37,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 425,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.24,
+          "mean_delay_min": 92.43,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 408,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.55,
+          "mean_delay_min": 94.84,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 462,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.86,
+          "mean_delay_min": 94.47,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 516,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 75.39,
+          "mean_delay_min": 97.47,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 707,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.29,
+          "mean_delay_min": 94.5,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 837,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.0,
+          "mean_delay_min": 94.76,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 904,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.78,
+          "mean_delay_min": 97.95,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 697,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.88,
+          "mean_delay_min": 94.99,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 585,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 76.92,
+          "mean_delay_min": 100.27,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 491,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.12,
+          "mean_delay_min": 94.95,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 311,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 81.03,
+          "mean_delay_min": 109.52,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 249,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 80.72,
+          "mean_delay_min": 103.37,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Summer": {
+        "0": {
+          "sample_count": 344,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 72.67,
+          "mean_delay_min": 91.93,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "1": {
+          "sample_count": 212,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.11,
+          "mean_delay_min": 87.38,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "2": {
+          "sample_count": 122,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 77.87,
+          "mean_delay_min": 97.7,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "3": {
+          "sample_count": 121,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.6,
+          "mean_delay_min": 87.2,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "4": {
+          "sample_count": 236,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.07,
+          "mean_delay_min": 91.17,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "5": {
+          "sample_count": 937,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.44,
+          "mean_delay_min": 89.16,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "6": {
+          "sample_count": 1352,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.01,
+          "mean_delay_min": 88.64,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "7": {
+          "sample_count": 1632,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.3,
+          "mean_delay_min": 90.67,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "8": {
+          "sample_count": 1360,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.03,
+          "mean_delay_min": 90.71,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "9": {
+          "sample_count": 973,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 66.91,
+          "mean_delay_min": 86.85,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "10": {
+          "sample_count": 786,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 67.18,
+          "mean_delay_min": 86.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 661,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.89,
+          "mean_delay_min": 92.01,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 780,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 67.56,
+          "mean_delay_min": 88.76,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 893,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 67.97,
+          "mean_delay_min": 88.76,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 861,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 70.03,
+          "mean_delay_min": 91.19,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 976,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.24,
+          "mean_delay_min": 90.39,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 1352,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.27,
+          "mean_delay_min": 88.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 1686,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.15,
+          "mean_delay_min": 88.92,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 1616,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.86,
+          "mean_delay_min": 89.23,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 1367,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 66.86,
+          "mean_delay_min": 86.55,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 1163,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 68.79,
+          "mean_delay_min": 90.47,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 986,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 69.98,
+          "mean_delay_min": 91.18,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 637,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 73.94,
+          "mean_delay_min": 94.3,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 467,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 71.52,
+          "mean_delay_min": 91.29,
+          "mean_delay_when_fog_min": 0.0
+        }
+      },
+      "Winter/Fog": {
+        "0": {
+          "sample_count": 481,
+          "fog_count": 481,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.34,
+          "mean_delay_min": 135.44,
+          "mean_delay_when_fog_min": 135.44
+        },
+        "1": {
+          "sample_count": 303,
+          "fog_count": 303,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 99.34,
+          "mean_delay_min": 134.72,
+          "mean_delay_when_fog_min": 134.72
+        },
+        "2": {
+          "sample_count": 196,
+          "fog_count": 196,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.47,
+          "mean_delay_min": 135.56,
+          "mean_delay_when_fog_min": 135.56
+        },
+        "3": {
+          "sample_count": 177,
+          "fog_count": 177,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.31,
+          "mean_delay_min": 130.43,
+          "mean_delay_when_fog_min": 130.43
+        },
+        "4": {
+          "sample_count": 411,
+          "fog_count": 411,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.78,
+          "mean_delay_min": 132.73,
+          "mean_delay_when_fog_min": 132.73
+        },
+        "5": {
+          "sample_count": 1439,
+          "fog_count": 1439,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 99.1,
+          "mean_delay_min": 131.8,
+          "mean_delay_when_fog_min": 131.8
+        },
+        "6": {
+          "sample_count": 1915,
+          "fog_count": 1915,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.64,
+          "mean_delay_min": 132.34,
+          "mean_delay_when_fog_min": 132.34
+        },
+        "7": {
+          "sample_count": 2447,
+          "fog_count": 2447,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.41,
+          "mean_delay_min": 133.31,
+          "mean_delay_when_fog_min": 133.31
+        },
+        "8": {
+          "sample_count": 1910,
+          "fog_count": 1910,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.27,
+          "mean_delay_min": 132.54,
+          "mean_delay_when_fog_min": 132.54
+        },
+        "9": {
+          "sample_count": 1495,
+          "fog_count": 1495,
+          "p_fog_pct": 100.0,
+          "p_delayed_pct": 98.66,
+          "mean_delay_min": 132.83,
+          "mean_delay_when_fog_min": 132.83
+        },
+        "10": {
+          "sample_count": 1161,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 89.58,
+          "mean_delay_min": 123.19,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "11": {
+          "sample_count": 983,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 90.74,
+          "mean_delay_min": 123.09,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "12": {
+          "sample_count": 1217,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 89.81,
+          "mean_delay_min": 122.05,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "13": {
+          "sample_count": 1276,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 89.97,
+          "mean_delay_min": 122.74,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "14": {
+          "sample_count": 1383,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 88.94,
+          "mean_delay_min": 120.91,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "15": {
+          "sample_count": 1501,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 89.94,
+          "mean_delay_min": 123.33,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "16": {
+          "sample_count": 1988,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 90.49,
+          "mean_delay_min": 124.61,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "17": {
+          "sample_count": 2423,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 90.67,
+          "mean_delay_min": 124.73,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "18": {
+          "sample_count": 2473,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 90.25,
+          "mean_delay_min": 123.59,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "19": {
+          "sample_count": 2119,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 91.32,
+          "mean_delay_min": 125.67,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "20": {
+          "sample_count": 1784,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 89.57,
+          "mean_delay_min": 122.32,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "21": {
+          "sample_count": 1504,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 88.56,
+          "mean_delay_min": 122.06,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "22": {
+          "sample_count": 998,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 91.08,
+          "mean_delay_min": 125.37,
+          "mean_delay_when_fog_min": 0.0
+        },
+        "23": {
+          "sample_count": 691,
+          "fog_count": 0,
+          "p_fog_pct": 0.0,
+          "p_delayed_pct": 93.05,
+          "mean_delay_min": 125.93,
+          "mean_delay_when_fog_min": 0.0
+        }
+      }
+    },
+    "NR_NCR_congestion_by_hour": {
+      "0": {
+        "sample_count": 2027,
+        "mean_congestion_index": 0.9102,
+        "high_congestion_count": 2027,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 23.29,
+        "p_delayed_pct": 88.9,
+        "mean_delay_min": 119.11
+      },
+      "1": {
+        "sample_count": 1177,
+        "mean_congestion_index": 0.9103,
+        "high_congestion_count": 1177,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 23.36,
+        "p_delayed_pct": 90.48,
+        "mean_delay_min": 120.32
+      },
+      "2": {
+        "sample_count": 800,
+        "mean_congestion_index": 0.9093,
+        "high_congestion_count": 800,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 22.5,
+        "p_delayed_pct": 91.62,
+        "mean_delay_min": 122.83
+      },
+      "3": {
+        "sample_count": 795,
+        "mean_congestion_index": 0.9104,
+        "high_congestion_count": 795,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.03,
+        "p_delayed_pct": 88.3,
+        "mean_delay_min": 120.0
+      },
+      "4": {
+        "sample_count": 1573,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 1573,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 22.38,
+        "p_delayed_pct": 89.19,
+        "mean_delay_min": 120.44
+      },
+      "5": {
+        "sample_count": 5953,
+        "mean_congestion_index": 0.9102,
+        "high_congestion_count": 5953,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 22.9,
+        "p_delayed_pct": 87.15,
+        "mean_delay_min": 116.89
+      },
+      "6": {
+        "sample_count": 7836,
+        "mean_congestion_index": 0.9101,
+        "high_congestion_count": 7836,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 23.97,
+        "p_delayed_pct": 87.58,
+        "mean_delay_min": 117.66
+      },
+      "7": {
+        "sample_count": 10015,
+        "mean_congestion_index": 0.91,
+        "high_congestion_count": 10015,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 23.01,
+        "p_delayed_pct": 87.71,
+        "mean_delay_min": 118.1
+      },
+      "8": {
+        "sample_count": 7920,
+        "mean_congestion_index": 0.9098,
+        "high_congestion_count": 7920,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 23.13,
+        "p_delayed_pct": 87.95,
+        "mean_delay_min": 118.04
+      },
+      "9": {
+        "sample_count": 5932,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 5932,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 22.57,
+        "p_delayed_pct": 86.82,
+        "mean_delay_min": 116.66
+      },
+      "10": {
+        "sample_count": 4784,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 4784,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.83,
+        "p_delayed_pct": 85.22,
+        "mean_delay_min": 114.86
+      },
+      "11": {
+        "sample_count": 3956,
+        "mean_congestion_index": 0.9103,
+        "high_congestion_count": 3956,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.72,
+        "p_delayed_pct": 86.1,
+        "mean_delay_min": 115.94
+      },
+      "12": {
+        "sample_count": 4841,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 4841,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 25.35,
+        "p_delayed_pct": 85.33,
+        "mean_delay_min": 115.59
+      },
+      "13": {
+        "sample_count": 5233,
+        "mean_congestion_index": 0.9101,
+        "high_congestion_count": 5233,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 25.7,
+        "p_delayed_pct": 85.36,
+        "mean_delay_min": 114.72
+      },
+      "14": {
+        "sample_count": 5479,
+        "mean_congestion_index": 0.9101,
+        "high_congestion_count": 5479,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 25.11,
+        "p_delayed_pct": 85.09,
+        "mean_delay_min": 115.08
+      },
+      "15": {
+        "sample_count": 5942,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 5942,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 26.02,
+        "p_delayed_pct": 85.07,
+        "mean_delay_min": 114.76
+      },
+      "16": {
+        "sample_count": 8056,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 8056,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.91,
+        "p_delayed_pct": 85.43,
+        "mean_delay_min": 116.23
+      },
+      "17": {
+        "sample_count": 9984,
+        "mean_congestion_index": 0.91,
+        "high_congestion_count": 9984,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.96,
+        "p_delayed_pct": 85.38,
+        "mean_delay_min": 115.6
+      },
+      "18": {
+        "sample_count": 9966,
+        "mean_congestion_index": 0.91,
+        "high_congestion_count": 9966,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 25.57,
+        "p_delayed_pct": 85.44,
+        "mean_delay_min": 115.49
+      },
+      "19": {
+        "sample_count": 8198,
+        "mean_congestion_index": 0.91,
+        "high_congestion_count": 8198,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 25.02,
+        "p_delayed_pct": 85.37,
+        "mean_delay_min": 115.46
+      },
+      "20": {
+        "sample_count": 7125,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 7125,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.74,
+        "p_delayed_pct": 85.45,
+        "mean_delay_min": 115.37
+      },
+      "21": {
+        "sample_count": 6024,
+        "mean_congestion_index": 0.9101,
+        "high_congestion_count": 6024,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 24.67,
+        "p_delayed_pct": 85.03,
+        "mean_delay_min": 114.84
+      },
+      "22": {
+        "sample_count": 3857,
+        "mean_congestion_index": 0.91,
+        "high_congestion_count": 3857,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 26.21,
+        "p_delayed_pct": 88.15,
+        "mean_delay_min": 118.33
+      },
+      "23": {
+        "sample_count": 2760,
+        "mean_congestion_index": 0.9099,
+        "high_congestion_count": 2760,
+        "p_high_congestion_pct": 100.0,
+        "p_congestion_delay_cause_pct": 25.18,
+        "p_delayed_pct": 87.79,
+        "mean_delay_min": 117.19
+      }
+    },
+    "NR_NCR_delay_cause_distribution": {
+      "Crew Availability": {
+        "sample_count": 3533,
+        "delayed_count": 3533,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 3533,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 118.99,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 167.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Flooding / Waterlogging": {
+        "sample_count": 19429,
+        "delayed_count": 19429,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 19429,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 137.78,
+        "median_delay_min": 131.0,
+        "p90_delay_min": 189.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Fog / Low Visibility": {
+        "sample_count": 5851,
+        "delayed_count": 5851,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 5851,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 135.2,
+        "median_delay_min": 128.0,
+        "p90_delay_min": 188.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Freight Priority": {
+        "sample_count": 3661,
+        "delayed_count": 3661,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 3661,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 119.43,
+        "median_delay_min": 111.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Late Incoming Rake": {
+        "sample_count": 14798,
+        "delayed_count": 14798,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 14798,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 146.21,
+        "median_delay_min": 138.0,
+        "p90_delay_min": 195.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Level Crossing Delay": {
+        "sample_count": 3505,
+        "delayed_count": 3505,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 3504,
+        "p_heavy_delay_pct": 99.97,
+        "mean_delay_min": 118.38,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Loco / Engine Failure": {
+        "sample_count": 2532,
+        "delayed_count": 2532,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 2532,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 118.07,
+        "median_delay_min": 111.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "On Time": {
+        "sample_count": 17826,
+        "delayed_count": 0,
+        "p_delayed_pct": 0.0,
+        "heavy_delayed_count": 0,
+        "p_heavy_delay_pct": 0.0,
+        "mean_delay_min": 7.0,
+        "median_delay_min": 7.0,
+        "p90_delay_min": 13.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Passenger Emergency": {
+        "sample_count": 3536,
+        "delayed_count": 3536,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 3536,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 119.6,
+        "median_delay_min": 111.0,
+        "p90_delay_min": 166.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Signal Failure": {
+        "sample_count": 6132,
+        "delayed_count": 6132,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 6132,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 125.4,
+        "median_delay_min": 117.0,
+        "p90_delay_min": 175.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Station Congestion": {
+        "sample_count": 7333,
+        "delayed_count": 7333,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 7332,
+        "p_heavy_delay_pct": 99.99,
+        "mean_delay_min": 133.82,
+        "median_delay_min": 127.0,
+        "p90_delay_min": 186.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Technical Inspection": {
+        "sample_count": 1136,
+        "delayed_count": 1136,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 1136,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 118.79,
+        "median_delay_min": 110.5,
+        "p90_delay_min": 166.5,
+        "status": "VALID_SAMPLE"
+      },
+      "Track Congestion": {
+        "sample_count": 24566,
+        "delayed_count": 24566,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 24562,
+        "p_heavy_delay_pct": 99.98,
+        "mean_delay_min": 135.33,
+        "median_delay_min": 129.0,
+        "p90_delay_min": 187.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Track Maintenance / PSR": {
+        "sample_count": 12849,
+        "delayed_count": 12849,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 12849,
+        "p_heavy_delay_pct": 100.0,
+        "mean_delay_min": 137.93,
+        "median_delay_min": 131.0,
+        "p90_delay_min": 190.0,
+        "status": "VALID_SAMPLE"
+      },
+      "Unscheduled Halt": {
+        "sample_count": 3546,
+        "delayed_count": 3546,
+        "p_delayed_pct": 100.0,
+        "heavy_delayed_count": 3544,
+        "p_heavy_delay_pct": 99.94,
+        "mean_delay_min": 119.34,
+        "median_delay_min": 110.0,
+        "p90_delay_min": 168.0,
+        "status": "VALID_SAMPLE"
+      }
+    }
+  }
+}

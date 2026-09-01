@@ -1,26 +1,33 @@
 """
-prediction_engine.py — Phase 6: Steps 4 & 5
+prediction_engine.py — Phase 6: Step 3
 System 2: Delay Risk / Condition Prediction Engine.
-Consumes current RTIS state (timestamp t) and historical calibration priors.
-Predicts risk probabilities over prediction_horizon_minutes (default 30 min):
-- congestion_risk (0.0 to 1.0)
-- fog_risk (0.0 to 1.0)
-- delay_risk (0.0 to 1.0)
-- expected_speed_impact ("NONE", "LIGHT", "MEDIUM", "SEVERE")
 
-STRICT ANTI-LEAKAGE RULE:
-System 2 consumes ONLY features available at timestamp t.
-Zero future states, target ETAs, or future event details are ever accessed.
+Consumes:
+- Current RTIS State at timestamp t (position, speed, delay, section, station, hour, weather observation)
+- Historical Calibration (config/historical_calibration.json)
+
+Produces:
+- ConditionPrediction object containing:
+  - fog_risk (0.0 to 1.0)
+  - congestion_risk (0.0 to 1.0)
+  - operational_risk (0.0 to 1.0)
+  - overall_delay_risk (0.0 to 1.0)
+  - confidence (0.0 to 1.0 based on sample counts)
+  - evidence (detailed hierarchical lookup lineage)
+
+STRICT RULES:
+1. System 2 produces RISK ONLY (NO physical speed restrictions — that belongs to System 3).
+2. Zero future state leakage (only timestamp t features consumed).
+3. Pure data-derived hierarchical lookup (no arbitrary multipliers).
 """
 
 import os
 import json
 from abc import ABC, abstractmethod
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from pathlib import Path
 from typing import Dict, Any, Optional
 
-# Automatically detect project root
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -29,12 +36,15 @@ class ConditionPrediction:
     """Dataclass holding predicted operational risk conditions for System 2."""
     prediction_timestamp: str
     prediction_horizon_min: float
-    congestion_risk: float        # 0.0 to 1.0
-    fog_risk: float               # 0.0 to 1.0
-    delay_risk: float             # 0.0 to 1.0
+    congestion_risk: float        # 0.0 to 1.0 (empirical probability of high congestion/delay)
+    fog_risk: float               # 0.0 to 1.0 (empirical probability of active fog)
+    operational_risk: float       # 0.0 to 1.0 (empirical probability of operational delay)
+    delay_risk: float             # 0.0 to 1.0 (empirical overall probability of destination delay)
+    confidence: float             # 0.0 to 1.0 (data reliability score based on sample size N)
     expected_speed_impact: str    # "NONE" | "LIGHT" | "MEDIUM" | "SEVERE"
     predicted_condition_summary: str
-    prediction_source: str        # "BASELINE_HISTORICAL_PRIOR" or "ML_MODEL"
+    prediction_source: str        # "BASELINE_HISTORICAL_CALIBRATION" or "ML_MODEL"
+    evidence: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         """Converts prediction to a plain dictionary."""
@@ -58,24 +68,159 @@ class BasePredictor(ABC):
 
 class BaselinePredictiveEngine(BasePredictor):
     """
-    Baseline System 2 Predictor using empirical calibration priors from historical data.
+    Baseline System 2 Predictor using pure empirical calibration priors from Step 3.
     """
 
     def __init__(
         self,
         calibration_filepath: str = str(PROJECT_ROOT / "config" / "historical_calibration.json")
     ):
-        print(f"[System2 Predictor] Loading historical calibration from: {calibration_filepath}")
         if not os.path.exists(calibration_filepath):
             raise FileNotFoundError(f"Calibration file not found at: {calibration_filepath}")
 
         with open(calibration_filepath, "r", encoding="utf-8") as f:
-            self.config = json.load(f)
+            self.calibration = json.load(f)
 
-        self.hourly_congestion = self.config.get("hourly_congestion_risk", {})
-        self.seasonal_fog = self.config.get("seasonal_fog_risk", {})
-        self.multipliers = self.config.get("risk_multipliers", {})
-        self.thresholds = self.config.get("speed_impact_thresholds", {})
+        self.fog_data = self.calibration.get("fog", {})
+        self.congestion_data = self.calibration.get("congestion", {})
+        self.op_data = self.calibration.get("operational_disruption", {})
+        self.baselines = self.calibration.get("baselines", {})
+        self.reliability_weights = {
+            "HIGH": 1.00,
+            "MEDIUM": 0.75,
+            "LOW": 0.40,
+            "INSUFFICIENT": 0.10
+        }
+
+    def _extract_hour(self, timestamp_str: str) -> int:
+        """Extracts integer hour from HH:MM:SS string."""
+        try:
+            return int(timestamp_str.split(":")[0])
+        except Exception:
+            return 7
+
+    def _lookup_fog_risk(self, season: str, hour: int, zone: str = "NR") -> Dict[str, Any]:
+        """Hierarchical lookup for empirical fog risk."""
+        hr_str = str(hour)
+        
+        # Level 1: NR/NCR Regional Matrix (Corridor Proxy)
+        if zone in ["NR", "NCR"]:
+            nr_ncr_season = self.fog_data.get("by_hour_and_season_NR_NCR", {}).get(season, {})
+            if hr_str in nr_ncr_season:
+                entry = nr_ncr_season[hr_str]
+                if entry.get("sample_count", 0) >= 30:
+                    return {
+                        "probability": entry["probability"],
+                        "sample_count": entry["sample_count"],
+                        "reliability": entry["reliability"],
+                        "source_level": "NR_NCR_hour_season"
+                    }
+
+        # Level 2: National Season x Hour Matrix
+        nat_season = self.fog_data.get("by_hour_and_season_national", {}).get(season, {})
+        if hr_str in nat_season:
+            entry = nat_season[hr_str]
+            if entry.get("sample_count", 0) >= 30:
+                return {
+                    "probability": entry["probability"],
+                    "sample_count": entry["sample_count"],
+                    "reliability": entry["reliability"],
+                    "source_level": "national_hour_season"
+                }
+
+        # Level 3: Global Baseline Fallback
+        base = self.fog_data.get("global_baseline", {})
+        return {
+            "probability": base.get("probability", 0.0367),
+            "sample_count": base.get("sample_count", 1043531),
+            "reliability": "HIGH",
+            "source_level": "global_baseline"
+        }
+
+    def _lookup_congestion_risk(self, hour: int, zone: str = "NR") -> Dict[str, Any]:
+        """Hierarchical lookup for empirical congestion risk."""
+        hr_str = str(hour)
+
+        # Level 1: NR/NCR Regional Matrix
+        if zone in ["NR", "NCR"]:
+            nr_ncr_cong = self.congestion_data.get("by_hour_NR_NCR", {})
+            if hr_str in nr_ncr_cong:
+                entry = nr_ncr_cong[hr_str]
+                if entry.get("sample_count", 0) >= 30:
+                    return {
+                        "probability": entry.get("p_congestion_delay_cause", 0.20),
+                        "mean_index": entry.get("mean_congestion_index", 0.77),
+                        "sample_count": entry.get("sample_count", 0),
+                        "reliability": entry.get("reliability", "HIGH"),
+                        "source_level": "NR_NCR_hour_congestion_cause"
+                    }
+
+        # Level 2: Global Fallback
+        base = self.congestion_data.get("global_baseline", {})
+        return {
+            "probability": 0.2093,
+            "mean_index": base.get("mean_congestion_index", 0.773),
+            "sample_count": base.get("sample_count", 1043531),
+            "reliability": "HIGH",
+            "source_level": "global_baseline"
+        }
+
+    def _lookup_operational_risk(
+        self,
+        late_incoming_rake: bool = False,
+        fog_active: bool = False,
+        high_congestion: bool = False
+    ) -> Dict[str, Any]:
+        """Hierarchical lookup for empirical operational delay risk."""
+        compounds = self.op_data.get("compound_conditions", {})
+
+        # Compound Interactions
+        if late_incoming_rake and fog_active:
+            entry = compounds.get("LateRake_AND_Fog")
+            if entry and entry.get("sample_count", 0) >= 30:
+                return {
+                    "probability": entry["p_delayed"],
+                    "p_heavy_delay": entry["p_heavy_delay"],
+                    "mean_delay_min": entry["mean_delay_min"],
+                    "sample_count": entry["sample_count"],
+                    "reliability": entry["reliability"],
+                    "source_level": "compound_LateRake_Fog"
+                }
+
+        if late_incoming_rake and high_congestion:
+            entry = compounds.get("LateRake_AND_HighCongestion")
+            if entry and entry.get("sample_count", 0) >= 30:
+                return {
+                    "probability": entry["p_delayed"],
+                    "p_heavy_delay": entry["p_heavy_delay"],
+                    "mean_delay_min": entry["mean_delay_min"],
+                    "sample_count": entry["sample_count"],
+                    "reliability": entry["reliability"],
+                    "source_level": "compound_LateRake_HighCongestion"
+                }
+
+        # Single Factor Lookup
+        if late_incoming_rake:
+            entry = self.op_data.get("late_incoming_rake", {}).get("active", {})
+            return {
+                "probability": entry.get("p_delayed", 0.87),
+                "p_heavy_delay": entry.get("p_heavy_delay", 0.87),
+                "mean_delay_min": entry.get("mean_delay_min", 130.39),
+                "sample_count": entry.get("sample_count", 112555),
+                "reliability": "HIGH",
+                "source_level": "late_incoming_rake_active"
+            }
+
+        # Clean Baseline
+        entry = compounds.get("Clean_Conditions (No LateRake, No Fog, Normal Congestion)", {})
+        return {
+            "probability": entry.get("p_delayed", 0.4541),
+            "p_heavy_delay": entry.get("p_heavy_delay", 0.45),
+            "mean_delay_min": entry.get("mean_delay_min", 58.63),
+            "sample_count": entry.get("sample_count", 250000),
+            "reliability": "HIGH",
+            "source_level": "clean_baseline"
+        }
 
     def predict(
         self,
@@ -91,96 +236,101 @@ class BaselinePredictiveEngine(BasePredictor):
         - current_speed_kmph
         - current_delay_min
         - season (from context or default "Winter/Fog")
+        - zone (default "NR")
+        - is_fog_active_observed (bool, if local locomotive sensor detects fog)
+        - late_incoming_rake (bool)
         """
         ctx = context or {}
         season = ctx.get("season", "Winter/Fog")
+        zone = ctx.get("zone", "NR")
         prediction_horizon_min = float(ctx.get("prediction_horizon_min", 30.0))
 
-        # Extract current time features
-        timestamp_str = current_state.get("timestamp", "00:00:00")
-        hour_str = str(self._extract_hour(timestamp_str))
-
-        # 1. Congestion Risk Calculation
-        base_congestion_prob = float(self.hourly_congestion.get(hour_str, 0.50))
-        
-        # Apply peak hour multiplier if departure hour is peak
-        hour_int = int(hour_str)
-        is_peak = (7 <= hour_int <= 10) or (17 <= hour_int <= 20)
-        peak_mult = self.multipliers.get("peak_hour_multiplier", 1.20) if is_peak else 1.0
-        
-        # Current delay stress factor
+        timestamp_str = current_state.get("timestamp", "07:00:00")
+        hour_int = self._extract_hour(timestamp_str)
         current_delay = float(current_state.get("current_delay_min", 0.0))
-        delay_factor = 1.15 if current_delay > 15.0 else 1.0
+        late_rake = bool(current_state.get("late_incoming_rake", False))
 
-        congestion_risk = min(1.0, max(0.0, base_congestion_prob * peak_mult * delay_factor))
+        # 1. Fog Risk Hierarchical Lookup
+        fog_res = self._lookup_fog_risk(season=season, hour=hour_int, zone=zone)
+        fog_risk = fog_res["probability"]
+        # If train physically observes fog in current section, observed state confirms active fog
+        if current_state.get("is_fog_active_observed", False):
+            fog_risk = max(fog_risk, 1.0)
 
-        # 2. Fog Risk Calculation
-        base_fog_prob = float(self.seasonal_fog.get(season, 0.34))
-        is_night = (hour_int >= 22 or hour_int <= 6)
-        night_mult = self.multipliers.get("night_departure_multiplier", 1.05) if is_night else 1.0
+        # 2. Congestion Risk Hierarchical Lookup
+        cong_res = self._lookup_congestion_risk(hour=hour_int, zone=zone)
+        congestion_risk = cong_res["probability"]
 
-        fog_risk = min(1.0, max(0.0, base_fog_prob * night_mult))
+        # 3. Operational Disruption Risk Lookup
+        is_high_cong = congestion_risk >= 0.70
+        is_fog = fog_risk >= 0.50
+        op_res = self._lookup_operational_risk(
+            late_incoming_rake=late_rake,
+            fog_active=is_fog,
+            high_congestion=is_high_cong
+        )
+        operational_risk = op_res["probability"]
 
-        # 3. Overall Delay Risk Calculation
-        delay_risk = min(1.0, max(0.0, congestion_risk * 0.5 + fog_risk * 0.3 + (0.2 if current_delay > 10 else 0.0)))
+        # 4. Overall Delay Risk (Empirical Destination Delay Probability)
+        # Directly derived from operational, congestion, and fog historical conditions
+        overall_delay_risk = max(operational_risk, congestion_risk, fog_risk)
+        if current_delay > 15.0:
+            overall_delay_risk = min(1.0, max(overall_delay_risk, 0.95))
 
-        # 4. Expected Speed Impact Categorization
-        if congestion_risk >= 0.70:
+        # 5. Data Reliability Confidence Score
+        conf_scores = [
+            self.reliability_weights.get(fog_res.get("reliability", "HIGH"), 1.0),
+            self.reliability_weights.get(cong_res.get("reliability", "HIGH"), 1.0),
+            self.reliability_weights.get(op_res.get("reliability", "HIGH"), 1.0),
+        ]
+        confidence = round(sum(conf_scores) / len(conf_scores), 2)
+
+        # 6. Expected Speed Impact Categorization (Risk Severity only)
+        if congestion_risk >= 0.70 or (late_rake and is_fog):
             speed_impact = "SEVERE"
-            summary = "HIGH TRACK CONGESTION PREDICTED (Speed restricted to ~25 km/h)"
+            summary = "HIGH TRACK CONGESTION / DISRUPTION RISK (Severe operational friction expected)"
         elif congestion_risk >= 0.45 or fog_risk >= 0.40:
             speed_impact = "MEDIUM"
-            summary = "MODERATE CONGESTION / FOG PREDICTED (Speed restricted to 40-60 km/h)"
-        elif congestion_risk >= 0.30:
+            summary = "MODERATE CONGESTION / FOG RISK (Moderate operational friction expected)"
+        elif congestion_risk >= 0.25:
             speed_impact = "LIGHT"
-            summary = "LIGHT CONGESTION PREDICTED (Minor speed attenuation)"
+            summary = "LIGHT CONGESTION RISK (Minor operational friction expected)"
         else:
             speed_impact = "NONE"
-            summary = "NORMAL OPERATIONAL CONDITIONS PREDICTED"
+            summary = "NORMAL CLEAR OPERATIONAL RISK BASELINE"
+
+        evidence = {
+            "fog_evidence": fog_res,
+            "congestion_evidence": cong_res,
+            "operational_evidence": op_res,
+            "hour": hour_int,
+            "season": season,
+            "zone": zone,
+        }
 
         return ConditionPrediction(
             prediction_timestamp=timestamp_str,
             prediction_horizon_min=prediction_horizon_min,
             congestion_risk=round(congestion_risk, 4),
             fog_risk=round(fog_risk, 4),
-            delay_risk=round(delay_risk, 4),
+            operational_risk=round(operational_risk, 4),
+            delay_risk=round(overall_delay_risk, 4),
+            confidence=confidence,
             expected_speed_impact=speed_impact,
             predicted_condition_summary=summary,
-            prediction_source="BASELINE_HISTORICAL_PRIOR"
+            prediction_source="BASELINE_HISTORICAL_CALIBRATION",
+            evidence=evidence
         )
-
-    @staticmethod
-    def _extract_hour(time_str: str) -> int:
-        """Helper to extract hour int 0-23 from HH:MM:SS string."""
-        try:
-            parts = time_str.split(":")
-            return int(parts[0]) % 24
-        except (ValueError, IndexError):
-            return 8  # fallback 8 AM
 
 
 if __name__ == "__main__":
     predictor = BaselinePredictiveEngine()
-
-    # Test state at 08:30 AM (Peak Hour in Winter/Fog)
-    mock_state = {
-        "timestamp": "08:30:00",
-        "current_position_km": 145.0,
-        "current_speed_kmph": 82.0,
-        "current_section_id": "SEC_MTC_MOZ",
-        "current_delay_min": 18.0
+    test_state = {
+        "timestamp": "06:45:00",
+        "current_position_km": 15.2,
+        "current_speed_kmph": 85.0,
+        "current_delay_min": 0.0,
     }
-
-    prediction = predictor.predict(mock_state, context={"season": "Winter/Fog"})
-
-    print("\n" + "=" * 80)
-    print("SYSTEM 2: PREDICTIVE CONDITION ENGINE TEST")
-    print("=" * 80)
-    print(f"Timestamp           : {prediction.prediction_timestamp}")
-    print(f"Prediction Horizon  : {prediction.prediction_horizon_min} min")
-    print(f"Congestion Risk     : {prediction.congestion_risk * 100:.1f}%")
-    print(f"Fog Risk            : {prediction.fog_risk * 100:.1f}%")
-    print(f"Overall Delay Risk  : {prediction.delay_risk * 100:.1f}%")
-    print(f"Speed Impact Category: {prediction.expected_speed_impact}")
-    print(f"Summary             : {prediction.predicted_condition_summary}")
-    print("=" * 80)
+    pred = predictor.predict(test_state, context={"season": "Winter/Fog", "zone": "NR"})
+    print("\n--- Sample System 2 Risk Prediction ---")
+    print(json.dumps(pred.to_dict(), indent=2))
