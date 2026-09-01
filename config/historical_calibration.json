@@ -1,58 +1,2252 @@
 {
   "metadata": {
-    "title": "Indian Railways Historical Risk Calibration Matrix",
-    "corridor": "New Delhi (NDLS) -> Dehradun (DDN)",
-    "primary_zones": ["NR", "NCR"],
-    "version": "1.0.0"
+    "calibration_version": "2.0.0",
+    "source": "1M+ Indian Railways Historical Dataset (ir_train.csv)",
+    "pipeline_stage": "Phase 6 \u2014 Step 3: Historical Calibration for System 2",
+    "target_simulation_corridor": "New Delhi (NDLS) -> Dehradun (DDN) [314 km]",
+    "geographic_proxy": "Northern Railway (NR) & North Central Railway (NCR) [130,233 records]",
+    "methodology": "Pure data-derived empirical conditional distributions with exact sample counts. Zero synthetic multipliers.",
+    "generated_timestamp": "2026-09-02T02:00:00"
   },
-  "baseline_priors": {
-    "mean_delay_minutes": 116.38,
-    "median_delay_minutes": 120.0,
-    "p90_delay_minutes": 180.0,
-    "mean_congestion_index": 0.91,
-    "mean_fog_index": 0.85
+  "hierarchical_lookup_strategy": {
+    "fog": [
+      "1. by_hour_and_season_NR_NCR (if zone in NR/NCR and sample >= 30)",
+      "2. by_hour_and_season_national (if sample >= 30)",
+      "3. by_season_national (if sample >= 30)",
+      "4. global_baseline"
+    ],
+    "congestion": [
+      "1. by_hour_NR_NCR (if zone in NR/NCR and sample >= 30)",
+      "2. by_tier (matched against current zone_congestion_index)",
+      "3. global_baseline"
+    ],
+    "operational": [
+      "1. compound_conditions (exact match on operational state)",
+      "2. individual operational factor baselines"
+    ]
   },
-  "hourly_congestion_risk": {
-    "00": 0.15, "01": 0.10, "02": 0.10, "03": 0.15, "04": 0.20, "05": 0.30,
-    "06": 0.45, "07": 0.65, "08": 0.80, "09": 0.85, "10": 0.75, "11": 0.60,
-    "12": 0.50, "13": 0.50, "14": 0.55, "15": 0.65, "16": 0.75, "17": 0.85,
-    "18": 0.90, "19": 0.85, "20": 0.70, "21": 0.55, "22": 0.40, "23": 0.25
+  "reliability_thresholds": {
+    "HIGH": {
+      "min_samples": 1000,
+      "confidence_weight": 1.0
+    },
+    "MEDIUM": {
+      "min_samples": 100,
+      "confidence_weight": 0.75
+    },
+    "LOW": {
+      "min_samples": 30,
+      "confidence_weight": 0.4
+    },
+    "INSUFFICIENT": {
+      "min_samples": 0,
+      "confidence_weight": 0.1
+    }
   },
-  "seasonal_fog_risk": {
-    "Winter/Fog": 0.75,
-    "Monsoon": 0.35,
-    "Summer": 0.05,
-    "Autumn": 0.10
-  },
-  "primary_delay_causes": {
-    "CONGESTION": 0.40,
-    "FOG": 0.30,
-    "SIGNAL_FAILURE": 0.15,
-    "TRACK_MAINTENANCE": 0.10,
-    "OTHER": 0.05
-  },
-  "risk_multipliers": {
-    "peak_hour_multiplier": 1.20,
-    "night_departure_multiplier": 1.05,
-    "hdn_route_multiplier": 1.15,
-    "late_rake_multiplier": 1.35,
-    "special_train_multiplier": 1.10
+  "baselines": {
+    "national_on_time_pct": 28.13,
+    "national_mean_delay_min": 97.74,
+    "clean_baseline_mean_delay_min": 58.63,
+    "clean_baseline_delay_pct": 45.41
   },
   "speed_impact_thresholds": {
     "HIGH_CONGESTION": {
-      "probability_threshold": 0.70,
-      "restriction_speed_kmph": 25.0,
-      "level": "HIGH"
+      "probability_threshold": 0.7,
+      "restriction_speed_kmph": 25.0
     },
     "MEDIUM_CONGESTION": {
       "probability_threshold": 0.45,
-      "restriction_speed_kmph": 60.0,
-      "level": "MEDIUM"
+      "restriction_speed_kmph": 60.0
     },
     "FOG_RESTRICTION": {
-      "probability_threshold": 0.40,
-      "restriction_speed_kmph": 40.0,
-      "level": "MEDIUM"
+      "probability_threshold": 0.4,
+      "restriction_speed_kmph": 40.0
+    }
+  },
+  "fog": {
+    "description": "Empirical conditional fog probability by hour, season, and zone",
+    "by_hour_and_season_NR_NCR": {
+      "Autumn": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 163,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 76,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 66,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 77,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 144,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 518,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 634,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 844,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 645,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 501,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 387,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 321,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 387,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 426,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 434,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 467,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 649,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 817,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 826,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 668,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 594,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 513,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 331,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 215,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        }
+      },
+      "Monsoon": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 696,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 386,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 275,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 278,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 509,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 2005,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 2648,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 3430,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 2655,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 1915,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 1647,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 1339,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 1631,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 1785,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 1844,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 1931,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 2659,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 3384,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 3330,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 2689,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 2355,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 1990,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 1252,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 904,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        }
+      },
+      "Post-Monsoon": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 180,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 107,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 83,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 64,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 131,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 525,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 643,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 855,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 690,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 554,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 382,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 335,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 401,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 445,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 495,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 551,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 701,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 837,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 817,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 658,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 644,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 540,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 328,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 234,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        }
+      },
+      "Pre-Monsoon": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 163,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 93,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 58,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 78,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "LOW"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 142,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 529,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 644,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 807,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 660,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 494,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 421,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 317,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 425,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 408,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 462,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 516,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 707,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 837,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 904,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 697,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 585,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 491,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 311,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 249,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        }
+      },
+      "Summer": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 344,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 212,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 122,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 121,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 236,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 937,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 1352,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 1632,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 1360,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 973,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 786,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 661,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 780,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 893,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 861,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 976,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 1352,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 1686,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 1616,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 1367,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 1163,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 986,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 637,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 467,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        }
+      },
+      "Winter/Fog": {
+        "0": {
+          "probability": 1.0,
+          "sample_count": 481,
+          "mean_delay_fog_min": 135.44,
+          "reliability": "MEDIUM"
+        },
+        "1": {
+          "probability": 1.0,
+          "sample_count": 303,
+          "mean_delay_fog_min": 134.72,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 1.0,
+          "sample_count": 196,
+          "mean_delay_fog_min": 135.56,
+          "reliability": "MEDIUM"
+        },
+        "3": {
+          "probability": 1.0,
+          "sample_count": 177,
+          "mean_delay_fog_min": 130.43,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 1.0,
+          "sample_count": 411,
+          "mean_delay_fog_min": 132.73,
+          "reliability": "MEDIUM"
+        },
+        "5": {
+          "probability": 1.0,
+          "sample_count": 1439,
+          "mean_delay_fog_min": 131.8,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 1.0,
+          "sample_count": 1915,
+          "mean_delay_fog_min": 132.34,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 1.0,
+          "sample_count": 2447,
+          "mean_delay_fog_min": 133.31,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 1.0,
+          "sample_count": 1910,
+          "mean_delay_fog_min": 132.54,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 1.0,
+          "sample_count": 1495,
+          "mean_delay_fog_min": 132.83,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 1161,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 983,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 1217,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 1276,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 1383,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 1501,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 1988,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 2423,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 2473,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 2119,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 1784,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 1504,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 998,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 691,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        }
+      }
+    },
+    "by_hour_and_season_national": {
+      "Autumn": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 1255,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 797,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 555,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 548,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 1108,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 3930,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 5098,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 6626,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 5209,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 3953,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 3071,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 2625,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 3064,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 3386,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 3625,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 3830,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 5182,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 6532,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 6534,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 5269,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 4764,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 3919,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 2712,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 1829,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        }
+      },
+      "Monsoon": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 5262,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 3223,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 2147,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 2248,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 4292,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 15873,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 21317,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 26437,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 21338,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 16070,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 12838,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 10677,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 12849,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 13828,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 15033,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 15773,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 21244,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 26757,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 26742,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 21524,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 19156,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 15896,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 10612,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 7259,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        }
+      },
+      "Post-Monsoon": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 1336,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 821,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 544,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 545,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 1073,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 4061,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 5435,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 6807,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 5414,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 4074,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 3286,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 2850,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 3248,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 3598,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 3764,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 4154,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 5401,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 6829,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 6726,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 5304,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 4922,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 4100,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 2728,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 1863,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        }
+      },
+      "Pre-Monsoon": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 1389,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 784,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 529,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 547,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 1107,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 4012,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 5370,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 6897,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 5438,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 4103,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 3269,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 2783,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 3199,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 3525,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 3830,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 4076,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 5379,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 6842,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 6800,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 5370,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 4887,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 4124,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 2607,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 1891,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        }
+      },
+      "Summer": {
+        "0": {
+          "probability": 0.0,
+          "sample_count": 2693,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "1": {
+          "probability": 0.0,
+          "sample_count": 1662,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "2": {
+          "probability": 0.0,
+          "sample_count": 1070,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "3": {
+          "probability": 0.0,
+          "sample_count": 995,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "MEDIUM"
+        },
+        "4": {
+          "probability": 0.0,
+          "sample_count": 2060,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "5": {
+          "probability": 0.0,
+          "sample_count": 7966,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.0,
+          "sample_count": 10782,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.0,
+          "sample_count": 13134,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.0,
+          "sample_count": 10716,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.0,
+          "sample_count": 7965,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 6266,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 5292,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 6497,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 6965,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 7425,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 7949,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 10817,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 13557,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 13252,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 10606,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 9685,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 7963,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 5372,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 3714,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        }
+      },
+      "Winter/Fog": {
+        "0": {
+          "probability": 0.4269,
+          "sample_count": 4045,
+          "mean_delay_fog_min": 130.37,
+          "reliability": "HIGH"
+        },
+        "1": {
+          "probability": 0.4517,
+          "sample_count": 2329,
+          "mean_delay_fog_min": 128.75,
+          "reliability": "HIGH"
+        },
+        "2": {
+          "probability": 0.4395,
+          "sample_count": 1604,
+          "mean_delay_fog_min": 128.94,
+          "reliability": "HIGH"
+        },
+        "3": {
+          "probability": 0.4386,
+          "sample_count": 1587,
+          "mean_delay_fog_min": 129.37,
+          "reliability": "HIGH"
+        },
+        "4": {
+          "probability": 0.4356,
+          "sample_count": 3198,
+          "mean_delay_fog_min": 130.11,
+          "reliability": "HIGH"
+        },
+        "5": {
+          "probability": 0.4381,
+          "sample_count": 11907,
+          "mean_delay_fog_min": 127.47,
+          "reliability": "HIGH"
+        },
+        "6": {
+          "probability": 0.4376,
+          "sample_count": 15714,
+          "mean_delay_fog_min": 128.11,
+          "reliability": "HIGH"
+        },
+        "7": {
+          "probability": 0.4419,
+          "sample_count": 19507,
+          "mean_delay_fog_min": 128.68,
+          "reliability": "HIGH"
+        },
+        "8": {
+          "probability": 0.4317,
+          "sample_count": 15741,
+          "mean_delay_fog_min": 128.81,
+          "reliability": "HIGH"
+        },
+        "9": {
+          "probability": 0.4442,
+          "sample_count": 11789,
+          "mean_delay_fog_min": 128.03,
+          "reliability": "HIGH"
+        },
+        "10": {
+          "probability": 0.0,
+          "sample_count": 9273,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "11": {
+          "probability": 0.0,
+          "sample_count": 7769,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "12": {
+          "probability": 0.0,
+          "sample_count": 9436,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "13": {
+          "probability": 0.0,
+          "sample_count": 10367,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "14": {
+          "probability": 0.0,
+          "sample_count": 11209,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "15": {
+          "probability": 0.0,
+          "sample_count": 11842,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "16": {
+          "probability": 0.0,
+          "sample_count": 15705,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "17": {
+          "probability": 0.0,
+          "sample_count": 19624,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "18": {
+          "probability": 0.0,
+          "sample_count": 19647,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "19": {
+          "probability": 0.0,
+          "sample_count": 16098,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "20": {
+          "probability": 0.0,
+          "sample_count": 14082,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "21": {
+          "probability": 0.0,
+          "sample_count": 11954,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "22": {
+          "probability": 0.0,
+          "sample_count": 7859,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        },
+        "23": {
+          "probability": 0.0,
+          "sample_count": 5385,
+          "mean_delay_fog_min": 0.0,
+          "reliability": "HIGH"
+        }
+      }
+    },
+    "by_season": {},
+    "global_baseline": {
+      "probability": 0.0367,
+      "sample_count": 1043531,
+      "reliability": "HIGH"
+    }
+  },
+  "congestion": {
+    "description": "Empirical conditional track congestion probability by departure hour and capacity tier",
+    "by_hour_NR_NCR": {
+      "0": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2329,
+        "mean_congestion_index": 0.9102,
+        "sample_count": 2027,
+        "reliability": "HIGH"
+      },
+      "1": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2336,
+        "mean_congestion_index": 0.9103,
+        "sample_count": 1177,
+        "reliability": "HIGH"
+      },
+      "2": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.225,
+        "mean_congestion_index": 0.9093,
+        "sample_count": 800,
+        "reliability": "MEDIUM"
+      },
+      "3": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2403,
+        "mean_congestion_index": 0.9104,
+        "sample_count": 795,
+        "reliability": "MEDIUM"
+      },
+      "4": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2238,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 1573,
+        "reliability": "HIGH"
+      },
+      "5": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.229,
+        "mean_congestion_index": 0.9102,
+        "sample_count": 5953,
+        "reliability": "HIGH"
+      },
+      "6": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2397,
+        "mean_congestion_index": 0.9101,
+        "sample_count": 7836,
+        "reliability": "HIGH"
+      },
+      "7": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2301,
+        "mean_congestion_index": 0.91,
+        "sample_count": 10015,
+        "reliability": "HIGH"
+      },
+      "8": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2313,
+        "mean_congestion_index": 0.9098,
+        "sample_count": 7920,
+        "reliability": "HIGH"
+      },
+      "9": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2257,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 5932,
+        "reliability": "HIGH"
+      },
+      "10": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2483,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 4784,
+        "reliability": "HIGH"
+      },
+      "11": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2472,
+        "mean_congestion_index": 0.9103,
+        "sample_count": 3956,
+        "reliability": "HIGH"
+      },
+      "12": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2535,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 4841,
+        "reliability": "HIGH"
+      },
+      "13": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.257,
+        "mean_congestion_index": 0.9101,
+        "sample_count": 5233,
+        "reliability": "HIGH"
+      },
+      "14": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2511,
+        "mean_congestion_index": 0.9101,
+        "sample_count": 5479,
+        "reliability": "HIGH"
+      },
+      "15": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2602,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 5942,
+        "reliability": "HIGH"
+      },
+      "16": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2491,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 8056,
+        "reliability": "HIGH"
+      },
+      "17": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2496,
+        "mean_congestion_index": 0.91,
+        "sample_count": 9984,
+        "reliability": "HIGH"
+      },
+      "18": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2557,
+        "mean_congestion_index": 0.91,
+        "sample_count": 9966,
+        "reliability": "HIGH"
+      },
+      "19": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2502,
+        "mean_congestion_index": 0.91,
+        "sample_count": 8198,
+        "reliability": "HIGH"
+      },
+      "20": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2474,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 7125,
+        "reliability": "HIGH"
+      },
+      "21": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2467,
+        "mean_congestion_index": 0.9101,
+        "sample_count": 6024,
+        "reliability": "HIGH"
+      },
+      "22": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2621,
+        "mean_congestion_index": 0.91,
+        "sample_count": 3857,
+        "reliability": "HIGH"
+      },
+      "23": {
+        "p_high_congestion": 1.0,
+        "p_congestion_delay_cause": 0.2518,
+        "mean_congestion_index": 0.9099,
+        "sample_count": 2760,
+        "reliability": "HIGH"
+      }
+    },
+    "by_tier": {
+      "MEDIUM (0.40-0.70)": {
+        "p_delayed": 0.5798,
+        "p_heavy_delay": 0.5797,
+        "mean_delay_min": 79.95,
+        "sample_count": 326322,
+        "reliability": "HIGH"
+      },
+      "HIGH (0.70-0.85)": {
+        "p_delayed": 0.7335,
+        "p_heavy_delay": 0.7334,
+        "mean_delay_min": 99.59,
+        "sample_count": 456759,
+        "reliability": "HIGH"
+      },
+      "EXTREME (>=0.85)": {
+        "p_delayed": 0.8668,
+        "p_heavy_delay": 0.8667,
+        "mean_delay_min": 116.79,
+        "sample_count": 260450,
+        "reliability": "HIGH"
+      }
+    },
+    "infrastructure_impact": {
+      "HDN_route (is_hdn_route=1)": {
+        "p_delayed": 0.7454,
+        "mean_delay_min": 100.68,
+        "sample_count": 312989,
+        "reliability": "HIGH"
+      },
+      "Non_HDN_route (is_hdn_route=0)": {
+        "p_delayed": 0.7073,
+        "mean_delay_min": 96.48,
+        "sample_count": 730542,
+        "reliability": "HIGH"
+      },
+      "Double_Track (track_doubled=1)": {
+        "p_delayed": 0.6617,
+        "mean_delay_min": 91.48,
+        "sample_count": 678116,
+        "reliability": "HIGH"
+      },
+      "Single_Track (track_doubled=0)": {
+        "p_delayed": 0.8245,
+        "mean_delay_min": 109.36,
+        "sample_count": 365415,
+        "reliability": "HIGH"
+      },
+      "Single_Track_on_HDN (Single + HDN)": {
+        "p_delayed": 0.846,
+        "mean_delay_min": 111.54,
+        "sample_count": 109812,
+        "reliability": "HIGH"
+      }
+    },
+    "global_baseline": {
+      "mean_congestion_index": 0.773,
+      "sample_count": 1043531,
+      "reliability": "HIGH"
+    }
+  },
+  "operational_disruption": {
+    "description": "Empirical operational disruption risks and delay cause baselines",
+    "late_incoming_rake": {
+      "active": {
+        "p_delayed": 0.8704,
+        "p_heavy_delay": 0.8704,
+        "mean_delay_min": 130.39,
+        "sample_count": 364196,
+        "reliability": "HIGH"
+      },
+      "inactive": {
+        "p_delayed": 0.6374,
+        "mean_delay_min": 80.23,
+        "sample_count": 679335,
+        "reliability": "HIGH"
+      }
+    },
+    "psr_tiers": {
+      "LOW_PSR (0-1)": {
+        "p_delayed": 0.7036,
+        "mean_delay_min": 96.05,
+        "sample_count": 207398,
+        "reliability": "HIGH"
+      },
+      "MODERATE_PSR (2-3)": {
+        "p_delayed": 0.7161,
+        "mean_delay_min": 97.43,
+        "sample_count": 468430,
+        "reliability": "HIGH"
+      },
+      "HIGH_PSR (4-6)": {
+        "p_delayed": 0.7291,
+        "mean_delay_min": 98.96,
+        "sample_count": 332803,
+        "reliability": "HIGH"
+      },
+      "SEVERE_PSR (>6)": {
+        "p_delayed": 0.7443,
+        "mean_delay_min": 100.34,
+        "sample_count": 34900,
+        "reliability": "HIGH"
+      }
+    },
+    "primary_delay_causes": {
+      "Crew Availability": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9998,
+        "mean_delay_min": 118.94,
+        "sample_count": 21547,
+        "reliability": "HIGH"
+      },
+      "Flooding / Waterlogging": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 1.0,
+        "mean_delay_min": 135.8,
+        "sample_count": 145269,
+        "reliability": "HIGH"
+      },
+      "Fog / Low Visibility": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 1.0,
+        "mean_delay_min": 134.16,
+        "sample_count": 14569,
+        "reliability": "HIGH"
+      },
+      "Freight Priority": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9993,
+        "mean_delay_min": 118.95,
+        "sample_count": 21879,
+        "reliability": "HIGH"
+      },
+      "Late Incoming Rake": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 1.0,
+        "mean_delay_min": 145.04,
+        "sample_count": 112555,
+        "reliability": "HIGH"
+      },
+      "Level Crossing Delay": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9995,
+        "mean_delay_min": 118.63,
+        "sample_count": 21825,
+        "reliability": "HIGH"
+      },
+      "Loco / Engine Failure": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9992,
+        "mean_delay_min": 117.44,
+        "sample_count": 17230,
+        "reliability": "HIGH"
+      },
+      "On Time": {
+        "p_delayed": 0.0,
+        "p_heavy_delay": 0.0,
+        "mean_delay_min": 7.01,
+        "sample_count": 293533,
+        "reliability": "HIGH"
+      },
+      "Passenger Emergency": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9995,
+        "mean_delay_min": 119.02,
+        "sample_count": 21895,
+        "reliability": "HIGH"
+      },
+      "Signal Failure": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9996,
+        "mean_delay_min": 122.28,
+        "sample_count": 28276,
+        "reliability": "HIGH"
+      },
+      "Station Congestion": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9998,
+        "mean_delay_min": 133.84,
+        "sample_count": 49995,
+        "reliability": "HIGH"
+      },
+      "Technical Inspection": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9992,
+        "mean_delay_min": 117.24,
+        "sample_count": 7700,
+        "reliability": "HIGH"
+      },
+      "Track Congestion": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9999,
+        "mean_delay_min": 134.74,
+        "sample_count": 168440,
+        "reliability": "HIGH"
+      },
+      "Track Maintenance / PSR": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 1.0,
+        "mean_delay_min": 136.1,
+        "sample_count": 97108,
+        "reliability": "HIGH"
+      },
+      "Unscheduled Halt": {
+        "p_delayed": 1.0,
+        "p_heavy_delay": 0.9995,
+        "mean_delay_min": 118.97,
+        "sample_count": 21709,
+        "reliability": "HIGH"
+      }
+    },
+    "compound_conditions": {
+      "LateRake_AND_Fog": {
+        "p_delayed": 0.9934,
+        "p_heavy_delay": 0.9934,
+        "mean_delay_min": 151.73,
+        "sample_count": 13398,
+        "reliability": "HIGH"
+      },
+      "LateRake_AND_HighCongestion": {
+        "p_delayed": 0.9086,
+        "p_heavy_delay": 0.9086,
+        "mean_delay_min": 136.39,
+        "sample_count": 272792,
+        "reliability": "HIGH"
+      },
+      "Fog_AND_PeakHour": {
+        "p_delayed": 0.9551,
+        "p_heavy_delay": 0.9551,
+        "mean_delay_min": 128.55,
+        "sample_count": 22291,
+        "reliability": "HIGH"
+      },
+      "HighCongestion_AND_PeakHour": {
+        "p_delayed": 0.7701,
+        "p_heavy_delay": 0.77,
+        "mean_delay_min": 104.36,
+        "sample_count": 366103,
+        "reliability": "HIGH"
+      },
+      "Clean_Conditions (No LateRake, No Fog, Normal Congestion)": {
+        "p_delayed": 0.4541,
+        "p_heavy_delay": 0.4539,
+        "mean_delay_min": 58.63,
+        "sample_count": 169830,
+        "reliability": "HIGH"
+      }
     }
   }
 }
