@@ -87,6 +87,18 @@ ROUTE_CONFIGS = {
         "default_season": GLOBAL_DEFAULT_SEASON,
         "supported_seasons": ["Winter/Fog", "Monsoon", "Summer", "Autumn", "Pre-Monsoon"],
         "zone": "NCR",
+    },
+    "lucknow": {
+        "name": "New Delhi to Lucknow Charbagh [512 km]",
+        "route_key": "lucknow",
+        "route_file": str(PROJECT_ROOT / "Data" / "routes" / "delhi_lucknow_route.json"),
+        "events_file": str(PROJECT_ROOT / "src" / "simulator" / "events" / "delhi_lucknow_events.json"),
+        "train_id": "12004",
+        "journey_id": "JRN_NDLS_LKO_01",
+        "start_time": "06:10:00",
+        "default_season": GLOBAL_DEFAULT_SEASON,
+        "supported_seasons": ["Winter/Fog", "Monsoon", "Summer", "Autumn", "Pre-Monsoon"],
+        "zone": "NR",
     }
 }
 
@@ -122,7 +134,9 @@ def run_full_pipeline(
     # Determine which routes to run
     routes_to_run = []
     if selected_route.lower() in ["all", "both"]:
-        routes_to_run = ["dehradun", "agra"]
+        routes_to_run = ["dehradun", "agra", "lucknow"]
+    elif selected_route.lower() in ["lucknow", "lko", "ndls_lko"]:
+        routes_to_run = ["lucknow"]
     elif selected_route.lower() in ["agra", "agc", "ndls_agc"]:
         routes_to_run = ["agra"]
     elif selected_route.lower() in ["dehradun", "ddn", "ndls_ddn"]:

@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "event_id": "EVT_LKO_001",
+      "event_type": "CONGESTION",
+      "route_id": "ROUTE_NDLS_LKO_01",
+      "section_id": "SEC_ETW_CNB",
+      "station_id": null,
+      "position_km": 435.0,
+      "start_time": "11:00:00",
+      "end_time": "11:25:00",
+      "signal_state": "DOUBLE_YELLOW",
+      "restriction_speed_kmph": 50.0,
+      "halt_duration_min": null,
+      "fog_visibility_km": null,
+      "congestion_level": "HIGH",
+      "severity": "HIGH",
+      "enabled": true,
+      "description": "Kanpur Central outer yard approach congestion"
+    },
+    {
+      "event_id": "EVT_LKO_002",
+      "event_type": "SPEED_RESTRICTION",
+      "route_id": "ROUTE_NDLS_LKO_01",
+      "section_id": "SEC_GZB_ALJN",
+      "station_id": null,
+      "position_km": 75.0,
+      "start_time": "07:10:00",
+      "end_time": "07:40:00",
+      "signal_state": null,
+      "restriction_speed_kmph": 80.0,
+      "halt_duration_min": null,
+      "fog_visibility_km": null,
+      "congestion_level": null,
+      "severity": "MEDIUM",
+      "enabled": true,
+      "description": "Bridge maintenance speed restriction near Khurja"
+    }
+  ]
+}
