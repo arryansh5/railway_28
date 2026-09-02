@@ -61,7 +61,7 @@ export const Layout: React.FC = () => {
             <div className="flex items-center gap-2 pr-2">
               <Train className="w-6 h-6 text-primary" aria-hidden="true" />
               <div>
-                <h1 className="font-bold text-lg text-text tracking-wide">RAIL-AI</h1>
+                <h1 className="font-bold text-lg text-text tracking-wide">Station Controller</h1>
               </div>
             </div>
             
@@ -79,7 +79,7 @@ export const Layout: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             <button className="relative text-textMuted hover:text-text focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1" aria-label="Notifications">
               <AlertTriangle className="w-5 h-5" />
               <span className="absolute top-0 right-0 w-2 h-2 bg-critical rounded-full border border-background"></span>
@@ -90,7 +90,7 @@ export const Layout: React.FC = () => {
               </div>
               <span className="font-medium text-sm text-text">Station Controller</span>
             </div>
-          </div>
+          </div> */}
         </header>
 
         {/* Page Content */}
