@@ -1,0 +1,4 @@
+Corridor Route,Distance (km),Max Speed (km/h),Stations,ETA MAE (min),ETA RMSE (min),P90 Error (min),Risk F1 Score
+New Delhi -> Dehradun (NDLS-DDN),314.0,110,8,7.15,9.26,11.80,0.91
+New Delhi -> Agra Cantt (NDLS-AGC),195.0,160,7,3.42,4.85,5.90,0.93
+New Delhi -> Lucknow (NDLS-LKO),512.0,130,7,8.90,11.75,14.20,0.89

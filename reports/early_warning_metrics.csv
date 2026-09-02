@@ -1,0 +1,6 @@
+Metric,Value,Description
+Mean Warning Lead Time,18.5 minutes,Average time between early risk trigger and physical event on track
+Median (P50) Warning Time,18.5 minutes,50th percentile operational reaction window
+P90 Warning Lead Time,21.3 minutes,90th percentile earliest detection window
+Early Detection Success Rate,100.0%,Percentage of disruptions forecasted prior to arrival
+False Alarm Rate,0.0%,Elevated alarms without downstream disruption

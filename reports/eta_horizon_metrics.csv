@@ -1,0 +1,7 @@
+Prediction Horizon,Observations,MAE (min),RMSE (min),P90 Error (min),Max Error (min),Within +/- 1 min (%),Within +/- 2 min (%),Within +/- 5 min (%)
+2 min Horizon,6,0.40,0.55,0.75,1.20,83.3%,100.0%,100.0%
+5 min Horizon,12,0.80,0.93,1.20,1.20,41.7%,100.0%,100.0%
+15 min Horizon,32,1.05,1.11,1.20,1.20,15.6%,100.0%,100.0%
+30 min Horizon,62,1.12,1.15,1.20,1.20,8.1%,100.0%,100.0%
+60 min Horizon,122,1.16,1.18,1.20,1.20,4.1%,100.0%,100.0%
+Destination (All),696,91.12,125.29,167.70,375.60,0.9%,22.8%,23.0%
