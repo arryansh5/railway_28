@@ -326,7 +326,9 @@ export const Dashboard: React.FC = () => {
   const [selectedRoute, setSelectedRoute] = React.useState<string | null>(null);
   
   React.useEffect(() => {
-    fetch('http://localhost:8000/api/metrics')
+    const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5173';
+    const apiBase = isLocalDev ? 'http://localhost:8000' : '';
+    fetch(`${apiBase}/api/metrics`)
       .then(res => res.json())
       .then(data => setMetrics(data))
       .catch(err => console.error("Error fetching metrics", err));

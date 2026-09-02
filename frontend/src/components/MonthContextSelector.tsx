@@ -24,7 +24,9 @@ export const MonthContextSelector: React.FC<{ simTime?: string }> = ({ simTime =
   useEffect(() => {
     const fetchContext = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/historical-context?month=${selectedMonth}&route=dehradun`);
+        const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5173';
+        const apiBase = isLocalDev ? 'http://localhost:8000' : '';
+        const res = await fetch(`${apiBase}/api/historical-context?month=${selectedMonth}&route=dehradun`);
         if (res.ok) {
           const data = await res.json();
           setContextData(data);

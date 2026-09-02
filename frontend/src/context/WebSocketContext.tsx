@@ -90,7 +90,13 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     let isMounted = true;
 
     const connect = () => {
-      ws = new WebSocket('ws://localhost:8000/ws/live');
+      const isHttps = window.location.protocol === 'https:';
+      const wsProto = isHttps ? 'wss:' : 'ws:';
+      const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5173';
+      const host = isLocalDev ? 'localhost:8000' : window.location.host;
+      const wsUrl = `${wsProto}//${host}/ws/live`;
+      
+      ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 
       ws.onopen = () => {
