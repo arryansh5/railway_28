@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { getWsUrl } from '../config/api';
 
 export type TrainStatus = 'ON_TIME' | 'DELAYED' | 'CRITICAL';
 
@@ -90,12 +91,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     let isMounted = true;
 
     const connect = () => {
-      const isHttps = window.location.protocol === 'https:';
-      const wsProto = isHttps ? 'wss:' : 'ws:';
-      const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5173';
-      const host = isLocalDev ? 'localhost:8000' : window.location.host;
-      const wsUrl = `${wsProto}//${host}/ws/live`;
-      
+      const wsUrl = getWsUrl('/ws/live');
       ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 

@@ -3,6 +3,7 @@ import { Train, Clock, AlertTriangle, Activity, CheckCircle2, X, TrendingUp, Bar
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Legend } from 'recharts';
 import { useWebSocket, type Train as TrainType } from '../context/WebSocketContext';
 import { MonthContextSelector } from '../components/MonthContextSelector';
+import { getApiUrl } from '../config/api';
 
 // Time helpers for charts
 const parseTime = (timeStr: string) => {
@@ -326,9 +327,7 @@ export const Dashboard: React.FC = () => {
   const [selectedRoute, setSelectedRoute] = React.useState<string | null>(null);
   
   React.useEffect(() => {
-    const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5173';
-    const apiBase = isLocalDev ? 'http://localhost:8000' : '';
-    fetch(`${apiBase}/api/metrics`)
+    fetch(getApiUrl('/api/metrics'))
       .then(res => res.json())
       .then(data => setMetrics(data))
       .catch(err => console.error("Error fetching metrics", err));
