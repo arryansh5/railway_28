@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 import { AlertTriangle, Info, CheckCircle2, TrendingUp } from 'lucide-react';
 import { mockAlerts } from '../data/mockData';
@@ -14,6 +14,18 @@ const accuracyData = [
 ];
 
 export const AlertsAccuracy: React.FC = () => {
+  const [metrics, setMetrics] = useState({ mae: 2.9, rmse: 4.3, mape: 5.2, accuracy: 91.2 });
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/metrics')
+      .then(res => res.json())
+      .then(data => {
+        setMetrics(data);
+        accuracyData[6].accuracy = data.accuracy;
+      })
+      .catch(err => console.error("Error fetching metrics", err));
+  }, []);
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -61,20 +73,20 @@ export const AlertsAccuracy: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
             <div className="p-4 rounded-lg bg-surface border border-border text-center">
               <div className="text-xs text-textMuted uppercase tracking-wider font-semibold mb-1">MAE</div>
-              <div className="text-xl font-bold text-text">2.9 <span className="text-sm font-normal text-textMuted">min</span></div>
+              <div className="text-xl font-bold text-text">{metrics.mae.toFixed(2)} <span className="text-sm font-normal text-textMuted">min</span></div>
             </div>
             <div className="p-4 rounded-lg bg-surface border border-border text-center">
               <div className="text-xs text-textMuted uppercase tracking-wider font-semibold mb-1">RMSE</div>
-              <div className="text-xl font-bold text-text">4.3 <span className="text-sm font-normal text-textMuted">min</span></div>
+              <div className="text-xl font-bold text-text">{metrics.rmse.toFixed(2)} <span className="text-sm font-normal text-textMuted">min</span></div>
             </div>
             <div className="p-4 rounded-lg bg-surface border border-border text-center">
               <div className="text-xs text-textMuted uppercase tracking-wider font-semibold mb-1">MAPE</div>
-              <div className="text-xl font-bold text-text">5.2%</div>
+              <div className="text-xl font-bold text-text">{metrics.mape.toFixed(2)}%</div>
             </div>
             <div className="p-4 rounded-lg bg-successBg border border-success/20 text-center">
               <div className="text-xs text-success uppercase tracking-wider font-bold mb-1">Accuracy</div>
               <div className="text-xl font-bold text-success flex justify-center items-center gap-1">
-                91.2% <CheckCircle2 className="w-4 h-4" />
+                {metrics.accuracy.toFixed(1)}% <CheckCircle2 className="w-4 h-4" />
               </div>
             </div>
           </div>

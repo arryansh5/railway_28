@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { LayoutDashboard, Train, Info, Activity, AlertTriangle, LogOut } from 'lucide-react';
 
+import { useWebSocket } from '../context/WebSocketContext';
+
 const navItems = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
   { name: 'Live Trains', path: '/trains', icon: Train },
@@ -11,6 +13,7 @@ const navItems = [
 ];
 
 export const Layout: React.FC = () => {
+  const { isConnected } = useWebSocket();
   return (
     <div className="flex h-screen bg-surface">
       {/* Sidebar */}
@@ -59,9 +62,9 @@ export const Layout: React.FC = () => {
             <span className="w-1 h-1 rounded-full bg-border" aria-hidden="true"></span>
             <span>{new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })} | {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</span>
             <span className="w-1 h-1 rounded-full bg-border" aria-hidden="true"></span>
-            <div className="flex items-center gap-2 text-success">
-              <span className="w-2 h-2 rounded-full bg-success" aria-hidden="true"></span>
-              LIVE DATA CONNECTED
+            <div className={`flex items-center gap-2 ${isConnected ? 'text-success' : 'text-warning'}`}>
+              <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-success' : 'bg-warning'} ${isConnected ? 'animate-pulse' : ''}`} aria-hidden="true"></span>
+              {isConnected ? 'LIVE DATA CONNECTED' : 'CONNECTING...'}
             </div>
           </div>
           
