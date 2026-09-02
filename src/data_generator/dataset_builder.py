@@ -294,7 +294,12 @@ def build_synthetic_journey(
                     actual_arrival_time = current_time_str
                 else:
                     dwelling = True
-                    dwell_time_remaining_sec = curr_stn["scheduled_dwell_min"] * 60.0
+                    # Indian Railways Regulation: A train can never depart before its scheduled departure time
+                    sched_dep_offset_sec = float(curr_stn.get("scheduled_departure_offset_min", 0)) * 60.0
+                    min_dwell_sec = float(curr_stn.get("scheduled_dwell_min", 2)) * 60.0
+                    earliest_dep_sec = max(elapsed_sec + min_dwell_sec, sched_dep_offset_sec)
+                    dwell_time_remaining_sec = max(min_dwell_sec, earliest_dep_sec - elapsed_sec)
+
                     station_event = "ARRIVED"
                     current_station_id = curr_stn["station_id"]
                     actual_arrival_time = current_time_str
@@ -452,10 +457,24 @@ def build_synthetic_journey(
             "observations": observations
         }, f, indent=2)
 
-    # Save ML Ready dataset
-    ml_csv = PROJECT_ROOT / "Data" / "ml" / "ml_ready_dataset.csv"
-    ml_csv.parent.mkdir(parents=True, exist_ok=True)
-    write_observations_to_csv(observations, str(ml_csv))
+    # Save ML Ready dataset with Route Name and Timestamp
+    r_slug = str(route.get("route_id", "route")).lower().replace("route_", "").replace("_01", "")
+    ts_now = datetime.now().strftime("%Y%m%d_%H%M%S")
+    ml_unique_name = f"ml_ready_dataset_{r_slug}_{ts_now}.csv"
+    
+    ml_dir = PROJECT_ROOT / "Data" / "ml"
+    ml_dir.mkdir(parents=True, exist_ok=True)
+    
+    ml_unique_csv = ml_dir / ml_unique_name
+    write_observations_to_csv(observations, str(ml_unique_csv))
+
+    # Also maintain latest canonical copy
+    ml_csv = ml_dir / "ml_ready_dataset.csv"
+    try:
+        import shutil
+        shutil.copy2(str(ml_unique_csv), str(ml_csv))
+    except Exception:
+        pass
 
     if verbose:
         print("\n" + "=" * 80)
@@ -467,7 +486,7 @@ def build_synthetic_journey(
         print(f"  17-Point Validation Status   : {'PASS (100% Verified)' if is_valid else f'WARNING ({len(errors)} errors)'}")
         print(f"  Output CSV                   : {out_csv}")
         print(f"  Output JSON Trace            : {out_json}")
-        print(f"  ML-Ready Dataset CSV         : {ml_csv}")
+        print(f"  New ML Dataset CSV           : {ml_unique_csv.name}")
 
     return {
         "journey_id": journey_id,

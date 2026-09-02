@@ -3,39 +3,54 @@ export_excel_report.py — Multi-Tab Excel Workbook Generator
 Generates a comprehensive, presentation-ready Excel workbook (.xlsx) containing:
 1. ML_Telemetry_Observations (51-column 30-second closed loop telemetry)
 2. Model_Benchmark_Comparison (4-model comparative metrics: Baselines 1-3 vs Phase 8 ML)
-3. Corridor_Topology (8 stations, 7 track sections, distances & speed limits)
+3. Corridor_Topology (stations, sections, distances & speed limits)
 4. Historical_Calibration_Priors (Fog by hour, congestion cause rates, reliability tiers)
-5. Dynamic_Restriction_Lifecycle (CREATE, UPDATE, DOWNGRADE, EXPIRE event traces)
+
+Always creates unique files named with route name and timestamp:
+e.g. reports/Railway_Report_delhi_agra_20260902_160530.xlsx
 """
 
 import os
 import json
 from pathlib import Path
+from datetime import datetime
+from typing import Optional
 import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def export_railway_excel_report(
-    output_path: str = str(PROJECT_ROOT / "reports" / "Railway_Simulation_and_ML_Report.xlsx")
-):
+    route_name: str = "delhi_corridor",
+    dataset_csv_path: Optional[str] = None,
+    output_path: Optional[str] = None,
+    route_json_path: Optional[str] = None
+) -> str:
     print("=" * 78)
     print("      GENERATING COMPREHENSIVE RAILWAY EXCEL WORKBOOK (.XLSX)")
     print("=" * 78)
 
-    out_file = Path(output_path)
+    timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+    clean_route_name = route_name.lower().replace(" ", "_").replace("->", "_to_").replace("/", "_")
+
+    if output_path is None:
+        out_filename = f"Railway_Report_{clean_route_name}_{timestamp_str}.xlsx"
+        out_file = PROJECT_ROOT / "reports" / out_filename
+    else:
+        out_file = Path(output_path)
+
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
     # -------------------------------------------------------------
     # 1. Load ML Ready Dataset CSV
     # -------------------------------------------------------------
-    csv_path = PROJECT_ROOT / "Data" / "ml" / "ml_ready_dataset.csv"
+    csv_path = Path(dataset_csv_path) if dataset_csv_path else (PROJECT_ROOT / "Data" / "ml" / "ml_ready_dataset.csv")
     if not csv_path.exists():
         csv_path = PROJECT_ROOT / "Data" / "synthetic_rtis" / "synthetic_journey_01.csv"
 
     if csv_path.exists():
         df_telemetry = pd.read_csv(csv_path)
-        print(f"[1/5] Loaded Telemetry: {len(df_telemetry)} 30-second observation rows.")
+        print(f"[1/5] Loaded Telemetry from {csv_path.name}: {len(df_telemetry)} 30s rows.")
     else:
         df_telemetry = pd.DataFrame([{"status": "No telemetry found. Run dataset_builder.py first."}])
 
@@ -46,37 +61,40 @@ def export_railway_excel_report(
     benchmark_rows = []
 
     if benchmark_json_path.exists():
-        with open(benchmark_json_path, "r", encoding="utf-8") as f:
-            bdata = json.load(f)
+        try:
+            with open(benchmark_json_path, "r", encoding="utf-8") as f:
+                bdata = json.load(f)
 
-        dest = bdata.get("overall", {}).get("destination_eta", {})
-        models = [
-            ("Baseline 1: Scheduled Timetable", "scheduled"),
-            ("Baseline 2: Schedule + Current Delay", "schedule_plus_delay"),
-            ("Baseline 3: Historical Section Medians", "historical_median"),
-            ("Model 4: Phase 8 Machine Learning (GBR/XGBoost)", "ml_model")
-        ]
+            dest = bdata.get("overall", {}).get("destination_eta", {})
+            models = [
+                ("Baseline 1: Scheduled Timetable", "scheduled"),
+                ("Baseline 2: Schedule + Current Delay", "schedule_plus_delay"),
+                ("Baseline 3: Historical Section Medians", "historical_median"),
+                ("Model 4: Phase 8 Machine Learning (GBR/XGBoost)", "ml_model")
+            ]
 
-        for display_name, key in models:
-            m = dest.get(key, {})
-            benchmark_rows.append({
-                "Model / Baseline": display_name,
-                "MAE (min)": m.get("mae", "N/A"),
-                "RMSE (min)": m.get("rmse", "N/A"),
-                "P90 Error (min)": m.get("p90_error", "N/A"),
-                "Accuracy ±5 min (%)": f"{m.get('accuracy_within_5_min', 0):.1f}%",
-                "Accuracy ±10 min (%)": f"{m.get('accuracy_within_10_min', 0):.1f}%",
-                "Accuracy ±15 min (%)": f"{m.get('accuracy_within_15_min', 0):.1f}%",
-                "Description": (
-                    "Static timetable minus current time" if key == "scheduled" else
-                    "Static schedule offset by current accumulated delay" if key == "schedule_plus_delay" else
-                    "Sum of section historical median speeds" if key == "historical_median" else
-                    "Gradient Boosted ML Regressor on 14 non-leaking features"
-                )
-            })
-        print(f"[2/5] Loaded Comparative Benchmark Metrics ({len(benchmark_rows)} models).")
-    else:
-        # Fallback default benchmark summary
+            for display_name, key in models:
+                m = dest.get(key, {})
+                benchmark_rows.append({
+                    "Model / Baseline": display_name,
+                    "MAE (min)": m.get("mae", "N/A"),
+                    "RMSE (min)": m.get("rmse", "N/A"),
+                    "P90 Error (min)": m.get("p90_error", "N/A"),
+                    "Accuracy ±5 min (%)": f"{m.get('accuracy_within_5_min', 0):.1f}%",
+                    "Accuracy ±10 min (%)": f"{m.get('accuracy_within_10_min', 0):.1f}%",
+                    "Accuracy ±15 min (%)": f"{m.get('accuracy_within_15_min', 0):.1f}%",
+                    "Description": (
+                        "Static timetable minus current time" if key == "scheduled" else
+                        "Static schedule offset by current accumulated delay" if key == "schedule_plus_delay" else
+                        "Sum of section historical median speeds" if key == "historical_median" else
+                        "Gradient Boosted ML Regressor on 14 non-leaking features"
+                    )
+                })
+            print(f"[2/5] Loaded Comparative Benchmark Metrics ({len(benchmark_rows)} models).")
+        except Exception as e:
+            print(f"[2/5] Benchmark parsing warning: {e}")
+
+    if not benchmark_rows:
         benchmark_rows = [
             {"Model / Baseline": "Baseline 1: Scheduled", "MAE (min)": 48.5, "RMSE (min)": 64.2, "Accuracy ±15 min (%)": "42.0%"},
             {"Model / Baseline": "Baseline 2: Schedule+Delay", "MAE (min)": 14.8, "RMSE (min)": 21.3, "Accuracy ±15 min (%)": "86.5%"},
@@ -89,12 +107,12 @@ def export_railway_excel_report(
     # -------------------------------------------------------------
     # 3. Load Route & Corridor Topology
     # -------------------------------------------------------------
-    route_path = PROJECT_ROOT / "Data" / "routes" / "delhi_dehradun_route.json"
+    r_path = Path(route_json_path) if route_json_path else (PROJECT_ROOT / "Data" / "routes" / "delhi_dehradun_route.json")
     station_rows = []
     section_rows = []
 
-    if route_path.exists():
-        with open(route_path, "r", encoding="utf-8") as f:
+    if r_path.exists():
+        with open(r_path, "r", encoding="utf-8") as f:
             rdata = json.load(f)
 
         for s in rdata.get("stations", []):
@@ -118,7 +136,7 @@ def export_railway_excel_report(
                 "Track Topology": sec.get("track_type", "Double Line")
             })
 
-        print(f"[3/5] Loaded Corridor Topology: {len(station_rows)} stations, {len(section_rows)} sections.")
+        print(f"[3/5] Loaded Corridor Topology ({r_path.name}): {len(station_rows)} stations, {len(section_rows)} sections.")
 
     df_stations = pd.DataFrame(station_rows)
     df_sections = pd.DataFrame(section_rows)
@@ -152,31 +170,27 @@ def export_railway_excel_report(
     # -------------------------------------------------------------
     # 5. Write to Multi-Tab Excel Workbook
     # -------------------------------------------------------------
-    print(f"[5/5] Writing Excel workbook to: {out_file}")
+    print(f"[5/5] Writing Unique Excel Workbook to: {out_file.name}")
 
-    # Use openpyxl or xlsxwriter engine
     with pd.ExcelWriter(str(out_file), engine="openpyxl") as writer:
-        # Sheet 1: Telemetry
         df_telemetry.to_excel(writer, sheet_name="30s_RTIS_Telemetry", index=False)
-        # Sheet 2: Model Benchmarks
         df_benchmarks.to_excel(writer, sheet_name="Model_Benchmark_Evaluation", index=False)
-        # Sheet 3: Stations
         df_stations.to_excel(writer, sheet_name="Corridor_Stations", index=False)
-        # Sheet 4: Sections
         df_sections.to_excel(writer, sheet_name="Corridor_Sections", index=False)
-        # Sheet 5: Historical Calibration
         if not df_calib_fog.empty:
             df_calib_fog.to_excel(writer, sheet_name="Historical_Calibration_Priors", index=False)
 
+    # Also maintain latest master copy
+    latest_file = PROJECT_ROOT / "reports" / "Railway_Simulation_and_ML_Report.xlsx"
+    try:
+        import shutil
+        shutil.copy2(str(out_file), str(latest_file))
+    except Exception:
+        pass
+
     print("\n" + "=" * 78)
     print("EXCEL WORKBOOK CREATED SUCCESSFULLY!")
-    print(f"File Path: {out_file.resolve()}")
-    print("Sheets Included:")
-    print("  1. 30s_RTIS_Telemetry              (Live 30s simulation stream with predictions)")
-    print("  2. Model_Benchmark_Evaluation      (4-model comparative metrics: MAE, RMSE, P90, ±5m)")
-    print("  3. Corridor_Stations               (8 stations with km marks & GPS coordinates)")
-    print("  4. Corridor_Sections               (7 track sections with speed limits)")
-    print("  5. Historical_Calibration_Priors   (Mined empirical probabilities & sample sizes)")
+    print(f"Timestamped Unique File: {out_file.resolve()}")
     print("=" * 78)
 
     return str(out_file)

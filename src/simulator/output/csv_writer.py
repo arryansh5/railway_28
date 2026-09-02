@@ -6,6 +6,7 @@ Writes simulation observation logs to CSV and JSON files with file lock resilien
 import csv
 import json
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import List, Dict
 
@@ -38,9 +39,10 @@ def write_observations_to_csv(observations: List[Dict], output_filepath: str) ->
             writer.writerows(observations)
     except PermissionError:
         # Fallback to alternative filename if locked by Excel/Viewer
-        fallback_name = f"{path.stem}_{int(time.time())}{path.suffix}"
+        ts_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+        fallback_name = f"{path.stem}_{ts_str}{path.suffix}"
         target_path = path.parent / fallback_name
-        print(f"[CSVWriter] WARNING: '{path.name}' is currently open/locked. Writing to fallback: '{target_path.name}'")
+        print(f"[CSVWriter] WARNING: '{path.name}' is currently open/locked. Writing to: '{target_path.name}'")
         with open(target_path, mode="w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
@@ -64,9 +66,10 @@ def write_observations_to_json(observations: List[Dict], output_filepath: str) -
         with open(target_path, mode="w", encoding="utf-8") as f:
             json.dump({"observations": observations}, f, indent=2)
     except PermissionError:
-        fallback_name = f"{path.stem}_{int(time.time())}{path.suffix}"
+        ts_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+        fallback_name = f"{path.stem}_{ts_str}{path.suffix}"
         target_path = path.parent / fallback_name
-        print(f"[JSONWriter] WARNING: '{path.name}' is locked. Writing to fallback: '{target_path.name}'")
+        print(f"[JSONWriter] WARNING: '{path.name}' is locked. Writing to: '{target_path.name}'")
         with open(target_path, mode="w", encoding="utf-8") as f:
             json.dump({"observations": observations}, f, indent=2)
 
