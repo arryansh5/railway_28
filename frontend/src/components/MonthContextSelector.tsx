@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useWebSocket, type HistoricalContext } from '../context/WebSocketContext';
-import { Calendar, CloudFog, Activity, MapPin } from 'lucide-react';
+import { Calendar, CloudFog, Activity } from 'lucide-react';
 import { getApiUrl } from '../config/api';
 
 const MONTHS = [
@@ -104,12 +104,6 @@ export const MonthContextSelector: React.FC<{ simTime?: string }> = ({ simTime =
             <Activity className="w-3.5 h-3.5 text-primary" />
             <span className="text-textMuted">NR Congestion:</span>
             <span className="font-bold text-text">{contextData.historical_congestion_risk_pct}%</span>
-          </div>
-
-          {/* Region */}
-          <div className="flex items-center gap-1 bg-surface px-2.5 py-1 rounded-md border border-border text-textMuted">
-            <MapPin className="w-3.5 h-3.5 text-textMuted" />
-            <span>NR + NCR</span>
           </div>
         </div>
       )}
