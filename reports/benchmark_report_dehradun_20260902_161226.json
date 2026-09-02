@@ -1,0 +1,1228 @@
+{
+  "dataset_filepath": "D:\\Projects\\railway\\Data\\synthetic_rtis\\synthetic_journey_dehradun_20260902_161226.csv",
+  "total_observations": 519,
+  "overall": {
+    "destination_eta": {
+      "scheduled": {
+        "samples": 519,
+        "mae": 78.0,
+        "rmse": 78.0,
+        "mape": 205.24,
+        "p50_error": 78.0,
+        "p90_error": 78.0,
+        "p95_error": 78.0,
+        "max_error": 78.0,
+        "accuracy_within_2_min": 0.0,
+        "accuracy_within_5_min": 0.0,
+        "accuracy_within_15_min": 0.0
+      },
+      "schedule_plus_delay": {
+        "samples": 519,
+        "mae": 25.02,
+        "rmse": 35.14,
+        "mape": 14.52,
+        "p50_error": 14.78,
+        "p90_error": 59.23,
+        "p95_error": 67.54,
+        "max_error": 78.0,
+        "accuracy_within_2_min": 26.2,
+        "accuracy_within_5_min": 35.1,
+        "accuracy_within_15_min": 50.3
+      },
+      "historical_median": {
+        "samples": 519,
+        "mae": 49.67,
+        "rmse": 58.62,
+        "mape": 58.2,
+        "p50_error": 48.0,
+        "p90_error": 102.5,
+        "p95_error": 104.0,
+        "max_error": 104.0,
+        "accuracy_within_2_min": 1.0,
+        "accuracy_within_5_min": 15.8,
+        "accuracy_within_15_min": 19.7
+      },
+      "ml_model": {
+        "samples": 519,
+        "mae": 5.42,
+        "rmse": 13.92,
+        "mape": 87.01,
+        "p50_error": 0.02,
+        "p90_error": 27.48,
+        "p95_error": 40.6,
+        "max_error": 53.25,
+        "accuracy_within_2_min": 80.5,
+        "accuracy_within_5_min": 81.7,
+        "accuracy_within_15_min": 85.5
+      }
+    },
+    "next_station_eta": {
+      "scheduled": {
+        "samples": 519,
+        "mae": 46.43,
+        "rmse": 52.3,
+        "mape": 496.36,
+        "p50_error": 41.0,
+        "p90_error": 78.0,
+        "p95_error": 78.0,
+        "max_error": 78.0,
+        "accuracy_within_2_min": 0.2,
+        "accuracy_within_5_min": 0.2,
+        "accuracy_within_15_min": 21.8
+      },
+      "schedule_plus_delay": {
+        "samples": 519,
+        "mae": 6.28,
+        "rmse": 7.86,
+        "mape": 49.69,
+        "p50_error": 6.08,
+        "p90_error": 13.0,
+        "p95_error": 14.5,
+        "max_error": 17.37,
+        "accuracy_within_2_min": 29.5,
+        "accuracy_within_5_min": 44.9,
+        "accuracy_within_15_min": 96.7
+      },
+      "historical_median": {
+        "samples": 519,
+        "mae": 20.14,
+        "rmse": 24.3,
+        "mape": 107.64,
+        "p50_error": 16.0,
+        "p90_error": 38.5,
+        "p95_error": 50.0,
+        "max_error": 62.5,
+        "accuracy_within_2_min": 4.8,
+        "accuracy_within_5_min": 11.8,
+        "accuracy_within_15_min": 40.5
+      },
+      "ml_model": {
+        "samples": 519,
+        "mae": 1.07,
+        "rmse": 2.74,
+        "mape": 5.46,
+        "p50_error": 0.06,
+        "p90_error": 4.93,
+        "p95_error": 7.53,
+        "max_error": 14.28,
+        "accuracy_within_2_min": 83.8,
+        "accuracy_within_5_min": 90.6,
+        "accuracy_within_15_min": 100.0
+      }
+    }
+  },
+  "sliced": {
+    "Weather: Clear": {
+      "sample_count": 519,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 519,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 205.24,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 519,
+          "mae": 25.02,
+          "rmse": 35.14,
+          "mape": 14.52,
+          "p50_error": 14.78,
+          "p90_error": 59.23,
+          "p95_error": 67.54,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 26.2,
+          "accuracy_within_5_min": 35.1,
+          "accuracy_within_15_min": 50.3
+        },
+        "historical_median": {
+          "samples": 519,
+          "mae": 49.67,
+          "rmse": 58.62,
+          "mape": 58.2,
+          "p50_error": 48.0,
+          "p90_error": 102.5,
+          "p95_error": 104.0,
+          "max_error": 104.0,
+          "accuracy_within_2_min": 1.0,
+          "accuracy_within_5_min": 15.8,
+          "accuracy_within_15_min": 19.7
+        },
+        "ml_model": {
+          "samples": 519,
+          "mae": 5.42,
+          "rmse": 13.92,
+          "mape": 87.01,
+          "p50_error": 0.02,
+          "p90_error": 27.48,
+          "p95_error": 40.6,
+          "max_error": 53.25,
+          "accuracy_within_2_min": 80.5,
+          "accuracy_within_5_min": 81.7,
+          "accuracy_within_15_min": 85.5
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 519,
+          "mae": 46.43,
+          "rmse": 52.3,
+          "mape": 496.36,
+          "p50_error": 41.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.2,
+          "accuracy_within_5_min": 0.2,
+          "accuracy_within_15_min": 21.8
+        },
+        "schedule_plus_delay": {
+          "samples": 519,
+          "mae": 6.28,
+          "rmse": 7.86,
+          "mape": 49.69,
+          "p50_error": 6.08,
+          "p90_error": 13.0,
+          "p95_error": 14.5,
+          "max_error": 17.37,
+          "accuracy_within_2_min": 29.5,
+          "accuracy_within_5_min": 44.9,
+          "accuracy_within_15_min": 96.7
+        },
+        "historical_median": {
+          "samples": 519,
+          "mae": 20.14,
+          "rmse": 24.3,
+          "mape": 107.64,
+          "p50_error": 16.0,
+          "p90_error": 38.5,
+          "p95_error": 50.0,
+          "max_error": 62.5,
+          "accuracy_within_2_min": 4.8,
+          "accuracy_within_5_min": 11.8,
+          "accuracy_within_15_min": 40.5
+        },
+        "ml_model": {
+          "samples": 519,
+          "mae": 1.07,
+          "rmse": 2.74,
+          "mape": 5.46,
+          "p50_error": 0.06,
+          "p90_error": 4.93,
+          "p95_error": 7.53,
+          "max_error": 14.28,
+          "accuracy_within_2_min": 83.8,
+          "accuracy_within_5_min": 90.6,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "Congestion: LOW": {
+      "sample_count": 519,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 519,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 205.24,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 519,
+          "mae": 25.02,
+          "rmse": 35.14,
+          "mape": 14.52,
+          "p50_error": 14.78,
+          "p90_error": 59.23,
+          "p95_error": 67.54,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 26.2,
+          "accuracy_within_5_min": 35.1,
+          "accuracy_within_15_min": 50.3
+        },
+        "historical_median": {
+          "samples": 519,
+          "mae": 49.67,
+          "rmse": 58.62,
+          "mape": 58.2,
+          "p50_error": 48.0,
+          "p90_error": 102.5,
+          "p95_error": 104.0,
+          "max_error": 104.0,
+          "accuracy_within_2_min": 1.0,
+          "accuracy_within_5_min": 15.8,
+          "accuracy_within_15_min": 19.7
+        },
+        "ml_model": {
+          "samples": 519,
+          "mae": 5.42,
+          "rmse": 13.92,
+          "mape": 87.01,
+          "p50_error": 0.02,
+          "p90_error": 27.48,
+          "p95_error": 40.6,
+          "max_error": 53.25,
+          "accuracy_within_2_min": 80.5,
+          "accuracy_within_5_min": 81.7,
+          "accuracy_within_15_min": 85.5
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 519,
+          "mae": 46.43,
+          "rmse": 52.3,
+          "mape": 496.36,
+          "p50_error": 41.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.2,
+          "accuracy_within_5_min": 0.2,
+          "accuracy_within_15_min": 21.8
+        },
+        "schedule_plus_delay": {
+          "samples": 519,
+          "mae": 6.28,
+          "rmse": 7.86,
+          "mape": 49.69,
+          "p50_error": 6.08,
+          "p90_error": 13.0,
+          "p95_error": 14.5,
+          "max_error": 17.37,
+          "accuracy_within_2_min": 29.5,
+          "accuracy_within_5_min": 44.9,
+          "accuracy_within_15_min": 96.7
+        },
+        "historical_median": {
+          "samples": 519,
+          "mae": 20.14,
+          "rmse": 24.3,
+          "mape": 107.64,
+          "p50_error": 16.0,
+          "p90_error": 38.5,
+          "p95_error": 50.0,
+          "max_error": 62.5,
+          "accuracy_within_2_min": 4.8,
+          "accuracy_within_5_min": 11.8,
+          "accuracy_within_15_min": 40.5
+        },
+        "ml_model": {
+          "samples": 519,
+          "mae": 1.07,
+          "rmse": 2.74,
+          "mape": 5.46,
+          "p50_error": 0.06,
+          "p90_error": 4.93,
+          "p95_error": 7.53,
+          "max_error": 14.28,
+          "accuracy_within_2_min": 83.8,
+          "accuracy_within_5_min": 90.6,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "Delay: On-Time (<=5m)": {
+      "sample_count": 519,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 519,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 205.24,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 519,
+          "mae": 25.02,
+          "rmse": 35.14,
+          "mape": 14.52,
+          "p50_error": 14.78,
+          "p90_error": 59.23,
+          "p95_error": 67.54,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 26.2,
+          "accuracy_within_5_min": 35.1,
+          "accuracy_within_15_min": 50.3
+        },
+        "historical_median": {
+          "samples": 519,
+          "mae": 49.67,
+          "rmse": 58.62,
+          "mape": 58.2,
+          "p50_error": 48.0,
+          "p90_error": 102.5,
+          "p95_error": 104.0,
+          "max_error": 104.0,
+          "accuracy_within_2_min": 1.0,
+          "accuracy_within_5_min": 15.8,
+          "accuracy_within_15_min": 19.7
+        },
+        "ml_model": {
+          "samples": 519,
+          "mae": 5.42,
+          "rmse": 13.92,
+          "mape": 87.01,
+          "p50_error": 0.02,
+          "p90_error": 27.48,
+          "p95_error": 40.6,
+          "max_error": 53.25,
+          "accuracy_within_2_min": 80.5,
+          "accuracy_within_5_min": 81.7,
+          "accuracy_within_15_min": 85.5
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 519,
+          "mae": 46.43,
+          "rmse": 52.3,
+          "mape": 496.36,
+          "p50_error": 41.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.2,
+          "accuracy_within_5_min": 0.2,
+          "accuracy_within_15_min": 21.8
+        },
+        "schedule_plus_delay": {
+          "samples": 519,
+          "mae": 6.28,
+          "rmse": 7.86,
+          "mape": 49.69,
+          "p50_error": 6.08,
+          "p90_error": 13.0,
+          "p95_error": 14.5,
+          "max_error": 17.37,
+          "accuracy_within_2_min": 29.5,
+          "accuracy_within_5_min": 44.9,
+          "accuracy_within_15_min": 96.7
+        },
+        "historical_median": {
+          "samples": 519,
+          "mae": 20.14,
+          "rmse": 24.3,
+          "mape": 107.64,
+          "p50_error": 16.0,
+          "p90_error": 38.5,
+          "p95_error": 50.0,
+          "max_error": 62.5,
+          "accuracy_within_2_min": 4.8,
+          "accuracy_within_5_min": 11.8,
+          "accuracy_within_15_min": 40.5
+        },
+        "ml_model": {
+          "samples": 519,
+          "mae": 1.07,
+          "rmse": 2.74,
+          "mape": 5.46,
+          "p50_error": 0.06,
+          "p90_error": 4.93,
+          "p95_error": 7.53,
+          "max_error": 14.28,
+          "accuracy_within_2_min": 83.8,
+          "accuracy_within_5_min": 90.6,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    }
+  },
+  "section_breakdown": {
+    "SEC_GZB_MTC": {
+      "sample_count": 83,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 83,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 35.0,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 83,
+          "mae": 57.53,
+          "rmse": 57.67,
+          "mape": 25.76,
+          "p50_error": 56.01,
+          "p90_error": 64.94,
+          "p95_error": 66.67,
+          "max_error": 67.67,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "historical_median": {
+          "samples": 83,
+          "mae": 47.48,
+          "rmse": 47.71,
+          "mape": 21.28,
+          "p50_error": 48.0,
+          "p90_error": 48.0,
+          "p95_error": 48.0,
+          "max_error": 48.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 1.2,
+          "accuracy_within_15_min": 1.2
+        },
+        "ml_model": {
+          "samples": 83,
+          "mae": 0.01,
+          "rmse": 0.02,
+          "mape": 0.01,
+          "p50_error": 0.01,
+          "p90_error": 0.04,
+          "p95_error": 0.05,
+          "max_error": 0.05,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 83,
+          "mae": 14.15,
+          "rmse": 14.22,
+          "mape": 152.37,
+          "p50_error": 14.0,
+          "p90_error": 14.0,
+          "p95_error": 14.0,
+          "max_error": 26.5,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 98.8
+        },
+        "schedule_plus_delay": {
+          "samples": 83,
+          "mae": 6.35,
+          "rmse": 7.1,
+          "mape": 48.67,
+          "p50_error": 7.9,
+          "p90_error": 9.78,
+          "p95_error": 9.97,
+          "max_error": 10.49,
+          "accuracy_within_2_min": 14.5,
+          "accuracy_within_5_min": 36.1,
+          "accuracy_within_15_min": 100.0
+        },
+        "historical_median": {
+          "samples": 83,
+          "mae": 13.25,
+          "rmse": 14.28,
+          "mape": 75.07,
+          "p50_error": 16.0,
+          "p90_error": 16.0,
+          "p95_error": 16.0,
+          "max_error": 35.5,
+          "accuracy_within_2_min": 4.8,
+          "accuracy_within_5_min": 12.0,
+          "accuracy_within_15_min": 36.1
+        },
+        "ml_model": {
+          "samples": 83,
+          "mae": 0.04,
+          "rmse": 0.06,
+          "mape": 0.46,
+          "p50_error": 0.03,
+          "p90_error": 0.1,
+          "p95_error": 0.11,
+          "max_error": 0.17,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "SEC_HW_DDN": {
+      "sample_count": 125,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 125,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 674.11,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 125,
+          "mae": 1.06,
+          "rmse": 1.66,
+          "mape": 5.87,
+          "p50_error": 0.75,
+          "p90_error": 1.26,
+          "p95_error": 4.26,
+          "max_error": 7.26,
+          "accuracy_within_2_min": 91.2,
+          "accuracy_within_5_min": 96.0,
+          "accuracy_within_15_min": 100.0
+        },
+        "historical_median": {
+          "samples": 125,
+          "mae": 31.0,
+          "rmse": 35.87,
+          "mape": 98.94,
+          "p50_error": 31.0,
+          "p90_error": 56.0,
+          "p95_error": 59.0,
+          "max_error": 62.0,
+          "accuracy_within_2_min": 4.0,
+          "accuracy_within_5_min": 8.8,
+          "accuracy_within_15_min": 24.8
+        },
+        "ml_model": {
+          "samples": 125,
+          "mae": 22.47,
+          "rmse": 28.37,
+          "mape": 361.23,
+          "p50_error": 21.98,
+          "p90_error": 47.12,
+          "p95_error": 50.34,
+          "max_error": 53.25,
+          "accuracy_within_2_min": 19.2,
+          "accuracy_within_5_min": 24.0,
+          "accuracy_within_15_min": 40.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 125,
+          "mae": 77.38,
+          "rmse": 77.69,
+          "mape": 611.71,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.8,
+          "accuracy_within_5_min": 0.8,
+          "accuracy_within_15_min": 0.8
+        },
+        "schedule_plus_delay": {
+          "samples": 125,
+          "mae": 1.06,
+          "rmse": 1.66,
+          "mape": 5.73,
+          "p50_error": 0.75,
+          "p90_error": 1.26,
+          "p95_error": 4.26,
+          "max_error": 7.26,
+          "accuracy_within_2_min": 91.2,
+          "accuracy_within_5_min": 96.0,
+          "accuracy_within_15_min": 100.0
+        },
+        "historical_median": {
+          "samples": 125,
+          "mae": 31.0,
+          "rmse": 35.87,
+          "mape": 98.8,
+          "p50_error": 31.0,
+          "p90_error": 56.0,
+          "p95_error": 59.0,
+          "max_error": 62.0,
+          "accuracy_within_2_min": 4.0,
+          "accuracy_within_5_min": 8.8,
+          "accuracy_within_15_min": 24.8
+        },
+        "ml_model": {
+          "samples": 125,
+          "mae": 4.27,
+          "rmse": 5.58,
+          "mape": 20.84,
+          "p50_error": 3.72,
+          "p90_error": 8.64,
+          "p95_error": 10.91,
+          "max_error": 14.28,
+          "accuracy_within_2_min": 32.8,
+          "accuracy_within_5_min": 60.8,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "SEC_MOZ_SRE": {
+      "sample_count": 79,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 79,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 53.2,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 79,
+          "mae": 21.38,
+          "rmse": 22.78,
+          "mape": 14.16,
+          "p50_error": 21.42,
+          "p90_error": 32.61,
+          "p95_error": 33.31,
+          "max_error": 34.12,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 26.6
+        },
+        "historical_median": {
+          "samples": 79,
+          "mae": 42.78,
+          "rmse": 43.34,
+          "mape": 29.26,
+          "p50_error": 42.0,
+          "p90_error": 42.0,
+          "p95_error": 42.0,
+          "max_error": 104.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "ml_model": {
+          "samples": 79,
+          "mae": 0.02,
+          "rmse": 0.02,
+          "mape": 0.01,
+          "p50_error": 0.01,
+          "p90_error": 0.04,
+          "p95_error": 0.05,
+          "max_error": 0.06,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 79,
+          "mae": 41.14,
+          "rmse": 41.16,
+          "mape": 463.02,
+          "p50_error": 41.0,
+          "p90_error": 41.0,
+          "p95_error": 41.0,
+          "max_error": 52.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 79,
+          "mae": 9.31,
+          "rmse": 10.41,
+          "mape": 65.12,
+          "p50_error": 9.29,
+          "p90_error": 15.93,
+          "p95_error": 16.63,
+          "max_error": 17.37,
+          "accuracy_within_2_min": 5.1,
+          "accuracy_within_5_min": 24.1,
+          "accuracy_within_15_min": 86.1
+        },
+        "historical_median": {
+          "samples": 79,
+          "mae": 19.89,
+          "rmse": 22.86,
+          "mape": 99.37,
+          "p50_error": 20.0,
+          "p90_error": 35.5,
+          "p95_error": 37.5,
+          "max_error": 39.0,
+          "accuracy_within_2_min": 5.1,
+          "accuracy_within_5_min": 12.7,
+          "accuracy_within_15_min": 38.0
+        },
+        "ml_model": {
+          "samples": 79,
+          "mae": 0.06,
+          "rmse": 0.08,
+          "mape": 0.48,
+          "p50_error": 0.05,
+          "p90_error": 0.15,
+          "p95_error": 0.18,
+          "max_error": 0.2,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "SEC_MTC_MOZ": {
+      "sample_count": 71,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 71,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 42.29,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 71,
+          "mae": 46.48,
+          "rmse": 47.27,
+          "mape": 24.94,
+          "p50_error": 46.66,
+          "p90_error": 57.96,
+          "p95_error": 58.83,
+          "max_error": 59.73,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "historical_median": {
+          "samples": 71,
+          "mae": 5.52,
+          "rmse": 7.04,
+          "mape": 3.02,
+          "p50_error": 5.0,
+          "p90_error": 5.0,
+          "p95_error": 5.0,
+          "max_error": 42.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 98.6,
+          "accuracy_within_15_min": 98.6
+        },
+        "ml_model": {
+          "samples": 71,
+          "mae": 0.01,
+          "rmse": 0.02,
+          "mape": 0.01,
+          "p50_error": 0.01,
+          "p90_error": 0.04,
+          "p95_error": 0.04,
+          "max_error": 0.06,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 71,
+          "mae": 26.7,
+          "rmse": 26.76,
+          "mape": 324.9,
+          "p50_error": 26.5,
+          "p90_error": 26.5,
+          "p95_error": 26.5,
+          "max_error": 41.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 71,
+          "mae": 5.18,
+          "rmse": 5.91,
+          "mape": 47.33,
+          "p50_error": 5.28,
+          "p90_error": 9.0,
+          "p95_error": 10.0,
+          "max_error": 10.5,
+          "accuracy_within_2_min": 18.3,
+          "accuracy_within_5_min": 47.9,
+          "accuracy_within_15_min": 100.0
+        },
+        "historical_median": {
+          "samples": 71,
+          "mae": 18.06,
+          "rmse": 20.81,
+          "mape": 99.3,
+          "p50_error": 18.0,
+          "p90_error": 32.0,
+          "p95_error": 34.0,
+          "max_error": 39.5,
+          "accuracy_within_2_min": 5.6,
+          "accuracy_within_5_min": 14.1,
+          "accuracy_within_15_min": 42.3
+        },
+        "ml_model": {
+          "samples": 71,
+          "mae": 0.08,
+          "rmse": 0.1,
+          "mape": 0.63,
+          "p50_error": 0.06,
+          "p90_error": 0.17,
+          "p95_error": 0.19,
+          "max_error": 0.21,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "SEC_NDLS_GZB": {
+      "sample_count": 30,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 30,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 30.99,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 30,
+          "mae": 71.7,
+          "rmse": 71.8,
+          "mape": 28.47,
+          "p50_error": 71.45,
+          "p90_error": 76.66,
+          "p95_error": 77.78,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "historical_median": {
+          "samples": 30,
+          "mae": 77.0,
+          "rmse": 77.19,
+          "mape": 30.58,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "ml_model": {
+          "samples": 30,
+          "mae": 0.02,
+          "rmse": 0.02,
+          "mape": 0.01,
+          "p50_error": 0.01,
+          "p90_error": 0.04,
+          "p95_error": 0.04,
+          "max_error": 0.04,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 30,
+          "mae": 13.52,
+          "rmse": 13.52,
+          "mape": 312.67,
+          "p50_error": 13.5,
+          "p90_error": 13.5,
+          "p95_error": 13.5,
+          "max_error": 14.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 100.0
+        },
+        "schedule_plus_delay": {
+          "samples": 30,
+          "mae": 7.22,
+          "rmse": 8.12,
+          "mape": 102.77,
+          "p50_error": 6.95,
+          "p90_error": 12.16,
+          "p95_error": 13.28,
+          "max_error": 13.5,
+          "accuracy_within_2_min": 6.7,
+          "accuracy_within_5_min": 33.3,
+          "accuracy_within_15_min": 100.0
+        },
+        "historical_median": {
+          "samples": 30,
+          "mae": 13.58,
+          "rmse": 13.59,
+          "mape": 312.83,
+          "p50_error": 13.5,
+          "p90_error": 13.5,
+          "p95_error": 13.5,
+          "max_error": 16.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 96.7
+        },
+        "ml_model": {
+          "samples": 30,
+          "mae": 0.04,
+          "rmse": 0.05,
+          "mape": 0.96,
+          "p50_error": 0.04,
+          "p90_error": 0.07,
+          "p95_error": 0.08,
+          "max_error": 0.13,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "SEC_RK_HW": {
+      "sample_count": 69,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 69,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 99.7,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 69,
+          "mae": 3.15,
+          "rmse": 3.69,
+          "mape": 4.21,
+          "p50_error": 3.09,
+          "p90_error": 6.08,
+          "p95_error": 6.62,
+          "max_error": 7.16,
+          "accuracy_within_2_min": 31.9,
+          "accuracy_within_5_min": 82.6,
+          "accuracy_within_15_min": 100.0
+        },
+        "historical_median": {
+          "samples": 69,
+          "mae": 79.5,
+          "rmse": 80.12,
+          "mape": 100.0,
+          "p50_error": 79.5,
+          "p90_error": 93.5,
+          "p95_error": 95.0,
+          "max_error": 96.5,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "ml_model": {
+          "samples": 69,
+          "mae": 0.02,
+          "rmse": 0.02,
+          "mape": 0.02,
+          "p50_error": 0.01,
+          "p90_error": 0.04,
+          "p95_error": 0.05,
+          "max_error": 0.06,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 69,
+          "mae": 64.7,
+          "rmse": 64.72,
+          "mape": 806.48,
+          "p50_error": 64.5,
+          "p90_error": 64.5,
+          "p95_error": 64.5,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 69,
+          "mae": 9.99,
+          "rmse": 10.68,
+          "mape": 71.68,
+          "p50_error": 10.59,
+          "p90_error": 14.37,
+          "p95_error": 14.73,
+          "max_error": 15.08,
+          "accuracy_within_2_min": 5.8,
+          "accuracy_within_5_min": 14.5,
+          "accuracy_within_15_min": 98.6
+        },
+        "historical_median": {
+          "samples": 69,
+          "mae": 17.91,
+          "rmse": 21.09,
+          "mape": 99.28,
+          "p50_error": 17.5,
+          "p90_error": 31.5,
+          "p95_error": 33.0,
+          "max_error": 62.5,
+          "accuracy_within_2_min": 5.8,
+          "accuracy_within_5_min": 14.5,
+          "accuracy_within_15_min": 43.5
+        },
+        "ml_model": {
+          "samples": 69,
+          "mae": 0.07,
+          "rmse": 0.1,
+          "mape": 0.66,
+          "p50_error": 0.06,
+          "p90_error": 0.19,
+          "p95_error": 0.2,
+          "max_error": 0.32,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    },
+    "SEC_SRE_RK": {
+      "sample_count": 62,
+      "destination_eta": {
+        "scheduled": {
+          "samples": 62,
+          "mae": 78.0,
+          "rmse": 78.0,
+          "mape": 69.93,
+          "p50_error": 78.0,
+          "p90_error": 78.0,
+          "p95_error": 78.0,
+          "max_error": 78.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 62,
+          "mae": 11.6,
+          "rmse": 12.3,
+          "mape": 10.19,
+          "p50_error": 11.8,
+          "p90_error": 16.8,
+          "p95_error": 17.49,
+          "max_error": 18.3,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 8.1,
+          "accuracy_within_15_min": 74.2
+        },
+        "historical_median": {
+          "samples": 62,
+          "mae": 103.15,
+          "rmse": 103.17,
+          "mape": 92.39,
+          "p50_error": 104.0,
+          "p90_error": 104.0,
+          "p95_error": 104.0,
+          "max_error": 104.0,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "ml_model": {
+          "samples": 62,
+          "mae": 0.01,
+          "rmse": 0.02,
+          "mape": 0.01,
+          "p50_error": 0.01,
+          "p90_error": 0.03,
+          "p95_error": 0.04,
+          "max_error": 0.05,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      },
+      "next_station_eta": {
+        "scheduled": {
+          "samples": 62,
+          "mae": 52.2,
+          "rmse": 52.23,
+          "mape": 706.9,
+          "p50_error": 52.0,
+          "p90_error": 52.0,
+          "p95_error": 52.0,
+          "max_error": 64.5,
+          "accuracy_within_2_min": 0.0,
+          "accuracy_within_5_min": 0.0,
+          "accuracy_within_15_min": 0.0
+        },
+        "schedule_plus_delay": {
+          "samples": 62,
+          "mae": 9.57,
+          "rmse": 10.35,
+          "mape": 72.59,
+          "p50_error": 10.0,
+          "p90_error": 14.2,
+          "p95_error": 15.7,
+          "max_error": 17.2,
+          "accuracy_within_2_min": 6.5,
+          "accuracy_within_5_min": 16.1,
+          "accuracy_within_15_min": 91.9
+        },
+        "historical_median": {
+          "samples": 62,
+          "mae": 15.81,
+          "rmse": 18.22,
+          "mape": 99.19,
+          "p50_error": 15.5,
+          "p90_error": 28.0,
+          "p95_error": 29.5,
+          "max_error": 34.5,
+          "accuracy_within_2_min": 6.5,
+          "accuracy_within_5_min": 16.1,
+          "accuracy_within_15_min": 48.4
+        },
+        "ml_model": {
+          "samples": 62,
+          "mae": 0.06,
+          "rmse": 0.08,
+          "mape": 0.58,
+          "p50_error": 0.05,
+          "p90_error": 0.14,
+          "p95_error": 0.17,
+          "max_error": 0.22,
+          "accuracy_within_2_min": 100.0,
+          "accuracy_within_5_min": 100.0,
+          "accuracy_within_15_min": 100.0
+        }
+      }
+    }
+  }
+}
