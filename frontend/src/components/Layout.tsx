@@ -6,10 +6,10 @@ import { useWebSocket } from '../context/WebSocketContext';
 
 const navItems = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
-  { name: 'Live Trains', path: '/trains', icon: Train },
-  { name: 'Train Details', path: '/details', icon: Info },
+  // { name: 'Live Trains', path: '/trains', icon: Train },
+  // { name: 'Train Details', path: '/details', icon: Info },
   { name: 'Predictions', path: '/predictions', icon: Activity },
-  { name: 'Alerts', path: '/alerts', icon: AlertTriangle },
+  // { name: 'Alerts', path: '/alerts', icon: AlertTriangle },
 ];
 
 export const Layout: React.FC = () => {
