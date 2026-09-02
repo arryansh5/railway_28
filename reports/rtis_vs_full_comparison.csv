@@ -1,0 +1,3 @@
+System Architecture,ETA MAE (min),ETA RMSE (min),P90 Error (min),Max Error (min),Final Arrival Error (min),Observations,Status
+System 1 (RTIS/Physics Simulator Alone),63.79,79.89,133.57,167.73,0.00,696,Baseline Reference
+Complete System (System 1 + 2 + 3 Closed Loop),87.19,105.10,123.20,358.60,0.00,753,+-36.7% MAE Improvement
