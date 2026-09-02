@@ -15,7 +15,7 @@ export const Layout: React.FC = () => {
             <div className="flex items-center gap-2 pr-2">
               <Train className="w-6 h-6 text-primary" aria-hidden="true" />
               <div>
-                <h1 className="font-bold text-lg text-text tracking-wide">Station Controller</h1>
+                <h1 className="font-bold text-lg text-text tracking-wide">Station Control</h1>
               </div>
             </div>
             
