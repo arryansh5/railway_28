@@ -1,13 +1,26 @@
 import React from 'react';
 import { Train, Clock, AlertTriangle, Activity, CheckCircle2, Info, X } from 'lucide-react';
+import { ComposedChart, BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Legend } from 'recharts';
 import { useWebSocket } from '../context/WebSocketContext';
 
 // Helper for modal
+const parseTime = (timeStr: string) => {
+  if (!timeStr) return 0;
+  const [h, m] = timeStr.split(':').map(Number);
+  return h * 60 + m;
+};
+
+const formatTime = (minutes: number) => {
+  const h = Math.floor(minutes / 60);
+  const m = Math.floor(minutes % 60);
+  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+};
+
 const RouteModal: React.FC<{ routeName: string, trains: any[], onClose: () => void }> = ({ routeName, trains, onClose }) => {
   if (!routeName) return null;
   return (
     <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 backdrop-blur-sm">
-      <div className="bg-background border border-border rounded-xl w-full max-w-3xl shadow-2xl max-h-[90vh] flex flex-col">
+      <div className="bg-background border border-border rounded-xl w-full max-w-6xl shadow-2xl max-h-[90vh] flex flex-col">
         <div className="p-6 border-b border-border flex justify-between items-center bg-surface rounded-t-xl">
           <h2 className="text-xl font-bold text-text flex items-center gap-2">
             <Train className="w-6 h-6 text-primary" />
@@ -69,32 +82,153 @@ const RouteModal: React.FC<{ routeName: string, trains: any[], onClose: () => vo
 
                   {train.timeline && train.timeline.length > 0 && (
                     <div className="mt-6 border-t border-border pt-4">
-                      <h4 className="text-sm font-bold text-text mb-3 uppercase tracking-wider">Station Schedule & Delays</h4>
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm border-collapse">
+                      <h4 className="text-sm font-bold text-text mb-4 uppercase tracking-wider flex items-center gap-2">
+                        <Activity className="w-4 h-4 text-primary" />
+                        Station-wise Prediction Analysis
+                      </h4>
+
+                      <div className="overflow-x-auto mb-6">
+                        <table className="w-full text-left text-sm border-collapse whitespace-nowrap">
                           <thead>
                             <tr className="border-b border-border text-xs font-semibold text-textMuted uppercase">
-                              <th className="pb-2 pr-4">Station</th>
-                              <th className="pb-2 px-4">Scheduled</th>
-                              <th className="pb-2 px-4">Predicted</th>
-                              <th className="pb-2 pl-4 text-right">Delay</th>
+                              <th className="pb-3 pr-4">Station</th>
+                              <th className="pb-3 px-4">Scheduled</th>
+                              <th className="pb-3 px-4">Predicted</th>
+                              <th className="pb-3 px-4">Delay</th>
+                              <th className="pb-3 px-4">Confidence</th>
+                              <th className="pb-3 px-4">Reason</th>
+                              <th className="pb-3 px-4">Next St. ETA</th>
+                              <th className="pb-3 pl-4 text-right">Terminal ETA</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {train.timeline.map((st: any, i: number) => (
-                              <tr key={i} className="border-b border-border last:border-0 hover:bg-background transition-colors">
-                                <td className="py-2 pr-4 font-medium text-text">{st.stationName} <span className="text-textMuted text-xs">({st.stationCode})</span></td>
-                                <td className="py-2 px-4 text-text">{st.scheduled}</td>
-                                <td className="py-2 px-4 font-semibold text-primary">{st.predicted}</td>
-                                <td className="py-2 pl-4 text-right">
-                                  <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${st.delay > 0 ? 'bg-warningBg text-warning' : 'bg-successBg text-success'}`}>
-                                    {st.delay > 0 ? `+${st.delay}m` : 'On Time'}
-                                  </span>
-                                </td>
-                              </tr>
-                            ))}
+                            {train.timeline.map((st: any, i: number) => {
+                              const isTerminal = i === train.timeline.length - 1;
+                              const nextSt = train.timeline[i+1];
+                              const stationConfidence = Math.max(45, train.confidence - (i * 2));
+                              
+                              return (
+                                <tr key={i} className="border-b border-border last:border-0 hover:bg-surface transition-colors">
+                                  <td className="py-3 pr-4">
+                                    <div className="font-bold text-text flex items-center gap-2">
+                                      {st.stationName}
+                                      {isTerminal && <span className="text-[10px] font-bold px-1.5 py-0.5 bg-primary/10 text-primary rounded">TERM</span>}
+                                    </div>
+                                    <div className="text-xs text-textMuted">{st.stationCode}</div>
+                                  </td>
+                                  <td className="py-3 px-4 text-text">{st.scheduled}</td>
+                                  <td className="py-3 px-4 font-semibold text-primary">{st.predicted}</td>
+                                  <td className="py-3 px-4">
+                                    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${st.delay > 15 ? 'bg-criticalBg text-critical' : st.delay > 0 ? 'bg-warningBg text-warning' : 'bg-successBg text-success'}`}>
+                                      {st.delay > 0 ? `+${st.delay}m` : 'On Time'}
+                                    </span>
+                                  </td>
+                                  <td className="py-3 px-4 font-medium text-text flex items-center gap-1">
+                                    <CheckCircle2 className="w-3 h-3 text-success" /> {stationConfidence}%
+                                  </td>
+                                  <td className="py-3 px-4 text-xs font-medium text-critical max-w-[150px] truncate" title={train.delayReason || 'Network Delay'}>
+                                    {st.delay > 0 ? (
+                                      <span className="flex items-center gap-1">
+                                        <AlertTriangle className="w-3 h-3" /> {train.delayReason || 'Network Delay'}
+                                      </span>
+                                    ) : '-'}
+                                  </td>
+                                  <td className="py-3 px-4 font-medium text-text">{!isTerminal && nextSt ? nextSt.predicted : '-'}</td>
+                                  <td className="py-3 pl-4 text-right font-bold text-text">{train.aiEta}</td>
+                                </tr>
+                              );
+                            })}
                           </tbody>
                         </table>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-6 mb-4">
+                        {/* Graph 1: ETA Trend */}
+                        <div className="h-72 w-full border border-border rounded-xl bg-surface p-5 pb-2 flex flex-col">
+                          <h5 className="font-bold text-text mb-4 text-sm uppercase tracking-wider">ETA Trend & History</h5>
+                          <div className="flex-1 min-h-0">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <LineChart data={train.timeline.map((st: any) => ({
+                                name: st.stationCode,
+                                predictedMin: parseTime(st.predicted),
+                                scheduledMin: parseTime(st.scheduled),
+                                predicted: st.predicted,
+                                scheduled: st.scheduled
+                              }))} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" opacity={0.3} />
+                                <XAxis dataKey="name" tick={{fontSize: 10, fill: '#64748b'}} axisLine={false} tickLine={false} dy={10} />
+                                <YAxis 
+                                  domain={['auto', 'auto']} 
+                                  tickFormatter={formatTime} 
+                                  tick={{fontSize: 10, fill: '#64748b'}} 
+                                  axisLine={false} 
+                                  tickLine={false} 
+                                />
+                                <RechartsTooltip 
+                                  contentStyle={{backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#f8fafc', fontSize: '12px'}}
+                                  labelStyle={{color: '#94a3b8', marginBottom: '4px'}}
+                                  formatter={(value: any, name: string, props: any) => {
+                                    if (name === 'AI Predicted ETA') return [props.payload.predicted, name];
+                                    if (name === 'Scheduled ETA') return [props.payload.scheduled, name];
+                                    return [value, name];
+                                  }}
+                                />
+                                <Legend wrapperStyle={{fontSize: '12px', color: '#64748b', paddingTop: '10px'}} />
+                                <Line type="monotone" dataKey="predictedMin" stroke="#3b82f6" strokeWidth={2} dot={{r: 4, fill: '#3b82f6', strokeWidth: 0}} activeDot={{r: 6}} name="AI Predicted ETA" />
+                                <Line type="monotone" dataKey="scheduledMin" stroke="#94a3b8" strokeWidth={2} strokeDasharray="5 5" dot={{r: 3, fill: '#94a3b8', strokeWidth: 0}} name="Scheduled ETA" />
+                              </LineChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+
+                        {/* Graph 2: Delay Analysis */}
+                        <div className="h-64 w-full border border-border rounded-xl bg-surface p-5 pb-2 flex flex-col">
+                          <h5 className="font-bold text-text mb-4 uppercase text-sm tracking-wider">Station Delays (Mins)</h5>
+                          <div className="flex-1 min-h-0">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <BarChart data={train.timeline.map((st: any) => ({
+                                name: st.stationCode,
+                                delay: st.delay
+                              }))} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" opacity={0.3} />
+                                <XAxis dataKey="name" tick={{fontSize: 10, fill: '#64748b'}} axisLine={false} tickLine={false} dy={10} />
+                                <YAxis tick={{fontSize: 10, fill: '#64748b'}} axisLine={false} tickLine={false} />
+                                <RechartsTooltip 
+                                  contentStyle={{backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#f8fafc', fontSize: '12px'}}
+                                  cursor={{fill: 'rgba(255,255,255,0.05)'}}
+                                />
+                                <Bar dataKey="delay" fill="#ef4444" radius={[4, 4, 0, 0]} name="Delay (mins)" maxBarSize={40} />
+                              </BarChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+
+                        {/* Graph 3: AI Confidence */}
+                        <div className="h-56 w-full border border-border rounded-xl bg-surface p-5 pb-2 flex flex-col">
+                          <h5 className="font-bold text-text mb-4 uppercase text-sm tracking-wider">AI Confidence Trend</h5>
+                          <div className="flex-1 min-h-0">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <AreaChart data={train.timeline.map((st: any, i: number) => ({
+                                name: st.stationCode,
+                                confidence: Math.max(45, train.confidence - (i * 2))
+                              }))} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
+                                <defs>
+                                  <linearGradient id={`colorConf-${train.id}`} x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                                  </linearGradient>
+                                </defs>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" opacity={0.3} />
+                                <XAxis dataKey="name" tick={{fontSize: 10, fill: '#64748b'}} axisLine={false} tickLine={false} dy={10} />
+                                <YAxis domain={[0, 100]} tick={{fontSize: 10, fill: '#64748b'}} axisLine={false} tickLine={false} />
+                                <RechartsTooltip 
+                                  contentStyle={{backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px', color: '#f8fafc', fontSize: '12px'}}
+                                />
+                                <Area type="monotone" dataKey="confidence" stroke="#10b981" strokeWidth={2} fillOpacity={1} fill={`url(#colorConf-${train.id})`} name="Confidence %" />
+                              </AreaChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
