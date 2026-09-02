@@ -145,7 +145,7 @@ const RouteModal: React.FC<{ routeName: string, trains: any[], onClose: () => vo
                       <div className="grid grid-cols-1 gap-6 mb-4">
                         {/* Graph 1: ETA Trend */}
                         <div className="h-72 w-full border border-border rounded-xl bg-surface p-5 pb-2 flex flex-col">
-                          <h5 className="font-bold text-text mb-4 text-sm uppercase tracking-wider">ETA Trend & History</h5>
+                          <h5 className="font-bold text-text mb-4 text-sm uppercase tracking-wider">ETA Trend</h5>
                           <div className="flex-1 min-h-0">
                             <ResponsiveContainer width="100%" height="100%">
                               <LineChart data={train.timeline.map((st: any) => ({
@@ -204,7 +204,7 @@ const RouteModal: React.FC<{ routeName: string, trains: any[], onClose: () => vo
                         </div>
 
                         {/* Graph 3: AI Confidence */}
-                        <div className="h-56 w-full border border-border rounded-xl bg-surface p-5 pb-2 flex flex-col">
+                        {/* <div className="h-56 w-full border border-border rounded-xl bg-surface p-5 pb-2 flex flex-col">
                           <h5 className="font-bold text-text mb-4 uppercase text-sm tracking-wider">AI Confidence Trend</h5>
                           <div className="flex-1 min-h-0">
                             <ResponsiveContainer width="100%" height="100%">
@@ -228,7 +228,7 @@ const RouteModal: React.FC<{ routeName: string, trains: any[], onClose: () => vo
                               </AreaChart>
                             </ResponsiveContainer>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   )}
@@ -354,7 +354,7 @@ export const Dashboard: React.FC = () => {
         <StatCard title="On Time" value={onTimeCount} subValue={`${onTimePct}%`} icon={CheckCircle2} colorClass="text-success" bgClass="bg-successBg" />
         <StatCard title="Delayed" value={delayedCount} subValue={`${delayedPct}%`} icon={Clock} colorClass="text-warning" bgClass="bg-warningBg" />
         <StatCard title="Critical Delay" value={criticalCount} subValue={`${criticalPct}%`} icon={AlertTriangle} colorClass="text-critical" bgClass="bg-criticalBg" />
-        <StatCard title="ETA Accuracy" value={`${metrics.accuracy.toFixed(1)}%`} subValue="Last 24h" icon={Activity} colorClass="text-primary" bgClass="bg-primary/10" />
+        <StatCard title="ETA Accuracy" value={`${metrics.accuracy.toFixed(1)}%`} subValue="" icon={Activity} colorClass="text-primary" bgClass="bg-primary/10" />
       </div>
 
       {/* Route Summaries */}
