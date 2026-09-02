@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useWebSocket, type HistoricalContext } from '../context/WebSocketContext';
 import { Calendar, CloudFog, Activity, MapPin } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 const MONTHS = [
   'January',
@@ -24,9 +25,8 @@ export const MonthContextSelector: React.FC<{ simTime?: string }> = ({ simTime =
   useEffect(() => {
     const fetchContext = async () => {
       try {
-        const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5173';
-        const apiBase = isLocalDev ? 'http://localhost:8000' : '';
-        const res = await fetch(`${apiBase}/api/historical-context?month=${selectedMonth}&route=dehradun`);
+        const url = getApiUrl(`/api/historical-context?month=${selectedMonth}&route=dehradun`);
+        const res = await fetch(url);
         if (res.ok) {
           const data = await res.json();
           setContextData(data);
