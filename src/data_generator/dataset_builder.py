@@ -480,4 +480,29 @@ def build_synthetic_journey(
 
 
 if __name__ == "__main__":
-    build_synthetic_journey()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run 30-second closed-loop simulation on a specified corridor.")
+    parser.add_argument("--route", type=str, default=str(PROJECT_ROOT / "Data" / "routes" / "delhi_dehradun_route.json"), help="Route JSON filepath")
+    parser.add_argument("--events", type=str, default=str(PROJECT_ROOT / "src" / "simulator" / "events" / "simulation_events.json"), help="Events JSON filepath")
+    parser.add_argument("--train-id", type=str, default="12017", help="Train number / ID")
+    parser.add_argument("--journey-id", type=str, default="JRN_0001", help="Journey ID")
+    parser.add_argument("--start-time", type=str, default="06:45:00", help="Departure start time (HH:MM:SS)")
+    parser.add_argument("--season", type=str, default="Winter/Fog", help="Season environment")
+    parser.add_argument("--zone", type=str, default="NR", help="Geographic railway zone (NR / NCR)")
+    parser.add_argument("--output-csv", type=str, default=str(PROJECT_ROOT / "Data" / "synthetic_rtis" / "synthetic_journey_01.csv"), help="Output CSV path")
+    parser.add_argument("--output-json", type=str, default=str(PROJECT_ROOT / "Data" / "synthetic_rtis" / "synthetic_journey_01.json"), help="Output JSON path")
+
+    args = parser.parse_args()
+
+    build_synthetic_journey(
+        route_filepath=args.route,
+        events_filepath=args.events,
+        train_id=args.train_id,
+        journey_id=args.journey_id,
+        start_time_str=args.start_time,
+        season=args.season,
+        zone=args.zone,
+        output_csv_path=args.output_csv,
+        output_json_path=args.output_json
+    )

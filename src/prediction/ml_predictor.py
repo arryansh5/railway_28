@@ -63,13 +63,18 @@ class MLETAEngine(BasePredictor):
         # Get ML model ETA predictions
         eta_preds = self.ml_model.predict_state(current_state)
 
-        # Get risk predictions from baseline/calibrated prior engine
+        operational_risk = 0.20
+        confidence = 0.90
+        evidence = {}
         if self.baseline_predictor:
             base_pred = self.baseline_predictor.predict(current_state, context)
             congestion_risk = base_pred.congestion_risk
             fog_risk = base_pred.fog_risk
             delay_risk = base_pred.delay_risk
+            operational_risk = base_pred.operational_risk
+            confidence = base_pred.confidence
             expected_speed_impact = base_pred.expected_speed_impact
+            evidence = base_pred.evidence
         else:
             current_delay = float(current_state.get("current_delay_min", 0.0))
             delay_risk = min(1.0, current_delay / 60.0)
@@ -85,10 +90,13 @@ class MLETAEngine(BasePredictor):
         return ConditionPrediction(
             prediction_timestamp=str(current_state.get("timestamp", "00:00:00")),
             prediction_horizon_min=float(context.get("prediction_horizon_min", 30.0) if context else 30.0),
-            congestion_risk=congestion_risk,
-            fog_risk=fog_risk,
-            delay_risk=delay_risk,
+            congestion_risk=round(congestion_risk, 4),
+            fog_risk=round(fog_risk, 4),
+            operational_risk=round(operational_risk, 4),
+            delay_risk=round(delay_risk, 4),
+            confidence=round(confidence, 2),
             expected_speed_impact=expected_speed_impact,
             predicted_condition_summary=summary,
-            prediction_source=f"ML_XGBOOST_{self.ml_model.model_type.upper()}"
+            prediction_source=f"ML_XGBOOST_{self.ml_model.model_type.upper()}",
+            evidence=evidence
         )
