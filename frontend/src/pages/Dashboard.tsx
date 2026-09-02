@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
-import { Train, Clock, AlertTriangle, Activity, CheckCircle2, Info, X, ChevronDown, ChevronUp } from 'lucide-react';
+import React from 'react';
+import { Train, Clock, AlertTriangle, Activity, CheckCircle2, X, TrendingUp, BarChart2 } from 'lucide-react';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Legend } from 'recharts';
 import { useWebSocket, type Train as TrainType } from '../context/WebSocketContext';
 import { MonthContextSelector } from '../components/MonthContextSelector';
 
+// Time helpers for charts
+const parseTime = (timeStr: string) => {
+  if (!timeStr) return 0;
+  const parts = timeStr.split(':');
+  if (parts.length < 2) return 0;
+  const h = parseInt(parts[0], 10) || 0;
+  const m = parseInt(parts[1], 10) || 0;
+  return h * 60 + m;
+};
+
+const formatTime = (minutes: number) => {
+  const h = Math.floor(minutes / 60) % 24;
+  const m = Math.floor(minutes % 60);
+  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+};
+
 const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: () => void }> = ({ routeName, trains, onClose }) => {
-  const [expandedWhy, setExpandedWhy] = useState<Record<string, boolean>>({});
-
   if (!routeName) return null;
-
-  const toggleWhy = (trainId: string) => {
-    setExpandedWhy(prev => ({ ...prev, [trainId]: !prev[trainId] }));
-  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 backdrop-blur-sm">
-      <div className="bg-background border border-border rounded-xl w-full max-w-6xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden text-text">
+      <div className="bg-background border border-border rounded-xl w-full max-w-6xl shadow-2xl max-h-[92vh] flex flex-col overflow-hidden text-text">
         
         {/* Modal Header */}
         <div className="p-5 border-b border-border flex justify-between items-center bg-surface">
@@ -43,13 +54,18 @@ const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: ()
             </div>
           ) : (
             trains.map(train => {
-              const isWhyOpen = !expandedWhy[train.id];
-              const histCtx = train.historicalContext;
-              const sys2 = train.system2Prediction;
-              const sys3 = train.system3Decision;
+              const timelineData = (train.timeline || []).map((st: any) => ({
+                name: st.stationCode,
+                stationName: st.stationName,
+                scheduledMin: parseTime(st.scheduled),
+                predictedMin: parseTime(st.predicted),
+                scheduled: st.scheduled,
+                predicted: st.predicted,
+                delay: st.delay
+              }));
 
               return (
-                <div key={train.id} className="p-5 border border-border rounded-xl bg-surface shadow-sm space-y-4">
+                <div key={train.id} className="p-5 border border-border rounded-xl bg-surface shadow-sm space-y-5">
                   
                   {/* Train Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -110,83 +126,6 @@ const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: ()
                     </div>
                   )}
 
-                  {/* Expandable "Why? / Historical Context" Section */}
-                  <div className="border border-border rounded-lg overflow-hidden bg-background">
-                    <button
-                      onClick={() => toggleWhy(train.id)}
-                      className="w-full p-3 bg-surface hover:bg-border/50 flex items-center justify-between text-left text-xs font-bold text-text transition-colors"
-                    >
-                      <span className="flex items-center gap-2 text-primary">
-                        <Info className="w-4 h-4" />
-                        Why this ETA? View Historical Context & 4-Tier Prediction Breakdown
-                      </span>
-                      {isWhyOpen ? <ChevronUp className="w-4 h-4 text-textMuted" /> : <ChevronDown className="w-4 h-4 text-textMuted" />}
-                    </button>
-
-                    {isWhyOpen && (
-                      <div className="p-4 border-t border-border space-y-3 text-xs">
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                          
-                          {/* Tier 1: Historical Context */}
-                          <div className="p-3 bg-surface border border-border rounded-lg space-y-1">
-                            <div className="font-bold text-primary uppercase text-[11px] flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                              1. Historical Prior
-                            </div>
-                            <div className="text-textMuted"><strong className="text-text">Month:</strong> {histCtx?.month || 'February'}</div>
-                            <div className="text-textMuted"><strong className="text-text">Season:</strong> {histCtx?.season || 'Winter/Fog'}</div>
-                            <div className="text-textMuted"><strong className="text-text">Fog Prior:</strong> {histCtx?.historical_fog_risk_pct ?? 100}%</div>
-                            <div className="text-textMuted"><strong className="text-text">Congestion:</strong> {histCtx?.historical_congestion_risk_pct ?? 24}%</div>
-                            <div className="text-[10px] text-textMuted mt-1">Sample N = {histCtx?.sample_count?.toLocaleString() || '1,915'}</div>
-                          </div>
-
-                          {/* Tier 2: System 2 Live Prediction */}
-                          <div className="p-3 bg-surface border border-border rounded-lg space-y-1">
-                            <div className="font-bold text-warning uppercase text-[11px] flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-warning"></span>
-                              2. System 2 Prediction
-                            </div>
-                            <div className="text-textMuted"><strong className="text-text">Live Fog Risk:</strong> {sys2?.fogRiskPct ?? (train.delayMin > 10 ? 78 : 0)}%</div>
-                            <div className="text-textMuted"><strong className="text-text">Congestion Risk:</strong> {sys2?.congestionRiskPct ?? 22}%</div>
-                            <div className="text-textMuted"><strong className="text-text">Confidence:</strong> {train.confidence}%</div>
-                            <div className="text-textMuted"><strong className="text-text">Speed Impact:</strong> {sys2?.expectedSpeedImpact || (train.delayMin > 10 ? 'MEDIUM' : 'NONE')}</div>
-                            <div className="text-[10px] text-textMuted mt-1">Probabilistic Forecast</div>
-                          </div>
-
-                          {/* Tier 3: System 3 Dynamic Decision */}
-                          <div className="p-3 bg-surface border border-border rounded-lg space-y-1">
-                            <div className="font-bold text-critical uppercase text-[11px] flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-critical"></span>
-                              3. System 3 Decision
-                            </div>
-                            <div className="text-textMuted"><strong className="text-text">Restriction:</strong> {sys3?.actionType || (train.delayMin > 10 ? 'ACTIVE' : 'INACTIVE')}</div>
-                            <div className="text-textMuted"><strong className="text-text">Speed Cap:</strong> {sys3?.speedCapKmph ? `${sys3.speedCapKmph} km/h` : 'Line Speed'}</div>
-                            <div className="text-textMuted truncate"><strong className="text-text">Decision:</strong> {sys3?.reason || train.delayReason || 'Clear'}</div>
-                            <div className="text-[10px] text-textMuted mt-1">Dynamic Restriction Lifecycle</div>
-                          </div>
-
-                          {/* Tier 4: System 1 Physics & Dynamic ETA */}
-                          <div className="p-3 bg-surface border border-border rounded-lg space-y-1">
-                            <div className="font-bold text-success uppercase text-[11px] flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-success"></span>
-                              4. System 1 Physics & ETA
-                            </div>
-                            <div className="text-textMuted"><strong className="text-text">Velocity:</strong> {train.currentSpeed?.toFixed(0) || 38} km/h</div>
-                            <div className="text-textMuted"><strong className="text-text">Sched Arrival:</strong> {train.scheduledEta}</div>
-                            <div className="text-textMuted"><strong className="text-text">Dynamic AI ETA:</strong> {train.aiEta}</div>
-                            <div className="text-textMuted"><strong className="text-text">Delay:</strong> +{train.delayMin} min</div>
-                            <div className="text-[10px] text-success font-semibold mt-1">Closed-Loop Synchronized</div>
-                          </div>
-
-                        </div>
-
-                        <div className="p-2.5 bg-surface/80 rounded border border-border text-[11px] text-textMuted leading-relaxed">
-                          <strong className="text-text">Explanation:</strong> Month selection provides historical environmental priors (Tier 1). System 2 evaluates kinematics + priors to forecast live risks (Tier 2). System 3 creates dynamic speed caps when thresholds are met (Tier 3). System 1 physics executes physical deceleration and ML updates dynamic ETA (Tier 4). At 09:00 AM, fog clears and train accelerates back to 110 km/h.
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
                   {/* Station Schedule & Timeline */}
                   {train.timeline && train.timeline.length > 0 && (
                     <div className="mt-4 border-t border-border pt-4">
@@ -204,14 +143,14 @@ const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: ()
                               <th className="py-2.5 px-3">AI Predicted</th>
                               <th className="py-2.5 px-3">Delay</th>
                               <th className="py-2.5 px-3">Confidence</th>
-                              <th className="py-2.5 px-3">Factor</th>
+                              <th className="py-2.5 px-3">Section Operational Factor</th>
                               <th className="py-2.5 px-3 text-right">Destination ETA</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-border bg-background">
                             {(train.timeline || []).map((st: any, i: number) => {
                               const isTerminal = i === (train.timeline?.length || 0) - 1;
-                              const stationConfidence = Math.max(45, train.confidence - (i * 2));
+                              const stationConfidence = Math.max(45, (train.confidence || 94) - (i * 2));
                               
                               return (
                                 <tr key={i} className="hover:bg-surface transition-colors">
@@ -236,13 +175,13 @@ const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: ()
                                   <td className="py-2.5 px-3 font-medium text-success flex items-center gap-1">
                                     <CheckCircle2 className="w-3 h-3 text-success" /> {stationConfidence}%
                                   </td>
-                                  <td className="py-2.5 px-3 text-[11px] text-textMuted max-w-[150px] truncate" title={train.delayReason || 'Clear'}>
+                                  <td className="py-2.5 px-3 text-[11px] text-textMuted max-w-[240px] truncate" title={st.delayReason || 'Clear'}>
                                     {st.delay > 0 ? (
-                                      <span className="flex items-center gap-1 text-critical">
-                                        <AlertTriangle className="w-3 h-3 shrink-0" /> {train.delayReason || 'Network Delay'}
+                                      <span className="flex items-center gap-1 text-critical font-medium">
+                                        <AlertTriangle className="w-3 h-3 shrink-0" /> {st.delayReason || train.delayReason || 'Network Delay'}
                                       </span>
                                     ) : (
-                                      <span className="text-textMuted">Normal Cruising</span>
+                                      <span className="text-textMuted">{st.delayReason || 'Normal Cruising'}</span>
                                     )}
                                   </td>
                                   <td className="py-2.5 px-3 text-right font-extrabold text-primary">{train.aiEta}</td>
@@ -251,6 +190,79 @@ const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: ()
                             })}
                           </tbody>
                         </table>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Interactive Visual Graphs */}
+                  {timelineData.length > 0 && (
+                    <div className="space-y-4 pt-2">
+                      <h4 className="text-xs font-bold text-text uppercase tracking-wider flex items-center gap-2">
+                        <TrendingUp className="w-4 h-4 text-primary" />
+                        Visual Trajectory & Delay Dynamics
+                      </h4>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        {/* Graph 1: Scheduled vs AI Predicted ETA Trend */}
+                        <div className="h-64 border border-border rounded-xl bg-background p-4 flex flex-col">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-[11px] font-bold text-text uppercase">ETA Trajectory</span>
+                            <span className="text-[10px] text-primary font-mono">Scheduled vs AI Predicted</span>
+                          </div>
+                          <div className="flex-1 min-h-0">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <LineChart data={timelineData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" opacity={0.3} />
+                                <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#64748b' }} axisLine={false} tickLine={false} dy={5} />
+                                <YAxis 
+                                  domain={['auto', 'auto']} 
+                                  tickFormatter={formatTime} 
+                                  tick={{ fontSize: 10, fill: '#64748b' }} 
+                                  axisLine={false} 
+                                  tickLine={false} 
+                                />
+                                <RechartsTooltip 
+                                  contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px', color: '#f8fafc', fontSize: '11px' }}
+                                  formatter={(val: any, name?: any, props?: any) => {
+                                    if (name === 'AI Predicted') return [props?.payload?.predicted || val, name];
+                                    if (name === 'Scheduled') return [props?.payload?.scheduled || val, name];
+                                    return [val, name || ''];
+                                  }}
+                                />
+                                <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '4px' }} />
+                                <Line type="monotone" dataKey="predictedMin" stroke="#3b82f6" strokeWidth={2.5} dot={{ r: 3, fill: '#3b82f6' }} activeDot={{ r: 5 }} name="AI Predicted" />
+                                <Line type="monotone" dataKey="scheduledMin" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 4" dot={{ r: 2.5, fill: '#94a3b8' }} name="Scheduled" />
+                              </LineChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+
+                        {/* Graph 2: Progressive Station Delay Buildup (mins) */}
+                        <div className="h-64 border border-border rounded-xl bg-background p-4 flex flex-col">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-[11px] font-bold text-text uppercase flex items-center gap-1.5">
+                              <BarChart2 className="w-3.5 h-3.5 text-critical" />
+                              Station Delay Breakdown (mins)
+                            </span>
+                            <span className="text-[10px] text-critical font-mono">Max +{train.delayMin}m</span>
+                          </div>
+                          <div className="flex-1 min-h-0">
+                            <ResponsiveContainer width="100%" height="100%">
+                              <BarChart data={timelineData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" opacity={0.3} />
+                                <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#64748b' }} axisLine={false} tickLine={false} dy={5} />
+                                <YAxis tick={{ fontSize: 10, fill: '#64748b' }} axisLine={false} tickLine={false} />
+                                <RechartsTooltip 
+                                  contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px', color: '#f8fafc', fontSize: '11px' }}
+                                  formatter={(val: any) => [`+${val} min`, 'Delay']}
+                                />
+                                <Bar dataKey="delay" fill="#f43f5e" radius={[4, 4, 0, 0]} name="Delay (min)" maxBarSize={36} />
+                              </BarChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   )}
@@ -383,7 +395,7 @@ export const Dashboard: React.FC = () => {
         <div className="flex justify-between items-center mb-5">
           <div>
             <h3 className="text-sm font-bold text-text uppercase tracking-wider">Live Trains Snapshot</h3>
-            <p className="text-xs text-textMuted mt-0.5">Click any train or route to inspect detailed station timelines & 4-tier diagnostics.</p>
+            <p className="text-xs text-textMuted mt-0.5">Click any train or route to inspect detailed station timelines & trajectory graphs.</p>
           </div>
           <span className="text-xs text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
             {liveTrains.length} Live Telemetry Feeds
@@ -447,7 +459,7 @@ export const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Route Detail Modal with 4-Tier Diagnostics */}
+      {/* Route Detail Modal with Trajectory & Delay Charts */}
       {selectedRoute && (
         <RouteModal 
           routeName={selectedRoute} 

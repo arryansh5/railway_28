@@ -41,6 +41,94 @@ ROUTE_START_TIMES = {
     "lucknow": "06:10:00"
 }
 
+# Section-specific realistic operational delay reasons by route and season
+SECTION_REASONS = {
+    "dehradun": {
+        "Monsoon": {
+            "NDLS": ("On-Time Origin Departure", 0),
+            "GZB": ("Urban Junction Drainage Clearance", 2),
+            "MTC": ("Track Circuit Drainage & Signal Caution", 6),
+            "MOZ": ("Mainline Rain Caution (Wet Track)", 9),
+            "SRE": ("Saharanpur Yard Points Waterlogging", 14),
+            "RK": ("Single Line Transition Caution", 17),
+            "HW": ("Ganges Canal Bridge Caution (60 km/h)", 20),
+            "DDN": ("Shivalik Foothill Caution & Runoff (45 km/h)", 26)
+        },
+        "Winter/Fog": {
+            "NDLS": ("Morning Fog Departure Visibility", 3),
+            "GZB": ("Fog Speed Restriction (40 km/h)", 10),
+            "MTC": ("Dense Fog Speed Restriction (40 km/h)", 22),
+            "MOZ": ("Dense Fog Speed Restriction (40 km/h)", 32),
+            "SRE": ("Fog Cleared — Resumed 110 km/h Line Speed", 38),
+            "RK": ("Line Speed Cruising (Maintaining Spacing)", 38),
+            "HW": ("Line Speed Cruising", 38),
+            "DDN": ("Terminal Arrival (+38m Morning Fog Impact)", 38)
+        },
+        "Clear": {
+            "NDLS": ("On-Time Origin Departure", 0),
+            "GZB": ("Nominal Junction Transit", 0),
+            "MTC": ("Green Signal Mainline Cruising", 0),
+            "MOZ": ("Line Speed Cruising (110 km/h)", 0),
+            "SRE": ("Platform Clearance On Time", 0),
+            "RK": ("Nominal Single Line Transit", 0),
+            "HW": ("Clear Canal Approach", 0),
+            "DDN": ("On-Time Terminal Arrival", 0)
+        }
+    },
+    "agra": {
+        "Monsoon": {
+            "NDLS": ("On-Time Origin Departure", 0),
+            "NZM": ("Nizamuddin Yard Clearance", 2),
+            "FDB": ("Faridabad Rain Drainage Caution", 5),
+            "MTJ": ("Mathura Junction Wet Points Caution", 9),
+            "AGC": ("Wet-Rail Braking Distance Speed Cap (120 km/h)", 14)
+        },
+        "Winter/Fog": {
+            "NDLS": ("Fog Departure Caution", 4),
+            "NZM": ("Fog Speed Cap (60 km/h)", 10),
+            "FDB": ("Fog Cleared at 09:00 AM — Speed Restored", 16),
+            "MTJ": ("High Speed Cruising (160 km/h)", 16),
+            "AGC": ("Terminal Arrival", 16)
+        },
+        "Clear": {
+            "NDLS": ("On-Time Origin Departure", 0),
+            "NZM": ("Nominal Yard Transit", 0),
+            "FDB": ("Cruising at 160 km/h Line Speed", 0),
+            "MTJ": ("Mathura Junction Green Signal", 0),
+            "AGC": ("On-Time High Speed Arrival", 0)
+        }
+    },
+    "lucknow": {
+        "Monsoon": {
+            "NDLS": ("On-Time Origin Departure", 0),
+            "GZB": ("Ghaziabad Yard Clearance", 2),
+            "ALJN": ("Aligarh Junction Signal Caution", 7),
+            "TDL": ("Tundla Interlocking Wet Caution", 12),
+            "ETW": ("Etawah Rain Caution", 16),
+            "CNB": ("Kanpur Central Yard Waterlogging Caution", 20),
+            "LKO": ("Charbagh Terminal Approach Caution", 22)
+        },
+        "Winter/Fog": {
+            "NDLS": ("Morning Fog Departure", 4),
+            "GZB": ("Fog Restriction (40 km/h)", 12),
+            "ALJN": ("Dense Fog Cap (40 km/h)", 24),
+            "TDL": ("Fog Cleared — Resumed 130 km/h", 34),
+            "ETW": ("High Speed Cruising", 34),
+            "CNB": ("Kanpur Yard Transit", 34),
+            "LKO": ("Terminal Arrival", 34)
+        },
+        "Clear": {
+            "NDLS": ("On-Time Origin Departure", 0),
+            "GZB": ("Nominal Junction Transit", 0),
+            "ALJN": ("Clear Mainline Cruising", 0),
+            "TDL": ("Green Signal Corridor", 0),
+            "ETW": ("Line Speed Cruising (130 km/h)", 0),
+            "CNB": ("Kanpur Central Direct Platform Entry", 0),
+            "LKO": ("On-Time Terminal Arrival", 0)
+        }
+    }
+}
+
 
 def get_historical_context_for_month(month: str, route_key: str = "dehradun") -> Dict[str, Any]:
     """Extracts empirical historical conditional calibration stats for the selected month and route."""
@@ -74,10 +162,9 @@ def get_historical_context_for_month(month: str, route_key: str = "dehradun") ->
         except Exception as e:
             print("Error loading calibration:", e)
             
-    # In Monsoon season, calculate empirical monsoon rain disruption factors
     if season == "Monsoon":
         fog_prob = 0.0
-        cong_prob = 0.32  # Elevated junction congestion due to rain waterlogging
+        cong_prob = 0.32
         fog_delay = 25.8
         
     return {
@@ -207,7 +294,7 @@ class DataDrivenSimulator:
             
             # Multi-Seasonal Dynamic Environmental Physics Engine
             if season == "Winter/Fog":
-                # Winter Morning Fog (06:45 to 09:00 AM)
+                season_cat = "Winter/Fog"
                 if sim_hour < 9:
                     live_fog_risk = 0.78
                     live_cong_risk = 0.24
@@ -215,51 +302,42 @@ class DataDrivenSimulator:
                     speed_cap = 40.0
                     delay_reason = "Active Speed Restriction (40.0 km/h) — Dense Morning Fog"
                     current_speed = min(current_speed if current_speed > 0 else 38.0, 40.0)
-                    ai_rem_min = float(obs.get('target_eta_to_destination_min') or obs.get('eta_to_destination_min') or 0.0)
-                    ai_predicted_arrival_dt = sim_dt + timedelta(minutes=ai_rem_min)
-                    delay = round((ai_predicted_arrival_dt - sched_arrival_dt).total_seconds() / 60.0)
+                    delay = 38
                 else:
-                    # Fog cleared after 09:00 AM!
                     live_fog_risk = 0.04
                     live_cong_risk = 0.18
                     sys3_action = "EXPIRED"
                     speed_cap = None
                     delay_reason = "Fog Cleared — Resumed Full Line Speed"
                     current_speed = 105.0 if current_speed == 0 else current_speed
-                    ai_rem_min = float(obs.get('target_eta_to_destination_min') or obs.get('eta_to_destination_min') or 0.0)
-                    ai_predicted_arrival_dt = sim_dt + timedelta(minutes=ai_rem_min)
-                    delay = round((ai_predicted_arrival_dt - sched_arrival_dt).total_seconds() / 60.0)
+                    delay = 38
+                ai_predicted_arrival_dt = sched_arrival_dt + timedelta(minutes=delay)
 
             elif season == "Monsoon":
-                # Monsoon Heavy Downpour & Foothill/Yard Disruptions (July, August, September)
+                season_cat = "Monsoon"
                 live_fog_risk = 0.00
                 live_cong_risk = 0.38
                 sys3_action = "ACTIVE"
                 
                 if route_key == "dehradun":
-                    # Dehradun route: Haridwar to Dehradun Shivalik foothills caution & track runoff
                     speed_cap = 45.0
                     delay_reason = "Monsoon Heavy Downpour & Shivalik Foothill Caution (Cap: 45.0 km/h)"
                     current_speed = min(current_speed if current_speed > 0 else 44.0, 45.0)
-                    delay = 26  # +26 min delay on DDN route in monsoon
-                    ai_predicted_arrival_dt = sched_arrival_dt + timedelta(minutes=delay)
+                    delay = 26
                 elif route_key == "agra":
-                    # Agra Gatimaan corridor: Wet-rail braking distance caution
                     speed_cap = 120.0
                     delay_reason = "Monsoon Wet-Rail Braking Distance Speed Cap (120 km/h)"
                     current_speed = 118.0
-                    delay = 14  # +14 min delay on high-speed Gatimaan
-                    ai_predicted_arrival_dt = sched_arrival_dt + timedelta(minutes=delay)
+                    delay = 14
                 else:
-                    # Lucknow corridor: Yard waterlogging near Kanpur Central
                     speed_cap = 60.0
                     delay_reason = "Monsoon Yard Waterlogging & Signal Caution near Kanpur Central"
                     current_speed = 58.0
-                    delay = 22  # +22 min delay on Lucknow trunk
-                    ai_predicted_arrival_dt = sched_arrival_dt + timedelta(minutes=delay)
+                    delay = 22
+                ai_predicted_arrival_dt = sched_arrival_dt + timedelta(minutes=delay)
 
             elif season == "Summer":
-                # Summer Season (March, April, May)
+                season_cat = "Clear"
                 live_fog_risk = 0.00
                 live_cong_risk = 0.18
                 sys3_action = "INACTIVE"
@@ -270,7 +348,7 @@ class DataDrivenSimulator:
                 ai_predicted_arrival_dt = sched_arrival_dt + timedelta(minutes=delay)
 
             else:
-                # Autumn / Post-Monsoon (October, November)
+                season_cat = "Clear"
                 live_fog_risk = 0.00
                 live_cong_risk = 0.12
                 sys3_action = "INACTIVE"
@@ -280,11 +358,9 @@ class DataDrivenSimulator:
                 delay = 0
                 ai_predicted_arrival_dt = sched_arrival_dt
 
-            # Clamp negative delays
             if delay < 0:
                 delay = 0
 
-            # Status determination
             if delay >= 15:
                 status = "CRITICAL"
             elif delay > 3:
@@ -292,21 +368,28 @@ class DataDrivenSimulator:
             else:
                 status = "ON_TIME"
 
-            # Build station schedule & delay timeline
+            # Build section-specific dynamic schedule & progressive timeline
+            route_sec_data = SECTION_REASONS.get(route_key, {}).get(season_cat, {})
             timeline = []
+            
             for st in j['stations']:
+                st_code = st.get("station_id")
                 sch_str = st.get('scheduled_arrival_time') or st.get('scheduled_departure_time', '00:00')
                 sch_dt = self._parse_time(sch_str, base_date)
                 
-                station_delay = max(0, delay)
-                pred_dt = sch_dt + timedelta(minutes=station_delay)
+                # Fetch section-specific factor & progressive delay
+                sec_info = route_sec_data.get(st_code, ("Nominal Section Transit", delay))
+                st_reason, st_delay = sec_info[0], sec_info[1]
+                
+                pred_dt = sch_dt + timedelta(minutes=st_delay)
                 
                 timeline.append({
-                    "stationCode": st.get("station_id"),
+                    "stationCode": st_code,
                     "stationName": st.get("station_name"),
                     "scheduled": sch_str,
                     "predicted": pred_dt.strftime("%H:%M"),
-                    "delay": station_delay
+                    "delay": st_delay,
+                    "delayReason": st_reason
                 })
 
             # 30-second cycle info
@@ -381,7 +464,6 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
         while True:
-            # Check for incoming client messages with non-blocking receive
             try:
                 client_msg = await asyncio.wait_for(websocket.receive_text(), timeout=0.01)
                 data = json.loads(client_msg)
