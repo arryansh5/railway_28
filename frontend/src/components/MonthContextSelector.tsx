@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useWebSocket, type HistoricalContext } from '../context/WebSocketContext';
-import { Calendar, CloudFog, Activity } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { getApiUrl } from '../config/api';
 
 const MONTHS = [
@@ -45,26 +45,28 @@ export const MonthContextSelector: React.FC<{ simTime?: string }> = ({ simTime =
 
   const getSeasonBadge = (season?: string) => {
     switch (season) {
-      case 'Winter/Fog':
-        return { text: 'Winter / Fog', icon: '❄️', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' };
       case 'Monsoon':
-        return { text: 'Monsoon', icon: '🌧️', color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' };
+        return { text: 'Monsoon (Heavy Rain Caution)', color: 'bg-primary/10 text-primary border-primary/20', icon: '🌧️' };
+      case 'Winter/Fog':
+        return { text: 'Winter (Morning Fog Protocol)', color: 'bg-criticalBg text-critical border-critical/20', icon: '❄️' };
       case 'Summer':
-        return { text: 'Summer', icon: '☀️', color: 'text-orange-400 bg-orange-500/10 border-orange-500/20' };
+        return { text: 'Summer (High Speed Corridor)', color: 'bg-warningBg text-warning border-warning/20', icon: '☀️' };
+      case 'Post-Monsoon':
+      case 'Autumn':
       default:
-        return { text: 'Autumn / Post-Monsoon', icon: '🍂', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' };
+        return { text: 'Autumn (Clear Line Speed)', color: 'bg-successBg text-success border-success/20', icon: '🍂' };
     }
   };
 
   const seasonBadge = getSeasonBadge(contextData?.season);
 
   return (
-    <div className="bg-background border border-border rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
-      {/* Left: Month Selector & Season */}
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2">
+    <div className="bg-background border border-border rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+      {/* Left: Month Selection & Active Season Badge */}
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 text-text font-bold text-xs">
           <Calendar className="w-4 h-4 text-primary" />
-          <span className="text-xs font-bold text-text uppercase tracking-wider">Simulation Month:</span>
+          <span>Simulation Month:</span>
         </div>
 
         <select
@@ -86,27 +88,6 @@ export const MonthContextSelector: React.FC<{ simTime?: string }> = ({ simTime =
           </span>
         )}
       </div>
-
-      {/* Center: Live Calibration Context Pills */}
-      {contextData && (
-        <div className="flex flex-wrap items-center gap-3 text-xs">
-          {/* Fog Prior */}
-          <div className="flex items-center gap-1.5 bg-surface px-2.5 py-1 rounded-md border border-border">
-            <CloudFog className={`w-3.5 h-3.5 ${contextData.historical_fog_risk > 0.4 ? 'text-warning' : 'text-success'}`} />
-            <span className="text-textMuted">Hist. Fog:</span>
-            <span className={`font-bold ${contextData.historical_fog_risk > 0.4 ? 'text-warning' : 'text-success'}`}>
-              {contextData.historical_fog_risk_pct}%
-            </span>
-          </div>
-
-          {/* Regional Congestion */}
-          <div className="flex items-center gap-1.5 bg-surface px-2.5 py-1 rounded-md border border-border">
-            <Activity className="w-3.5 h-3.5 text-primary" />
-            <span className="text-textMuted">NR Congestion:</span>
-            <span className="font-bold text-text">{contextData.historical_congestion_risk_pct}%</span>
-          </div>
-        </div>
-      )}
 
       {/* Right: 30s Live Simulation Pulse */}
       <div className="flex items-center gap-2 text-xs bg-surface px-3 py-1.5 rounded-lg border border-border">
