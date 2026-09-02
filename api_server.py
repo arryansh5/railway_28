@@ -7,6 +7,8 @@ from pathlib import Path
 from typing import Dict, Any, List
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 app = FastAPI(title="Indian Railways Dynamic ETA & Historical Context API")
 
@@ -41,7 +43,6 @@ ROUTE_START_TIMES = {
     "lucknow": "06:10:00"
 }
 
-# Section-specific realistic operational delay reasons by route and season
 SECTION_REASONS = {
     "dehradun": {
         "Monsoon": {
@@ -131,7 +132,6 @@ SECTION_REASONS = {
 
 
 def get_historical_context_for_month(month: str, route_key: str = "dehradun") -> Dict[str, Any]:
-    """Extracts empirical historical conditional calibration stats for the selected month and route."""
     season = MONTH_SEASON_MAP.get(month, "Winter/Fog")
     start_time_str = ROUTE_START_TIMES.get(route_key, "06:45:00")
     dep_hour = int(start_time_str.split(":")[0])
@@ -277,22 +277,18 @@ class DataDrivenSimulator:
             dist_remaining = float(obs.get('distance_to_destination_km', 0.0))
             current_speed = float(obs.get('current_speed_kmph', 0.0))
             
-            # Simulation clock time (e.g. 06:45:00)
             sim_time_str = obs.get('timestamp', '06:45:00')
             sim_dt = self._parse_time(sim_time_str, base_date)
             sim_hour = int(sim_time_str.split(':')[0])
             
-            # Destination scheduled arrival time
             dest_stn = j.get('destination_station', {})
             sched_arrival_str = dest_stn.get('scheduled_arrival_time') or (j['stations'][-1].get('scheduled_arrival_time') if j['stations'] else '12:22')
             sched_arrival_dt = self._parse_time(sched_arrival_str, base_date)
             
-            # Context evaluation for selected month
             month_ctx = get_historical_context_for_month(self.selected_month, j['route_key'])
             season = month_ctx['season']
             route_key = j['route_key']
             
-            # Multi-Seasonal Dynamic Environmental Physics Engine
             if season == "Winter/Fog":
                 season_cat = "Winter/Fog"
                 if sim_hour < 9:
@@ -368,7 +364,6 @@ class DataDrivenSimulator:
             else:
                 status = "ON_TIME"
 
-            # Build section-specific dynamic schedule & progressive timeline
             route_sec_data = SECTION_REASONS.get(route_key, {}).get(season_cat, {})
             timeline = []
             
@@ -377,7 +372,6 @@ class DataDrivenSimulator:
                 sch_str = st.get('scheduled_arrival_time') or st.get('scheduled_departure_time', '00:00')
                 sch_dt = self._parse_time(sch_str, base_date)
                 
-                # Fetch section-specific factor & progressive delay
                 sec_info = route_sec_data.get(st_code, ("Nominal Section Transit", delay))
                 st_reason, st_delay = sec_info[0], sec_info[1]
                 
@@ -392,7 +386,6 @@ class DataDrivenSimulator:
                     "delayReason": st_reason
                 })
 
-            # 30-second cycle info
             next_dt = sim_dt + timedelta(seconds=30)
             cycle_info = {
                 "lastUpdated": sim_time_str,
@@ -443,13 +436,11 @@ async def get_historical_context(
     month: str = Query("September", description="Month name (January to December)"),
     route: str = Query("dehradun", description="Route key (dehradun, agra, lucknow)")
 ):
-    """Returns real empirical conditional calibration context from historical_calibration.json."""
     return get_historical_context_for_month(month, route)
 
 
 @app.post("/api/simulation/configure")
 async def configure_simulation(month: str = Query("September")):
-    """Sets the active month context for the live simulator."""
     simulator.set_month(month)
     return {
         "status": "CONFIGURED",
@@ -510,6 +501,20 @@ async def get_metrics():
         return {"mae": 3.4, "rmse": 4.8, "mape": 5.1, "accuracy": 94.0}
 
 
+# Serve built frontend static files in production if dist directory exists
+FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
+if FRONTEND_DIST.exists():
+    app.mount("/assets", StaticFiles(directory=str(FRONTEND_DIST / "assets")), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        file_path = FRONTEND_DIST / full_path
+        if file_path.exists() and file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(FRONTEND_DIST / "index.html")
+
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("api_server:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("api_server:app", host="0.0.0.0", port=port, reload=True)
