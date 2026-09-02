@@ -1,10 +1,14 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Train } from 'lucide-react';
-import { mockEtaTrend, mockTrains } from '../data/mockData';
+import { Train as TrainIcon } from 'lucide-react';
+import { mockEtaTrend } from '../data/mockData';
+import { useWebSocket } from '../context/WebSocketContext';
 
 export const TrainDetails: React.FC = () => {
-  const train = mockTrains[2]; // Using the critical train 12430 for demo
+  const { liveTrains } = useWebSocket();
+  const train = liveTrains.find(t => t.id === '12430') || liveTrains[0]; 
+
+  if (!train) return <div className="p-8 text-center text-textMuted">Loading train details...</div>;
 
   return (
     <div className="space-y-6">
@@ -18,7 +22,7 @@ export const TrainDetails: React.FC = () => {
           <div className="bg-background border border-border rounded-xl p-6">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 bg-criticalBg text-critical rounded-lg">
-                <Train className="w-8 h-8" aria-hidden="true" />
+                <TrainIcon className="w-8 h-8" aria-hidden="true" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-text">{train.id}</h3>

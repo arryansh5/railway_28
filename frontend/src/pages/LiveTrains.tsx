@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Search, Filter, Eye } from 'lucide-react';
-import { mockTrains } from '../data/mockData';
+import { useWebSocket } from '../context/WebSocketContext';
 import { Link } from 'react-router-dom';
 
 export const LiveTrains: React.FC = () => {
+  const { liveTrains } = useWebSocket();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
 
-  const filteredTrains = mockTrains.filter(train => {
+  const filteredTrains = liveTrains.filter(train => {
     const matchesSearch = train.name.toLowerCase().includes(searchTerm.toLowerCase()) || train.id.includes(searchTerm);
     const matchesStatus = statusFilter === 'ALL' || train.status === statusFilter;
     return matchesSearch && matchesStatus;
@@ -73,7 +74,7 @@ export const LiveTrains: React.FC = () => {
                   <td className="py-4 px-6 text-sm text-text">{train.route}</td>
                   <td className="py-4 px-6">
                     <div className="text-sm font-medium text-text">{train.currentLocation}</div>
-                    <div className="text-xs text-textMuted">{train.distanceRemaining} km to go</div>
+                    <div className="text-xs text-textMuted">{train.distanceRemaining.toFixed(1)} km to go</div>
                   </td>
                   <td className="py-4 px-6 text-sm text-text">{train.scheduledEta}</td>
                   <td className="py-4 px-6 text-sm font-bold text-text">{train.aiEta}</td>

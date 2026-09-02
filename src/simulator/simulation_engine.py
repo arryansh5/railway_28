@@ -199,7 +199,16 @@ def run_simulation(
                     arrival_delay_min = _calculate_delay_min(elapsed_sec, curr_stn, is_arrival=True)
                 else:
                     dwelling = True
-                    dwell_time_remaining_sec = curr_stn["scheduled_dwell_min"] * 60.0
+                    
+                    base_dwell_sec = curr_stn["scheduled_dwell_min"] * 60.0
+                    scheduled_dep_sec = curr_stn["scheduled_departure_offset_min"] * 60.0
+                    projected_dep_sec = elapsed_sec + base_dwell_sec
+                    
+                    if projected_dep_sec < scheduled_dep_sec:
+                        dwell_time_remaining_sec = scheduled_dep_sec - elapsed_sec
+                    else:
+                        dwell_time_remaining_sec = base_dwell_sec
+                        
                     station_event = "ARRIVED"
                     current_station_id = curr_stn["station_id"]
                     actual_arrival_time = current_time_str
