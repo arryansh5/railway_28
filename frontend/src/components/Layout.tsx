@@ -17,7 +17,7 @@ export const Layout: React.FC = () => {
   return (
     <div className="flex h-screen bg-surface">
       {/* Sidebar */}
-      <aside className="w-64 bg-background border-r border-border flex flex-col h-full" aria-label="Sidebar Navigation">
+      {/* <aside className="w-64 bg-background border-r border-border flex flex-col h-full" aria-label="Sidebar Navigation">
         <div className="p-6 flex items-center gap-3 border-b border-border">
           <Train className="w-8 h-8 text-primary" aria-hidden="true" />
           <div>
@@ -51,13 +51,23 @@ export const Layout: React.FC = () => {
             Logout
           </button>
         </div>
-      </aside>
+      </aside> */}
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         {/* Topbar */}
         <header className="h-16 bg-background border-b border-border flex items-center justify-between px-8" aria-label="Top Bar">
-          <div className="flex items-center gap-4 text-sm font-medium text-textMuted">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 pr-2">
+              <Train className="w-6 h-6 text-primary" aria-hidden="true" />
+              <div>
+                <h1 className="font-bold text-lg text-text tracking-wide">Station Controller</h1>
+              </div>
+            </div>
+            
+            <div className="h-6 w-px bg-border"></div>
+
+            <div className="flex items-center gap-4 text-sm font-medium text-textMuted">
             <span>Station: New Delhi</span>
             <span className="w-1 h-1 rounded-full bg-border" aria-hidden="true"></span>
             <span>{new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })} | {new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</span>
@@ -66,9 +76,10 @@ export const Layout: React.FC = () => {
               <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-success' : 'bg-warning'} ${isConnected ? 'animate-pulse' : ''}`} aria-hidden="true"></span>
               {isConnected ? 'LIVE DATA CONNECTED' : 'CONNECTING...'}
             </div>
+            </div>
           </div>
           
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             <button className="relative text-textMuted hover:text-text focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1" aria-label="Notifications">
               <AlertTriangle className="w-5 h-5" />
               <span className="absolute top-0 right-0 w-2 h-2 bg-critical rounded-full border border-background"></span>
@@ -79,7 +90,7 @@ export const Layout: React.FC = () => {
               </div>
               <span className="font-medium text-sm text-text">Station Controller</span>
             </div>
-          </div>
+          </div> */}
         </header>
 
         {/* Page Content */}
