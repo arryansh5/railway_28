@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Train, Info, Activity, AlertTriangle, LogOut } from 'lucide-react';
+import { LayoutDashboard, Train, Activity, AlertTriangle, LogOut } from 'lucide-react';
 
 import { useWebSocket } from '../context/WebSocketContext';
 
