@@ -1,0 +1,6290 @@
+{
+  "meta": {
+    "dataset_path": "D:\\Supernova\\Data\\historical\\train.csv",
+    "total_records": 1064,
+    "min_samples_threshold": 5
+  },
+  "global_baseline": {
+    "running_time": {
+      "mean": 46.05,
+      "std": 21.8,
+      "median": 38.25,
+      "p10": 23.8,
+      "p25": 34.0,
+      "p75": 56.3,
+      "p90": 74.5,
+      "min": 23.8,
+      "max": 175.33
+    },
+    "delay_delta": {
+      "mean": 1.77,
+      "std": 17.35,
+      "median": -4.2,
+      "p10": -7.8,
+      "p25": -6.75,
+      "p75": 1.25,
+      "p90": 20.78,
+      "min": -10.2,
+      "max": 122.49
+    }
+  },
+  "train_type_profiles": {
+    "EXPRESS": {
+      "sample_size": 266,
+      "running_time": {
+        "mean": 46.33,
+        "std": 23.07,
+        "median": 38.25,
+        "p10": 23.8,
+        "p25": 34.0,
+        "p75": 57.8,
+        "p90": 75.22,
+        "min": 23.8,
+        "max": 175.33
+      },
+      "delay_delta": {
+        "mean": 2.05,
+        "std": 19.89,
+        "median": -4.8,
+        "p10": -7.8,
+        "p25": -6.75,
+        "p75": -0.2,
+        "p90": 23.87,
+        "min": -10.2,
+        "max": 122.49
+      },
+      "entry_speed": {
+        "mean": 73.22,
+        "std": 21.58,
+        "median": 80.78,
+        "p10": 39.81,
+        "p25": 53.27,
+        "p75": 89.36,
+        "p90": 96.03,
+        "min": 23.23,
+        "max": 107.52
+      }
+    },
+    "PASSENGER": {
+      "sample_size": 266,
+      "running_time": {
+        "mean": 44.65,
+        "std": 20.62,
+        "median": 38.25,
+        "p10": 23.8,
+        "p25": 31.23,
+        "p75": 53.15,
+        "p90": 69.25,
+        "min": 23.8,
+        "max": 160.17
+      },
+      "delay_delta": {
+        "mean": 0.36,
+        "std": 16.2,
+        "median": -4.8,
+        "p10": -7.8,
+        "p25": -6.75,
+        "p75": -1.88,
+        "p90": 18.61,
+        "min": -10.2,
+        "max": 108.17
+      },
+      "entry_speed": {
+        "mean": 75.28,
+        "std": 21.12,
+        "median": 82.34,
+        "p10": 44.12,
+        "p25": 61.72,
+        "p75": 91.62,
+        "p90": 97.69,
+        "min": 23.0,
+        "max": 107.8
+      }
+    },
+    "SHATABDI": {
+      "sample_size": 266,
+      "running_time": {
+        "mean": 45.68,
+        "std": 21.56,
+        "median": 38.25,
+        "p10": 23.8,
+        "p25": 34.0,
+        "p75": 54.77,
+        "p90": 70.74,
+        "min": 23.8,
+        "max": 138.88
+      },
+      "delay_delta": {
+        "mean": 1.4,
+        "std": 15.88,
+        "median": -4.2,
+        "p10": -6.75,
+        "p25": -6.0,
+        "p75": 1.03,
+        "p90": 15.67,
+        "min": -10.2,
+        "max": 86.33
+      },
+      "entry_speed": {
+        "mean": 76.95,
+        "std": 20.18,
+        "median": 82.84,
+        "p10": 46.25,
+        "p25": 66.16,
+        "p75": 92.54,
+        "p90": 97.19,
+        "min": 23.04,
+        "max": 107.29
+      }
+    },
+    "SUPERFAST": {
+      "sample_size": 266,
+      "running_time": {
+        "mean": 47.56,
+        "std": 21.89,
+        "median": 41.7,
+        "p10": 23.8,
+        "p25": 34.0,
+        "p75": 57.8,
+        "p90": 76.5,
+        "min": 23.8,
+        "max": 151.43
+      },
+      "delay_delta": {
+        "mean": 3.27,
+        "std": 17.13,
+        "median": -4.2,
+        "p10": -6.75,
+        "p25": -6.0,
+        "p75": 8.15,
+        "p90": 21.0,
+        "min": -10.2,
+        "max": 106.43
+      },
+      "entry_speed": {
+        "mean": 74.38,
+        "std": 20.65,
+        "median": 81.59,
+        "p10": 42.25,
+        "p25": 61.89,
+        "p75": 89.84,
+        "p90": 96.02,
+        "min": 23.81,
+        "max": 103.99
+      }
+    }
+  },
+  "section_profiles": {
+    "SEC_GZB_MTC": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 40.0,
+      "distance_km": 47.0,
+      "running_time": {
+        "mean": 43.8,
+        "std": 22.03,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 39.84,
+        "p90": 76.62,
+        "min": 34.0,
+        "max": 162.49
+      },
+      "delay_delta": {
+        "mean": 3.8,
+        "std": 22.03,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -0.17,
+        "p90": 36.62,
+        "min": -6.0,
+        "max": 122.49
+      },
+      "historical_median_min": 41.2,
+      "historical_p90_min": 50.0
+    },
+    "SEC_HW_DDN": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 68.0,
+      "distance_km": 51.0,
+      "running_time": {
+        "mean": 70.63,
+        "std": 19.3,
+        "median": 62.8,
+        "p10": 57.8,
+        "p25": 57.8,
+        "p75": 76.53,
+        "p90": 91.3,
+        "min": 57.8,
+        "max": 175.33
+      },
+      "delay_delta": {
+        "mean": 2.63,
+        "std": 19.3,
+        "median": -5.2,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": 8.53,
+        "p90": 23.3,
+        "min": -10.2,
+        "max": 107.33
+      },
+      "historical_median_min": 70.04,
+      "historical_p90_min": 85.0
+    },
+    "SEC_MOZ_SRE": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 52.0,
+      "distance_km": 59.0,
+      "running_time": {
+        "mean": 55.3,
+        "std": 18.87,
+        "median": 47.85,
+        "p10": 44.2,
+        "p25": 44.2,
+        "p75": 60.73,
+        "p90": 78.98,
+        "min": 44.2,
+        "max": 160.17
+      },
+      "delay_delta": {
+        "mean": 3.3,
+        "std": 18.87,
+        "median": -4.15,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": 8.73,
+        "p90": 26.98,
+        "min": -7.8,
+        "max": 108.17
+      },
+      "historical_median_min": 53.56,
+      "historical_p90_min": 65.0
+    },
+    "SEC_MTC_MOZ": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 45.0,
+      "distance_km": 56.0,
+      "running_time": {
+        "mean": 47.66,
+        "std": 22.96,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 41.53,
+        "p90": 74.54,
+        "min": 38.25,
+        "max": 152.63
+      },
+      "delay_delta": {
+        "mean": 2.66,
+        "std": 22.96,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -3.47,
+        "p90": 29.54,
+        "min": -6.75,
+        "max": 107.63
+      },
+      "historical_median_min": 46.35,
+      "historical_p90_min": 56.25
+    },
+    "SEC_NDLS_GZB": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 28.0,
+      "distance_km": 25.0,
+      "running_time": {
+        "mean": 25.84,
+        "std": 6.95,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 29.0,
+        "min": 23.8,
+        "max": 68.71
+      },
+      "delay_delta": {
+        "mean": -2.16,
+        "std": 6.95,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": 1.0,
+        "min": -4.2,
+        "max": 40.71
+      },
+      "historical_median_min": 28.84,
+      "historical_p90_min": 35.0
+    },
+    "SEC_RK_HW": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 45.0,
+      "distance_km": 42.0,
+      "running_time": {
+        "mean": 44.81,
+        "std": 9.73,
+        "median": 42.04,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 49.17,
+        "p90": 56.28,
+        "min": 38.25,
+        "max": 95.89
+      },
+      "delay_delta": {
+        "mean": -0.19,
+        "std": 9.73,
+        "median": -2.96,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": 4.17,
+        "p90": 11.28,
+        "min": -6.75,
+        "max": 50.89
+      },
+      "historical_median_min": 46.35,
+      "historical_p90_min": 56.25
+    },
+    "SEC_SRE_RK": {
+      "sample_size": 152,
+      "scheduled_running_time_min": 32.0,
+      "distance_km": 34.0,
+      "running_time": {
+        "mean": 34.35,
+        "std": 14.43,
+        "median": 27.38,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 35.42,
+        "p90": 50.7,
+        "min": 27.2,
+        "max": 117.76
+      },
+      "delay_delta": {
+        "mean": 2.35,
+        "std": 14.43,
+        "median": -4.62,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": 3.42,
+        "p90": 18.7,
+        "min": -4.8,
+        "max": 85.76
+      },
+      "historical_median_min": 32.96,
+      "historical_p90_min": 40.0
+    }
+  },
+  "context_profiles": {
+    "SEC_GZB_MTC|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 101.37,
+        "std": 86.44,
+        "median": 101.37,
+        "p10": 52.47,
+        "p25": 70.8,
+        "p75": 131.93,
+        "p90": 150.27,
+        "min": 40.24,
+        "max": 162.49
+      },
+      "delay_delta": {
+        "mean": 61.36,
+        "std": 86.44,
+        "median": 61.36,
+        "p10": 12.47,
+        "p25": 30.8,
+        "p75": 91.93,
+        "p90": 110.27,
+        "min": 0.24,
+        "max": 122.49
+      },
+      "exit_delay": {
+        "mean": 57.3,
+        "std": 86.47,
+        "median": 57.3,
+        "p10": 8.39,
+        "p25": 26.73,
+        "p75": 87.88,
+        "p90": 106.22,
+        "min": -3.84,
+        "max": 118.45
+      }
+    },
+    "SEC_GZB_MTC|EXPRESS|HIGH|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 46.2,
+        "std": 1.55,
+        "median": 46.2,
+        "p10": 45.33,
+        "p25": 45.66,
+        "p75": 46.75,
+        "p90": 47.08,
+        "min": 45.11,
+        "max": 47.3
+      },
+      "delay_delta": {
+        "mean": 6.21,
+        "std": 1.55,
+        "median": 6.21,
+        "p10": 5.33,
+        "p25": 5.66,
+        "p75": 6.75,
+        "p90": 7.08,
+        "min": 5.11,
+        "max": 7.3
+      },
+      "exit_delay": {
+        "mean": 0.91,
+        "std": 1.66,
+        "median": 0.91,
+        "p10": -0.04,
+        "p25": 0.32,
+        "p75": 1.49,
+        "p90": 1.85,
+        "min": -0.27,
+        "max": 2.08
+      }
+    },
+    "SEC_GZB_MTC|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 20,
+      "running_time": {
+        "mean": 47.73,
+        "std": 23.7,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 63.19,
+        "p90": 76.3,
+        "min": 34.0,
+        "max": 104.35
+      },
+      "delay_delta": {
+        "mean": 7.72,
+        "std": 23.7,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": 23.19,
+        "p90": 36.3,
+        "min": -6.0,
+        "max": 64.35
+      },
+      "exit_delay": {
+        "mean": 6.08,
+        "std": 24.45,
+        "median": -5.74,
+        "p10": -11.14,
+        "p25": -10.64,
+        "p75": 20.45,
+        "p90": 31.01,
+        "min": -11.65,
+        "max": 71.93
+      }
+    },
+    "SEC_GZB_MTC|EXPRESS|LOW|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 43.61,
+        "std": 16.64,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 48.41,
+        "p90": 57.06,
+        "min": 34.0,
+        "max": 62.82
+      },
+      "delay_delta": {
+        "mean": 3.61,
+        "std": 16.64,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": 8.41,
+        "p90": 17.06,
+        "min": -6.0,
+        "max": 22.82
+      },
+      "exit_delay": {
+        "mean": 3.86,
+        "std": 25.2,
+        "median": -9.27,
+        "p10": -11.51,
+        "p25": -10.67,
+        "p75": 11.82,
+        "p90": 24.47,
+        "min": -12.07,
+        "max": 32.91
+      }
+    },
+    "SEC_GZB_MTC|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 9,
+      "running_time": {
+        "mean": 53.42,
+        "std": 22.11,
+        "median": 38.04,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 76.68,
+        "p90": 76.88,
+        "min": 34.0,
+        "max": 77.13
+      },
+      "delay_delta": {
+        "mean": 13.42,
+        "std": 22.11,
+        "median": -1.96,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": 36.68,
+        "p90": 36.88,
+        "min": -6.0,
+        "max": 37.13
+      },
+      "exit_delay": {
+        "mean": 9.53,
+        "std": 23.22,
+        "median": -5.9,
+        "p10": -11.48,
+        "p25": -10.73,
+        "p75": 32.61,
+        "p90": 34.1,
+        "min": -11.74,
+        "max": 38.4
+      }
+    },
+    "SEC_GZB_MTC|EXPRESS|MEDIUM|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 35.46,
+        "std": 0.25,
+        "median": 35.46,
+        "p10": 35.32,
+        "p25": 35.37,
+        "p75": 35.55,
+        "p90": 35.6,
+        "min": 35.28,
+        "max": 35.64
+      },
+      "delay_delta": {
+        "mean": -4.54,
+        "std": 0.25,
+        "median": -4.54,
+        "p10": -4.68,
+        "p25": -4.63,
+        "p75": -4.45,
+        "p90": -4.4,
+        "min": -4.72,
+        "max": -4.36
+      },
+      "exit_delay": {
+        "mean": -8.57,
+        "std": 0.59,
+        "median": -8.57,
+        "p10": -8.91,
+        "p25": -8.78,
+        "p75": -8.36,
+        "p90": -8.23,
+        "min": -8.99,
+        "max": -8.15
+      }
+    },
+    "SEC_GZB_MTC|PASSENGER|HIGH|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 49.32,
+        "std": 19.4,
+        "median": 40.7,
+        "p10": 39.78,
+        "p25": 40.11,
+        "p75": 48.25,
+        "p90": 63.23,
+        "min": 39.71,
+        "max": 96.42
+      },
+      "delay_delta": {
+        "mean": 9.32,
+        "std": 19.4,
+        "median": 0.7,
+        "p10": -0.22,
+        "p25": 0.11,
+        "p75": 8.25,
+        "p90": 23.23,
+        "min": -0.29,
+        "max": 56.42
+      },
+      "exit_delay": {
+        "mean": 10.61,
+        "std": 24.02,
+        "median": 4.24,
+        "p10": -5.35,
+        "p25": 0.77,
+        "p75": 6.54,
+        "p90": 28.78,
+        "min": -6.25,
+        "max": 68.33
+      }
+    },
+    "SEC_GZB_MTC|PASSENGER|HIGH|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 44.91,
+        "std": 0.0,
+        "median": 44.91,
+        "p10": 44.91,
+        "p25": 44.91,
+        "p75": 44.91,
+        "p90": 44.91,
+        "min": 44.91,
+        "max": 44.91
+      },
+      "delay_delta": {
+        "mean": 4.91,
+        "std": 0.0,
+        "median": 4.91,
+        "p10": 4.91,
+        "p25": 4.91,
+        "p75": 4.91,
+        "p90": 4.91,
+        "min": 4.91,
+        "max": 4.91
+      },
+      "exit_delay": {
+        "mean": -0.57,
+        "std": 0.0,
+        "median": -0.57,
+        "p10": -0.57,
+        "p25": -0.57,
+        "p75": -0.57,
+        "p90": -0.57,
+        "min": -0.57,
+        "max": -0.57
+      }
+    },
+    "SEC_GZB_MTC|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 18,
+      "running_time": {
+        "mean": 41.85,
+        "std": 22.86,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 55.1,
+        "min": 34.0,
+        "max": 105.01
+      },
+      "delay_delta": {
+        "mean": 1.85,
+        "std": 22.86,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": 15.1,
+        "min": -6.0,
+        "max": 65.01
+      },
+      "exit_delay": {
+        "mean": 0.33,
+        "std": 24.06,
+        "median": -10.08,
+        "p10": -11.42,
+        "p25": -10.96,
+        "p75": -6.38,
+        "p90": 42.0,
+        "min": -11.81,
+        "max": 59.76
+      }
+    },
+    "SEC_GZB_MTC|PASSENGER|LOW|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 34.0,
+        "std": 0.0,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 34.0,
+        "min": 34.0,
+        "max": 34.0
+      },
+      "delay_delta": {
+        "mean": -6.0,
+        "std": 0.0,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": -6.0,
+        "min": -6.0,
+        "max": -6.0
+      },
+      "exit_delay": {
+        "mean": -6.7,
+        "std": 0.0,
+        "median": -6.7,
+        "p10": -6.7,
+        "p25": -6.7,
+        "p75": -6.7,
+        "p90": -6.7,
+        "min": -6.7,
+        "max": -6.7
+      }
+    },
+    "SEC_GZB_MTC|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 10,
+      "running_time": {
+        "mean": 34.48,
+        "std": 1.51,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 34.48,
+        "min": 34.0,
+        "max": 38.76
+      },
+      "delay_delta": {
+        "mean": -5.52,
+        "std": 1.51,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": -5.52,
+        "min": -6.0,
+        "max": -1.24
+      },
+      "exit_delay": {
+        "mean": -6.28,
+        "std": 9.9,
+        "median": -10.07,
+        "p10": -11.38,
+        "p25": -10.68,
+        "p75": -6.6,
+        "p90": -1.04,
+        "min": -12.2,
+        "max": 20.83
+      }
+    },
+    "SEC_GZB_MTC|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 44.73,
+        "std": 0.0,
+        "median": 44.73,
+        "p10": 44.73,
+        "p25": 44.73,
+        "p75": 44.73,
+        "p90": 44.73,
+        "min": 44.73,
+        "max": 44.73
+      },
+      "delay_delta": {
+        "mean": 4.73,
+        "std": 0.0,
+        "median": 4.73,
+        "p10": 4.73,
+        "p25": 4.73,
+        "p75": 4.73,
+        "p90": 4.73,
+        "min": 4.73,
+        "max": 4.73
+      },
+      "exit_delay": {
+        "mean": -1.39,
+        "std": 0.0,
+        "median": -1.39,
+        "p10": -1.39,
+        "p25": -1.39,
+        "p75": -1.39,
+        "p90": -1.39,
+        "min": -1.39,
+        "max": -1.39
+      }
+    },
+    "SEC_GZB_MTC|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 29,
+      "running_time": {
+        "mean": 38.89,
+        "std": 18.1,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 34.29,
+        "min": 34.0,
+        "max": 104.26
+      },
+      "delay_delta": {
+        "mean": -1.11,
+        "std": 18.1,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": -5.71,
+        "min": -6.0,
+        "max": 64.26
+      },
+      "exit_delay": {
+        "mean": -3.95,
+        "std": 19.08,
+        "median": -10.47,
+        "p10": -11.77,
+        "p25": -11.34,
+        "p75": -8.04,
+        "p90": 3.42,
+        "min": -12.06,
+        "max": 60.61
+      }
+    },
+    "SEC_GZB_MTC|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 34.0,
+        "std": 0.0,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 34.0,
+        "min": 34.0,
+        "max": 34.0
+      },
+      "delay_delta": {
+        "mean": -6.0,
+        "std": 0.0,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": -6.0,
+        "min": -6.0,
+        "max": -6.0
+      },
+      "exit_delay": {
+        "mean": 0.5,
+        "std": 16.16,
+        "median": 0.5,
+        "p10": -8.64,
+        "p25": -5.22,
+        "p75": 6.21,
+        "p90": 9.63,
+        "min": -10.93,
+        "max": 11.92
+      }
+    },
+    "SEC_GZB_MTC|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 6,
+      "running_time": {
+        "mean": 36.15,
+        "std": 3.33,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 38.79,
+        "p90": 40.44,
+        "min": 34.0,
+        "max": 40.5
+      },
+      "delay_delta": {
+        "mean": -3.85,
+        "std": 3.33,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -1.21,
+        "p90": 0.44,
+        "min": -6.0,
+        "max": 0.5
+      },
+      "exit_delay": {
+        "mean": 0.35,
+        "std": 9.51,
+        "median": -2.99,
+        "p10": -7.12,
+        "p25": -3.91,
+        "p75": 3.32,
+        "p90": 11.16,
+        "min": -10.07,
+        "max": 16.94
+      }
+    },
+    "SEC_GZB_MTC|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 4,
+      "running_time": {
+        "mean": 71.26,
+        "std": 35.89,
+        "median": 69.0,
+        "p10": 40.19,
+        "p25": 40.61,
+        "p75": 99.66,
+        "p90": 104.13,
+        "min": 39.91,
+        "max": 107.11
+      },
+      "delay_delta": {
+        "mean": 31.26,
+        "std": 35.89,
+        "median": 29.01,
+        "p10": 0.19,
+        "p25": 0.61,
+        "p75": 59.66,
+        "p90": 64.13,
+        "min": -0.09,
+        "max": 67.11
+      },
+      "exit_delay": {
+        "mean": 34.23,
+        "std": 31.29,
+        "median": 39.2,
+        "p10": 3.55,
+        "p25": 16.84,
+        "p75": 56.58,
+        "p90": 60.94,
+        "min": -5.31,
+        "max": 63.84
+      }
+    },
+    "SEC_GZB_MTC|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 28,
+      "running_time": {
+        "mean": 41.52,
+        "std": 19.93,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 69.17,
+        "min": 34.0,
+        "max": 104.35
+      },
+      "delay_delta": {
+        "mean": 1.52,
+        "std": 19.93,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": 29.17,
+        "min": -6.0,
+        "max": 64.35
+      },
+      "exit_delay": {
+        "mean": 0.5,
+        "std": 24.38,
+        "median": -9.68,
+        "p10": -11.84,
+        "p25": -11.42,
+        "p75": -6.25,
+        "p90": 26.4,
+        "min": -12.09,
+        "max": 89.13
+      }
+    },
+    "SEC_GZB_MTC|SUPERFAST|LOW|RAIN": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 34.0,
+        "std": 0.0,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 34.0,
+        "p90": 34.0,
+        "min": 34.0,
+        "max": 34.0
+      },
+      "delay_delta": {
+        "mean": -6.0,
+        "std": 0.0,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": -6.0,
+        "p90": -6.0,
+        "min": -6.0,
+        "max": -6.0
+      },
+      "exit_delay": {
+        "mean": -10.25,
+        "std": 0.84,
+        "median": -10.25,
+        "p10": -10.72,
+        "p25": -10.54,
+        "p75": -9.95,
+        "p90": -9.77,
+        "min": -10.84,
+        "max": -9.65
+      }
+    },
+    "SEC_GZB_MTC|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_GZB_MTC",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 4,
+      "running_time": {
+        "mean": 45.22,
+        "std": 22.45,
+        "median": 34.0,
+        "p10": 34.0,
+        "p25": 34.0,
+        "p75": 45.22,
+        "p90": 65.42,
+        "min": 34.0,
+        "max": 78.89
+      },
+      "delay_delta": {
+        "mean": 5.22,
+        "std": 22.45,
+        "median": -6.0,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": 5.22,
+        "p90": 25.42,
+        "min": -6.0,
+        "max": 38.89
+      },
+      "exit_delay": {
+        "mean": 3.61,
+        "std": 29.14,
+        "median": -10.47,
+        "p10": -11.67,
+        "p25": -11.3,
+        "p75": 4.44,
+        "p90": 30.15,
+        "min": -11.92,
+        "max": 47.29
+      }
+    },
+    "SEC_HW_DDN|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 116.98,
+        "std": 50.53,
+        "median": 88.08,
+        "p10": 87.65,
+        "p25": 87.81,
+        "p75": 131.71,
+        "p90": 157.88,
+        "min": 87.54,
+        "max": 175.33
+      },
+      "delay_delta": {
+        "mean": 48.98,
+        "std": 50.53,
+        "median": 20.08,
+        "p10": 19.65,
+        "p25": 19.81,
+        "p75": 63.7,
+        "p90": 89.88,
+        "min": 19.54,
+        "max": 107.33
+      },
+      "exit_delay": {
+        "mean": 105.37,
+        "std": 112.0,
+        "median": 118.64,
+        "p10": 13.58,
+        "p25": 52.98,
+        "p75": 164.39,
+        "p90": 191.84,
+        "min": -12.68,
+        "max": 210.14
+      }
+    },
+    "SEC_HW_DDN|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 27,
+      "running_time": {
+        "mean": 59.48,
+        "std": 4.98,
+        "median": 57.8,
+        "p10": 57.8,
+        "p25": 57.8,
+        "p75": 57.8,
+        "p90": 61.96,
+        "min": 57.8,
+        "max": 75.95
+      },
+      "delay_delta": {
+        "mean": -8.52,
+        "std": 4.98,
+        "median": -10.2,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": -10.2,
+        "p90": -6.04,
+        "min": -10.2,
+        "max": 7.95
+      },
+      "exit_delay": {
+        "mean": 2.31,
+        "std": 48.38,
+        "median": -4.57,
+        "p10": -43.77,
+        "p25": -37.12,
+        "p75": 15.46,
+        "p90": 83.63,
+        "min": -47.9,
+        "max": 120.54
+      }
+    },
+    "SEC_HW_DDN|EXPRESS|LOW|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 112.55,
+        "std": 0.0,
+        "median": 112.55,
+        "p10": 112.55,
+        "p25": 112.55,
+        "p75": 112.55,
+        "p90": 112.55,
+        "min": 112.55,
+        "max": 112.55
+      },
+      "delay_delta": {
+        "mean": 44.55,
+        "std": 0.0,
+        "median": 44.55,
+        "p10": 44.55,
+        "p25": 44.55,
+        "p75": 44.55,
+        "p90": 44.55,
+        "min": 44.55,
+        "max": 44.55
+      },
+      "exit_delay": {
+        "mean": 80.92,
+        "std": 0.0,
+        "median": 80.92,
+        "p10": 80.92,
+        "p25": 80.92,
+        "p75": 80.92,
+        "p90": 80.92,
+        "min": 80.92,
+        "max": 80.92
+      }
+    },
+    "SEC_HW_DDN|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 7,
+      "running_time": {
+        "mean": 70.19,
+        "std": 3.94,
+        "median": 68.83,
+        "p10": 68.28,
+        "p25": 68.43,
+        "p75": 69.27,
+        "p90": 73.2,
+        "min": 68.06,
+        "max": 79.06
+      },
+      "delay_delta": {
+        "mean": 2.19,
+        "std": 3.94,
+        "median": 0.83,
+        "p10": 0.28,
+        "p25": 0.43,
+        "p75": 1.27,
+        "p90": 5.2,
+        "min": 0.06,
+        "max": 11.06
+      },
+      "exit_delay": {
+        "mean": 17.66,
+        "std": 28.89,
+        "median": 5.97,
+        "p10": -6.98,
+        "p25": 0.95,
+        "p75": 31.76,
+        "p90": 51.13,
+        "min": -16.62,
+        "max": 68.86
+      }
+    },
+    "SEC_HW_DDN|PASSENGER|HIGH|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 87.93,
+        "std": 1.61,
+        "median": 87.93,
+        "p10": 87.02,
+        "p25": 87.36,
+        "p75": 88.49,
+        "p90": 88.83,
+        "min": 86.79,
+        "max": 89.06
+      },
+      "delay_delta": {
+        "mean": 19.92,
+        "std": 1.61,
+        "median": 19.92,
+        "p10": 19.02,
+        "p25": 19.36,
+        "p75": 20.49,
+        "p90": 20.83,
+        "min": 18.79,
+        "max": 21.06
+      },
+      "exit_delay": {
+        "mean": 61.86,
+        "std": 110.99,
+        "median": 61.86,
+        "p10": -0.93,
+        "p25": 22.61,
+        "p75": 101.1,
+        "p90": 124.64,
+        "min": -16.63,
+        "max": 140.34
+      }
+    },
+    "SEC_HW_DDN|PASSENGER|HIGH|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 97.36,
+        "std": 0.0,
+        "median": 97.36,
+        "p10": 97.36,
+        "p25": 97.36,
+        "p75": 97.36,
+        "p90": 97.36,
+        "min": 97.36,
+        "max": 97.36
+      },
+      "delay_delta": {
+        "mean": 29.36,
+        "std": 0.0,
+        "median": 29.36,
+        "p10": 29.36,
+        "p25": 29.36,
+        "p75": 29.36,
+        "p90": 29.36,
+        "min": 29.36,
+        "max": 29.36
+      },
+      "exit_delay": {
+        "mean": 135.21,
+        "std": 0.0,
+        "median": 135.21,
+        "p10": 135.21,
+        "p25": 135.21,
+        "p75": 135.21,
+        "p90": 135.21,
+        "min": 135.21,
+        "max": 135.21
+      }
+    },
+    "SEC_HW_DDN|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 27,
+      "running_time": {
+        "mean": 62.27,
+        "std": 14.77,
+        "median": 57.8,
+        "p10": 57.8,
+        "p25": 57.8,
+        "p75": 57.8,
+        "p90": 61.84,
+        "min": 57.8,
+        "max": 113.31
+      },
+      "delay_delta": {
+        "mean": -5.73,
+        "std": 14.77,
+        "median": -10.2,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": -10.2,
+        "p90": -6.16,
+        "min": -10.2,
+        "max": 45.31
+      },
+      "exit_delay": {
+        "mean": -9.47,
+        "std": 31.93,
+        "median": -17.07,
+        "p10": -42.62,
+        "p25": -35.4,
+        "p75": 8.95,
+        "p90": 29.82,
+        "min": -46.98,
+        "max": 77.82
+      }
+    },
+    "SEC_HW_DDN|PASSENGER|LOW|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 63.16,
+        "std": 0.0,
+        "median": 63.16,
+        "p10": 63.16,
+        "p25": 63.16,
+        "p75": 63.16,
+        "p90": 63.16,
+        "min": 63.16,
+        "max": 63.16
+      },
+      "delay_delta": {
+        "mean": -4.84,
+        "std": 0.0,
+        "median": -4.84,
+        "p10": -4.84,
+        "p25": -4.84,
+        "p75": -4.84,
+        "p90": -4.84,
+        "min": -4.84,
+        "max": -4.84
+      },
+      "exit_delay": {
+        "mean": -36.82,
+        "std": 0.0,
+        "median": -36.82,
+        "p10": -36.82,
+        "p25": -36.82,
+        "p75": -36.82,
+        "p90": -36.82,
+        "min": -36.82,
+        "max": -36.82
+      }
+    },
+    "SEC_HW_DDN|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 6,
+      "running_time": {
+        "mean": 69.16,
+        "std": 0.66,
+        "median": 69.25,
+        "p10": 68.38,
+        "p25": 68.67,
+        "p75": 69.68,
+        "p90": 69.85,
+        "min": 68.28,
+        "max": 69.89
+      },
+      "delay_delta": {
+        "mean": 1.16,
+        "std": 0.66,
+        "median": 1.25,
+        "p10": 0.39,
+        "p25": 0.68,
+        "p75": 1.68,
+        "p90": 1.85,
+        "min": 0.28,
+        "max": 1.89
+      },
+      "exit_delay": {
+        "mean": 24.49,
+        "std": 60.36,
+        "median": 13.49,
+        "p10": -30.71,
+        "p25": -22.51,
+        "p75": 47.92,
+        "p90": 90.69,
+        "min": -32.0,
+        "max": 127.08
+      }
+    },
+    "SEC_HW_DDN|PASSENGER|MEDIUM|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 91.64,
+        "std": 0.0,
+        "median": 91.64,
+        "p10": 91.64,
+        "p25": 91.64,
+        "p75": 91.64,
+        "p90": 91.64,
+        "min": 91.64,
+        "max": 91.64
+      },
+      "delay_delta": {
+        "mean": 23.64,
+        "std": 0.0,
+        "median": 23.64,
+        "p10": 23.64,
+        "p25": 23.64,
+        "p75": 23.64,
+        "p90": 23.64,
+        "min": 23.64,
+        "max": 23.64
+      },
+      "exit_delay": {
+        "mean": -11.23,
+        "std": 0.0,
+        "median": -11.23,
+        "p10": -11.23,
+        "p25": -11.23,
+        "p75": -11.23,
+        "p90": -11.23,
+        "min": -11.23,
+        "max": -11.23
+      }
+    },
+    "SEC_HW_DDN|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 4,
+      "running_time": {
+        "mean": 88.89,
+        "std": 0.95,
+        "median": 88.78,
+        "p10": 88.07,
+        "p25": 88.11,
+        "p75": 89.56,
+        "p90": 89.78,
+        "min": 88.04,
+        "max": 89.93
+      },
+      "delay_delta": {
+        "mean": 20.88,
+        "std": 0.95,
+        "median": 20.79,
+        "p10": 20.07,
+        "p25": 20.11,
+        "p75": 21.56,
+        "p90": 21.78,
+        "min": 20.04,
+        "max": 21.93
+      },
+      "exit_delay": {
+        "mean": 66.82,
+        "std": 37.14,
+        "median": 58.05,
+        "p10": 39.18,
+        "p25": 50.12,
+        "p75": 74.75,
+        "p90": 101.49,
+        "min": 31.88,
+        "max": 119.32
+      }
+    },
+    "SEC_HW_DDN|SHATABDI|HIGH|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 122.82,
+        "std": 0.0,
+        "median": 122.82,
+        "p10": 122.82,
+        "p25": 122.82,
+        "p75": 122.82,
+        "p90": 122.82,
+        "min": 122.82,
+        "max": 122.82
+      },
+      "delay_delta": {
+        "mean": 54.82,
+        "std": 0.0,
+        "median": 54.82,
+        "p10": 54.82,
+        "p25": 54.82,
+        "p75": 54.82,
+        "p90": 54.82,
+        "min": 54.82,
+        "max": 54.82
+      },
+      "exit_delay": {
+        "mean": 26.41,
+        "std": 0.0,
+        "median": 26.41,
+        "p10": 26.41,
+        "p25": 26.41,
+        "p75": 26.41,
+        "p90": 26.41,
+        "min": 26.41,
+        "max": 26.41
+      }
+    },
+    "SEC_HW_DDN|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 13,
+      "running_time": {
+        "mean": 58.6,
+        "std": 2.9,
+        "median": 57.8,
+        "p10": 57.8,
+        "p25": 57.8,
+        "p75": 57.8,
+        "p90": 57.8,
+        "min": 57.8,
+        "max": 68.24
+      },
+      "delay_delta": {
+        "mean": -9.4,
+        "std": 2.9,
+        "median": -10.2,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": -10.2,
+        "p90": -10.2,
+        "min": -10.2,
+        "max": 0.24
+      },
+      "exit_delay": {
+        "mean": -2.04,
+        "std": 34.13,
+        "median": -10.85,
+        "p10": -38.12,
+        "p25": -28.25,
+        "p75": 16.28,
+        "p90": 49.44,
+        "min": -44.98,
+        "max": 54.5
+      }
+    },
+    "SEC_HW_DDN|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 62.72,
+        "std": 0.17,
+        "median": 62.72,
+        "p10": 62.58,
+        "p25": 62.63,
+        "p75": 62.8,
+        "p90": 62.86,
+        "min": 62.55,
+        "max": 62.89
+      },
+      "delay_delta": {
+        "mean": -5.28,
+        "std": 0.17,
+        "median": -5.28,
+        "p10": -5.42,
+        "p25": -5.37,
+        "p75": -5.2,
+        "p90": -5.14,
+        "min": -5.45,
+        "max": -5.11
+      },
+      "exit_delay": {
+        "mean": 16.78,
+        "std": 32.93,
+        "median": 13.04,
+        "p10": -8.69,
+        "p25": -0.54,
+        "p75": 32.23,
+        "p90": 43.74,
+        "min": -14.12,
+        "max": 51.42
+      }
+    },
+    "SEC_HW_DDN|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 14,
+      "running_time": {
+        "mean": 82.67,
+        "std": 24.72,
+        "median": 69.53,
+        "p10": 68.77,
+        "p25": 68.91,
+        "p75": 82.02,
+        "p90": 124.48,
+        "min": 68.71,
+        "max": 138.88
+      },
+      "delay_delta": {
+        "mean": 14.67,
+        "std": 24.72,
+        "median": 1.52,
+        "p10": 0.77,
+        "p25": 0.91,
+        "p75": 14.02,
+        "p90": 56.48,
+        "min": 0.71,
+        "max": 70.88
+      },
+      "exit_delay": {
+        "mean": 5.88,
+        "std": 36.76,
+        "median": -7.27,
+        "p10": -26.49,
+        "p25": -23.09,
+        "p75": 34.57,
+        "p90": 53.61,
+        "min": -32.14,
+        "max": 82.09
+      }
+    },
+    "SEC_HW_DDN|SHATABDI|MEDIUM|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 76.55,
+        "std": 0.25,
+        "median": 76.43,
+        "p10": 76.4,
+        "p25": 76.41,
+        "p75": 76.64,
+        "p90": 76.76,
+        "min": 76.39,
+        "max": 76.84
+      },
+      "delay_delta": {
+        "mean": 8.55,
+        "std": 0.25,
+        "median": 8.43,
+        "p10": 8.4,
+        "p25": 8.41,
+        "p75": 8.63,
+        "p90": 8.76,
+        "min": 8.39,
+        "max": 8.84
+      },
+      "exit_delay": {
+        "mean": 11.55,
+        "std": 41.63,
+        "median": -3.15,
+        "p10": -17.22,
+        "p25": -11.95,
+        "p75": 27.7,
+        "p90": 46.2,
+        "min": -20.74,
+        "max": 58.54
+      }
+    },
+    "SEC_HW_DDN|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 93.8,
+        "std": 14.57,
+        "median": 87.68,
+        "p10": 87.31,
+        "p25": 87.5,
+        "p75": 89.96,
+        "p90": 105.93,
+        "min": 87.08,
+        "max": 129.1
+      },
+      "delay_delta": {
+        "mean": 25.8,
+        "std": 14.57,
+        "median": 19.68,
+        "p10": 19.31,
+        "p25": 19.5,
+        "p75": 21.96,
+        "p90": 37.93,
+        "min": 19.08,
+        "max": 61.1
+      },
+      "exit_delay": {
+        "mean": 14.6,
+        "std": 22.62,
+        "median": 15.0,
+        "p10": -10.47,
+        "p25": -2.19,
+        "p75": 24.33,
+        "p90": 40.72,
+        "min": -13.64,
+        "max": 53.52
+      }
+    },
+    "SEC_HW_DDN|SUPERFAST|HIGH|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 96.97,
+        "std": 0.0,
+        "median": 96.97,
+        "p10": 96.97,
+        "p25": 96.97,
+        "p75": 96.97,
+        "p90": 96.97,
+        "min": 96.97,
+        "max": 96.97
+      },
+      "delay_delta": {
+        "mean": 28.97,
+        "std": 0.0,
+        "median": 28.97,
+        "p10": 28.97,
+        "p25": 28.97,
+        "p75": 28.97,
+        "p90": 28.97,
+        "min": 28.97,
+        "max": 28.97
+      },
+      "exit_delay": {
+        "mean": 16.32,
+        "std": 0.0,
+        "median": 16.32,
+        "p10": 16.32,
+        "p25": 16.32,
+        "p75": 16.32,
+        "p90": 16.32,
+        "min": 16.32,
+        "max": 16.32
+      }
+    },
+    "SEC_HW_DDN|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 16,
+      "running_time": {
+        "mean": 64.65,
+        "std": 18.72,
+        "median": 57.8,
+        "p10": 57.8,
+        "p25": 57.8,
+        "p75": 57.8,
+        "p90": 84.89,
+        "min": 57.8,
+        "max": 113.24
+      },
+      "delay_delta": {
+        "mean": -3.35,
+        "std": 18.72,
+        "median": -10.2,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": -10.2,
+        "p90": 16.89,
+        "min": -10.2,
+        "max": 45.24
+      },
+      "exit_delay": {
+        "mean": 33.01,
+        "std": 81.43,
+        "median": -0.59,
+        "p10": -30.52,
+        "p25": -23.33,
+        "p75": 68.14,
+        "p90": 131.79,
+        "min": -37.69,
+        "max": 248.81
+      }
+    },
+    "SEC_HW_DDN|SUPERFAST|LOW|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 62.97,
+        "std": 0.04,
+        "median": 62.97,
+        "p10": 62.95,
+        "p25": 62.95,
+        "p75": 62.98,
+        "p90": 62.99,
+        "min": 62.94,
+        "max": 63.0
+      },
+      "delay_delta": {
+        "mean": -5.03,
+        "std": 0.04,
+        "median": -5.03,
+        "p10": -5.05,
+        "p25": -5.04,
+        "p75": -5.01,
+        "p90": -5.01,
+        "min": -5.06,
+        "max": -5.0
+      },
+      "exit_delay": {
+        "mean": 67.73,
+        "std": 14.15,
+        "median": 67.73,
+        "p10": 59.73,
+        "p25": 62.73,
+        "p75": 72.74,
+        "p90": 75.74,
+        "min": 57.73,
+        "max": 77.74
+      }
+    },
+    "SEC_HW_DDN|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 74.56,
+        "std": 8.44,
+        "median": 69.75,
+        "p10": 68.85,
+        "p25": 69.09,
+        "p75": 78.66,
+        "p90": 83.84,
+        "min": 68.34,
+        "max": 92.11
+      },
+      "delay_delta": {
+        "mean": 6.56,
+        "std": 8.44,
+        "median": 1.75,
+        "p10": 0.85,
+        "p25": 1.08,
+        "p75": 10.65,
+        "p90": 15.84,
+        "min": 0.34,
+        "max": 24.11
+      },
+      "exit_delay": {
+        "mean": 7.15,
+        "std": 35.6,
+        "median": -3.87,
+        "p10": -22.82,
+        "p25": -16.46,
+        "p75": 23.47,
+        "p90": 45.25,
+        "min": -31.32,
+        "max": 79.22
+      }
+    },
+    "SEC_HW_DDN|SUPERFAST|MEDIUM|RAIN": {
+      "section_id": "SEC_HW_DDN",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 76.89,
+        "std": 0.92,
+        "median": 77.13,
+        "p10": 76.12,
+        "p25": 76.5,
+        "p75": 77.4,
+        "p90": 77.56,
+        "min": 75.87,
+        "max": 77.67
+      },
+      "delay_delta": {
+        "mean": 8.89,
+        "std": 0.92,
+        "median": 9.13,
+        "p10": 8.12,
+        "p25": 8.5,
+        "p75": 9.4,
+        "p90": 9.56,
+        "min": 7.87,
+        "max": 9.67
+      },
+      "exit_delay": {
+        "mean": 10.24,
+        "std": 33.05,
+        "median": 10.63,
+        "p10": -16.27,
+        "p25": -6.19,
+        "p75": 26.87,
+        "p90": 36.61,
+        "min": -23.0,
+        "max": 43.1
+      }
+    },
+    "SEC_MOZ_SRE|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 65.89,
+        "std": 5.87,
+        "median": 65.89,
+        "p10": 62.57,
+        "p25": 63.82,
+        "p75": 67.97,
+        "p90": 69.21,
+        "min": 61.74,
+        "max": 70.04
+      },
+      "delay_delta": {
+        "mean": 13.89,
+        "std": 5.87,
+        "median": 13.89,
+        "p10": 10.57,
+        "p25": 11.81,
+        "p75": 15.96,
+        "p90": 17.21,
+        "min": 9.74,
+        "max": 18.04
+      },
+      "exit_delay": {
+        "mean": 61.16,
+        "std": 24.59,
+        "median": 61.16,
+        "p10": 47.26,
+        "p25": 52.47,
+        "p75": 69.86,
+        "p90": 75.07,
+        "min": 43.78,
+        "max": 78.55
+      }
+    },
+    "SEC_MOZ_SRE|EXPRESS|HIGH|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 67.57,
+        "std": 0.0,
+        "median": 67.57,
+        "p10": 67.57,
+        "p25": 67.57,
+        "p75": 67.57,
+        "p90": 67.57,
+        "min": 67.57,
+        "max": 67.57
+      },
+      "delay_delta": {
+        "mean": 15.57,
+        "std": 0.0,
+        "median": 15.57,
+        "p10": 15.57,
+        "p25": 15.57,
+        "p75": 15.57,
+        "p90": 15.57,
+        "min": 15.57,
+        "max": 15.57
+      },
+      "exit_delay": {
+        "mean": -0.81,
+        "std": 0.0,
+        "median": -0.81,
+        "p10": -0.81,
+        "p25": -0.81,
+        "p75": -0.81,
+        "p90": -0.81,
+        "min": -0.81,
+        "max": -0.81
+      }
+    },
+    "SEC_MOZ_SRE|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 28,
+      "running_time": {
+        "mean": 49.16,
+        "std": 12.37,
+        "median": 44.2,
+        "p10": 44.2,
+        "p25": 44.2,
+        "p75": 44.2,
+        "p90": 78.48,
+        "min": 44.2,
+        "max": 79.21
+      },
+      "delay_delta": {
+        "mean": -2.84,
+        "std": 12.37,
+        "median": -7.8,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": -7.8,
+        "p90": 26.48,
+        "min": -7.8,
+        "max": 27.21
+      },
+      "exit_delay": {
+        "mean": 13.39,
+        "std": 39.93,
+        "median": 9.77,
+        "p10": -25.3,
+        "p25": -20.92,
+        "p75": 21.91,
+        "p90": 64.6,
+        "min": -26.62,
+        "max": 125.59
+      }
+    },
+    "SEC_MOZ_SRE|EXPRESS|LOW|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 44.25,
+        "std": 0.0,
+        "median": 44.25,
+        "p10": 44.25,
+        "p25": 44.25,
+        "p75": 44.25,
+        "p90": 44.25,
+        "min": 44.25,
+        "max": 44.25
+      },
+      "delay_delta": {
+        "mean": -7.75,
+        "std": 0.0,
+        "median": -7.75,
+        "p10": -7.75,
+        "p25": -7.75,
+        "p75": -7.75,
+        "p90": -7.75,
+        "min": -7.75,
+        "max": -7.75
+      },
+      "exit_delay": {
+        "mean": -24.37,
+        "std": 0.0,
+        "median": -24.37,
+        "p10": -24.37,
+        "p25": -24.37,
+        "p75": -24.37,
+        "p90": -24.37,
+        "min": -24.37,
+        "max": -24.37
+      }
+    },
+    "SEC_MOZ_SRE|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 5,
+      "running_time": {
+        "mean": 61.52,
+        "std": 25.68,
+        "median": 47.92,
+        "p10": 47.74,
+        "p25": 47.87,
+        "p75": 57.28,
+        "p90": 87.03,
+        "min": 47.65,
+        "max": 106.87
+      },
+      "delay_delta": {
+        "mean": 9.52,
+        "std": 25.68,
+        "median": -4.08,
+        "p10": -4.26,
+        "p25": -4.13,
+        "p75": 5.28,
+        "p90": 35.03,
+        "min": -4.35,
+        "max": 54.87
+      },
+      "exit_delay": {
+        "mean": 26.72,
+        "std": 58.84,
+        "median": -9.24,
+        "p10": -18.57,
+        "p25": -15.51,
+        "p75": 71.36,
+        "p90": 93.1,
+        "min": -20.61,
+        "max": 107.59
+      }
+    },
+    "SEC_MOZ_SRE|EXPRESS|MEDIUM|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 52.83,
+        "std": 0.0,
+        "median": 52.83,
+        "p10": 52.83,
+        "p25": 52.83,
+        "p75": 52.83,
+        "p90": 52.83,
+        "min": 52.83,
+        "max": 52.83
+      },
+      "delay_delta": {
+        "mean": 0.83,
+        "std": 0.0,
+        "median": 0.83,
+        "p10": 0.83,
+        "p25": 0.83,
+        "p75": 0.83,
+        "p90": 0.83,
+        "min": 0.83,
+        "max": 0.83
+      },
+      "exit_delay": {
+        "mean": -17.34,
+        "std": 0.0,
+        "median": -17.34,
+        "p10": -17.34,
+        "p25": -17.34,
+        "p75": -17.34,
+        "p90": -17.34,
+        "min": -17.34,
+        "max": -17.34
+      }
+    },
+    "SEC_MOZ_SRE|PASSENGER|HIGH|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 61.17,
+        "std": 0.54,
+        "median": 61.26,
+        "p10": 60.72,
+        "p25": 60.92,
+        "p75": 61.45,
+        "p90": 61.57,
+        "min": 60.59,
+        "max": 61.65
+      },
+      "delay_delta": {
+        "mean": 9.17,
+        "std": 0.54,
+        "median": 9.26,
+        "p10": 8.72,
+        "p25": 8.93,
+        "p75": 9.46,
+        "p90": 9.57,
+        "min": 8.59,
+        "max": 9.65
+      },
+      "exit_delay": {
+        "mean": 3.07,
+        "std": 10.04,
+        "median": 6.31,
+        "p10": -5.29,
+        "p25": -0.94,
+        "p75": 8.7,
+        "p90": 10.13,
+        "min": -8.19,
+        "max": 11.08
+      }
+    },
+    "SEC_MOZ_SRE|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 26,
+      "running_time": {
+        "mean": 52.59,
+        "std": 15.7,
+        "median": 44.2,
+        "p10": 44.2,
+        "p25": 44.2,
+        "p75": 44.2,
+        "p90": 79.24,
+        "min": 44.2,
+        "max": 87.85
+      },
+      "delay_delta": {
+        "mean": 0.59,
+        "std": 15.7,
+        "median": -7.8,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": -7.8,
+        "p90": 27.24,
+        "min": -7.8,
+        "max": 35.85
+      },
+      "exit_delay": {
+        "mean": 3.51,
+        "std": 32.12,
+        "median": -9.27,
+        "p10": -24.84,
+        "p25": -22.92,
+        "p75": 21.02,
+        "p90": 49.59,
+        "min": -25.81,
+        "max": 79.74
+      }
+    },
+    "SEC_MOZ_SRE|PASSENGER|LOW|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 44.2,
+        "std": 0.0,
+        "median": 44.2,
+        "p10": 44.2,
+        "p25": 44.2,
+        "p75": 44.2,
+        "p90": 44.2,
+        "min": 44.2,
+        "max": 44.2
+      },
+      "delay_delta": {
+        "mean": -7.8,
+        "std": 0.0,
+        "median": -7.8,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": -7.8,
+        "p90": -7.8,
+        "min": -7.8,
+        "max": -7.8
+      },
+      "exit_delay": {
+        "mean": -24.74,
+        "std": 0.0,
+        "median": -24.74,
+        "p10": -24.74,
+        "p25": -24.74,
+        "p75": -24.74,
+        "p90": -24.74,
+        "min": -24.74,
+        "max": -24.74
+      }
+    },
+    "SEC_MOZ_SRE|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 7,
+      "running_time": {
+        "mean": 80.45,
+        "std": 42.88,
+        "median": 56.12,
+        "p10": 47.97,
+        "p25": 48.06,
+        "p75": 101.4,
+        "p90": 127.93,
+        "min": 47.93,
+        "max": 160.17
+      },
+      "delay_delta": {
+        "mean": 28.45,
+        "std": 42.88,
+        "median": 4.12,
+        "p10": -4.03,
+        "p25": -3.94,
+        "p75": 49.39,
+        "p90": 75.93,
+        "min": -4.07,
+        "max": 108.17
+      },
+      "exit_delay": {
+        "mean": 36.86,
+        "std": 53.46,
+        "median": 29.46,
+        "p10": -16.97,
+        "p25": -6.96,
+        "p75": 73.56,
+        "p90": 100.73,
+        "min": -22.05,
+        "max": 117.4
+      }
+    },
+    "SEC_MOZ_SRE|PASSENGER|MEDIUM|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 53.19,
+        "std": 0.0,
+        "median": 53.19,
+        "p10": 53.19,
+        "p25": 53.19,
+        "p75": 53.19,
+        "p90": 53.19,
+        "min": 53.19,
+        "max": 53.19
+      },
+      "delay_delta": {
+        "mean": 1.19,
+        "std": 0.0,
+        "median": 1.19,
+        "p10": 1.19,
+        "p25": 1.19,
+        "p75": 1.19,
+        "p90": 1.19,
+        "min": 1.19,
+        "max": 1.19
+      },
+      "exit_delay": {
+        "mean": -12.68,
+        "std": 0.0,
+        "median": -12.68,
+        "p10": -12.68,
+        "p25": -12.68,
+        "p75": -12.68,
+        "p90": -12.68,
+        "min": -12.68,
+        "max": -12.68
+      }
+    },
+    "SEC_MOZ_SRE|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 7,
+      "running_time": {
+        "mean": 74.23,
+        "std": 27.09,
+        "median": 61.75,
+        "p10": 60.75,
+        "p25": 61.25,
+        "p75": 69.9,
+        "p90": 97.03,
+        "min": 60.67,
+        "max": 134.91
+      },
+      "delay_delta": {
+        "mean": 22.23,
+        "std": 27.09,
+        "median": 9.75,
+        "p10": 8.75,
+        "p25": 9.26,
+        "p75": 17.9,
+        "p90": 45.03,
+        "min": 8.67,
+        "max": 82.91
+      },
+      "exit_delay": {
+        "mean": 24.03,
+        "std": 39.39,
+        "median": 1.54,
+        "p10": -4.61,
+        "p25": -0.83,
+        "p75": 41.97,
+        "p90": 76.25,
+        "min": -8.85,
+        "max": 93.21
+      }
+    },
+    "SEC_MOZ_SRE|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 9,
+      "running_time": {
+        "mean": 49.0,
+        "std": 14.4,
+        "median": 44.2,
+        "p10": 44.2,
+        "p25": 44.2,
+        "p75": 44.2,
+        "p90": 52.84,
+        "min": 44.2,
+        "max": 87.39
+      },
+      "delay_delta": {
+        "mean": -3.0,
+        "std": 14.4,
+        "median": -7.8,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": -7.8,
+        "p90": 0.84,
+        "min": -7.8,
+        "max": 35.39
+      },
+      "exit_delay": {
+        "mean": -11.78,
+        "std": 16.75,
+        "median": -19.61,
+        "p10": -25.12,
+        "p25": -24.3,
+        "p75": -2.63,
+        "p90": 12.46,
+        "min": -25.73,
+        "max": 18.72
+      }
+    },
+    "SEC_MOZ_SRE|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 44.29,
+        "std": 0.13,
+        "median": 44.29,
+        "p10": 44.22,
+        "p25": 44.25,
+        "p75": 44.34,
+        "p90": 44.36,
+        "min": 44.2,
+        "max": 44.38
+      },
+      "delay_delta": {
+        "mean": -7.71,
+        "std": 0.13,
+        "median": -7.71,
+        "p10": -7.78,
+        "p25": -7.75,
+        "p75": -7.67,
+        "p90": -7.64,
+        "min": -7.8,
+        "max": -7.62
+      },
+      "exit_delay": {
+        "mean": 0.95,
+        "std": 38.0,
+        "median": 0.95,
+        "p10": -20.55,
+        "p25": -12.49,
+        "p75": 14.38,
+        "p90": 22.45,
+        "min": -25.92,
+        "max": 27.82
+      }
+    },
+    "SEC_MOZ_SRE|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 20,
+      "running_time": {
+        "mean": 54.61,
+        "std": 16.43,
+        "median": 48.16,
+        "p10": 47.58,
+        "p25": 47.96,
+        "p75": 50.54,
+        "p90": 62.8,
+        "min": 47.26,
+        "max": 106.54
+      },
+      "delay_delta": {
+        "mean": 2.61,
+        "std": 16.43,
+        "median": -3.84,
+        "p10": -4.42,
+        "p25": -4.04,
+        "p75": -1.46,
+        "p90": 10.8,
+        "min": -4.74,
+        "max": 54.54
+      },
+      "exit_delay": {
+        "mean": -0.57,
+        "std": 27.58,
+        "median": -14.41,
+        "p10": -21.45,
+        "p25": -20.77,
+        "p75": 16.86,
+        "p90": 48.2,
+        "min": -21.97,
+        "max": 51.4
+      }
+    },
+    "SEC_MOZ_SRE|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 10,
+      "running_time": {
+        "mean": 61.33,
+        "std": 1.4,
+        "median": 60.9,
+        "p10": 60.42,
+        "p25": 60.74,
+        "p75": 61.45,
+        "p90": 61.98,
+        "min": 60.19,
+        "max": 65.09
+      },
+      "delay_delta": {
+        "mean": 9.33,
+        "std": 1.4,
+        "median": 8.9,
+        "p10": 8.42,
+        "p25": 8.74,
+        "p75": 9.45,
+        "p90": 9.98,
+        "min": 8.19,
+        "max": 13.09
+      },
+      "exit_delay": {
+        "mean": 26.96,
+        "std": 44.44,
+        "median": 8.79,
+        "p10": -5.92,
+        "p25": -0.37,
+        "p75": 25.78,
+        "p90": 97.57,
+        "min": -10.03,
+        "max": 119.9
+      }
+    },
+    "SEC_MOZ_SRE|SUPERFAST|HIGH|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 67.38,
+        "std": 0.0,
+        "median": 67.38,
+        "p10": 67.38,
+        "p25": 67.38,
+        "p75": 67.38,
+        "p90": 67.38,
+        "min": 67.38,
+        "max": 67.38
+      },
+      "delay_delta": {
+        "mean": 15.38,
+        "std": 0.0,
+        "median": 15.38,
+        "p10": 15.38,
+        "p25": 15.38,
+        "p75": 15.38,
+        "p90": 15.38,
+        "min": 15.38,
+        "max": 15.38
+      },
+      "exit_delay": {
+        "mean": -2.47,
+        "std": 0.0,
+        "median": -2.47,
+        "p10": -2.47,
+        "p25": -2.47,
+        "p75": -2.47,
+        "p90": -2.47,
+        "min": -2.47,
+        "max": -2.47
+      }
+    },
+    "SEC_MOZ_SRE|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 11,
+      "running_time": {
+        "mean": 55.34,
+        "std": 27.47,
+        "median": 44.2,
+        "p10": 44.2,
+        "p25": 44.2,
+        "p75": 44.2,
+        "p90": 78.98,
+        "min": 44.2,
+        "max": 131.97
+      },
+      "delay_delta": {
+        "mean": 3.34,
+        "std": 27.47,
+        "median": -7.8,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": -7.8,
+        "p90": 26.98,
+        "min": -7.8,
+        "max": 79.97
+      },
+      "exit_delay": {
+        "mean": 11.87,
+        "std": 51.65,
+        "median": -9.83,
+        "p10": -24.39,
+        "p25": -22.99,
+        "p75": 14.91,
+        "p90": 61.81,
+        "min": -25.39,
+        "max": 145.92
+      }
+    },
+    "SEC_MOZ_SRE|SUPERFAST|LOW|RAIN": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 47.75,
+        "std": 5.01,
+        "median": 47.75,
+        "p10": 44.91,
+        "p25": 45.97,
+        "p75": 49.52,
+        "p90": 50.58,
+        "min": 44.2,
+        "max": 51.29
+      },
+      "delay_delta": {
+        "mean": -4.25,
+        "std": 5.01,
+        "median": -4.25,
+        "p10": -7.09,
+        "p25": -6.03,
+        "p75": -2.48,
+        "p90": -1.42,
+        "min": -7.8,
+        "max": -0.71
+      },
+      "exit_delay": {
+        "mean": -19.41,
+        "std": 3.27,
+        "median": -19.41,
+        "p10": -21.26,
+        "p25": -20.56,
+        "p75": -18.25,
+        "p90": -17.55,
+        "min": -21.72,
+        "max": -17.09
+      }
+    },
+    "SEC_MOZ_SRE|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_MOZ_SRE",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 14,
+      "running_time": {
+        "mean": 49.09,
+        "std": 2.66,
+        "median": 48.21,
+        "p10": 47.48,
+        "p25": 47.85,
+        "p75": 48.62,
+        "p90": 52.48,
+        "min": 47.17,
+        "max": 56.34
+      },
+      "delay_delta": {
+        "mean": -2.91,
+        "std": 2.66,
+        "median": -3.79,
+        "p10": -4.52,
+        "p25": -4.15,
+        "p75": -3.38,
+        "p90": 0.48,
+        "min": -4.83,
+        "max": 4.34
+      },
+      "exit_delay": {
+        "mean": -3.16,
+        "std": 30.51,
+        "median": -17.38,
+        "p10": -21.87,
+        "p25": -19.96,
+        "p75": -6.55,
+        "p90": 48.14,
+        "min": -22.48,
+        "max": 67.54
+      }
+    },
+    "SEC_MTC_MOZ|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 52.87,
+        "std": 0.0,
+        "median": 52.87,
+        "p10": 52.87,
+        "p25": 52.87,
+        "p75": 52.87,
+        "p90": 52.87,
+        "min": 52.87,
+        "max": 52.87
+      },
+      "delay_delta": {
+        "mean": 7.87,
+        "std": 0.0,
+        "median": 7.87,
+        "p10": 7.87,
+        "p25": 7.87,
+        "p75": 7.87,
+        "p90": 7.87,
+        "min": 7.87,
+        "max": 7.87
+      },
+      "exit_delay": {
+        "mean": 7.6,
+        "std": 0.0,
+        "median": 7.6,
+        "p10": 7.6,
+        "p25": 7.6,
+        "p75": 7.6,
+        "p90": 7.6,
+        "min": 7.6,
+        "max": 7.6
+      }
+    },
+    "SEC_MTC_MOZ|EXPRESS|HIGH|RAIN": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 69.43,
+        "std": 0.0,
+        "median": 69.43,
+        "p10": 69.43,
+        "p25": 69.43,
+        "p75": 69.43,
+        "p90": 69.43,
+        "min": 69.43,
+        "max": 69.43
+      },
+      "delay_delta": {
+        "mean": 24.43,
+        "std": 0.0,
+        "median": 24.43,
+        "p10": 24.43,
+        "p25": 24.43,
+        "p75": 24.43,
+        "p90": 24.43,
+        "min": 24.43,
+        "max": 24.43
+      },
+      "exit_delay": {
+        "mean": 46.32,
+        "std": 0.0,
+        "median": 46.32,
+        "p10": 46.32,
+        "p25": 46.32,
+        "p75": 46.32,
+        "p90": 46.32,
+        "min": 46.32,
+        "max": 46.32
+      }
+    },
+    "SEC_MTC_MOZ|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 23,
+      "running_time": {
+        "mean": 49.29,
+        "std": 26.49,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 81.0,
+        "min": 38.25,
+        "max": 124.97
+      },
+      "delay_delta": {
+        "mean": 4.29,
+        "std": 26.49,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": 36.0,
+        "min": -6.75,
+        "max": 79.97
+      },
+      "exit_delay": {
+        "mean": 13.12,
+        "std": 37.13,
+        "median": -4.16,
+        "p10": -17.84,
+        "p25": -16.77,
+        "p75": 26.22,
+        "p90": 70.94,
+        "min": -18.82,
+        "max": 111.7
+      }
+    },
+    "SEC_MTC_MOZ|EXPRESS|LOW|RAIN": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 5,
+      "running_time": {
+        "mean": 55.51,
+        "std": 38.59,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 90.02,
+        "min": 38.25,
+        "max": 124.54
+      },
+      "delay_delta": {
+        "mean": 10.51,
+        "std": 38.59,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": 45.02,
+        "min": -6.75,
+        "max": 79.54
+      },
+      "exit_delay": {
+        "mean": 24.07,
+        "std": 42.24,
+        "median": 21.1,
+        "p10": -17.56,
+        "p25": -16.38,
+        "p75": 65.18,
+        "p90": 67.36,
+        "min": -18.35,
+        "max": 68.81
+      }
+    },
+    "SEC_MTC_MOZ|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 55.28,
+        "std": 39.34,
+        "median": 41.33,
+        "p10": 41.13,
+        "p25": 41.22,
+        "p75": 41.56,
+        "p90": 75.27,
+        "min": 41.06,
+        "max": 152.63
+      },
+      "delay_delta": {
+        "mean": 10.28,
+        "std": 39.34,
+        "median": -3.67,
+        "p10": -3.87,
+        "p25": -3.78,
+        "p75": -3.44,
+        "p90": 30.27,
+        "min": -3.94,
+        "max": 107.63
+      },
+      "exit_delay": {
+        "mean": 13.5,
+        "std": 39.69,
+        "median": -6.17,
+        "p10": -14.53,
+        "p25": -13.31,
+        "p75": 30.37,
+        "p90": 53.94,
+        "min": -14.54,
+        "max": 98.64
+      }
+    },
+    "SEC_MTC_MOZ|PASSENGER|HIGH|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 52.89,
+        "std": 0.21,
+        "median": 52.89,
+        "p10": 52.77,
+        "p25": 52.81,
+        "p75": 52.96,
+        "p90": 53.0,
+        "min": 52.74,
+        "max": 53.03
+      },
+      "delay_delta": {
+        "mean": 7.88,
+        "std": 0.21,
+        "median": 7.88,
+        "p10": 7.77,
+        "p25": 7.81,
+        "p75": 7.96,
+        "p90": 8.0,
+        "min": 7.74,
+        "max": 8.03
+      },
+      "exit_delay": {
+        "mean": -3.37,
+        "std": 1.54,
+        "median": -3.37,
+        "p10": -4.24,
+        "p25": -3.92,
+        "p75": -2.82,
+        "p90": -2.5,
+        "min": -4.46,
+        "max": -2.28
+      }
+    },
+    "SEC_MTC_MOZ|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 19,
+      "running_time": {
+        "mean": 44.66,
+        "std": 20.87,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 45.51,
+        "min": 38.25,
+        "max": 123.68
+      },
+      "delay_delta": {
+        "mean": -0.34,
+        "std": 20.87,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": 0.51,
+        "min": -6.75,
+        "max": 78.68
+      },
+      "exit_delay": {
+        "mean": 0.38,
+        "std": 29.35,
+        "median": -15.52,
+        "p10": -18.02,
+        "p25": -17.31,
+        "p75": 1.55,
+        "p90": 54.72,
+        "min": -18.55,
+        "max": 72.43
+      }
+    },
+    "SEC_MTC_MOZ|PASSENGER|LOW|RAIN": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 4,
+      "running_time": {
+        "mean": 38.38,
+        "std": 0.25,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.38,
+        "p90": 38.6,
+        "min": 38.25,
+        "max": 38.75
+      },
+      "delay_delta": {
+        "mean": -6.62,
+        "std": 0.25,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.62,
+        "p90": -6.4,
+        "min": -6.75,
+        "max": -6.25
+      },
+      "exit_delay": {
+        "mean": -14.55,
+        "std": 2.66,
+        "median": -14.2,
+        "p10": -17.08,
+        "p25": -16.43,
+        "p75": -12.32,
+        "p90": -12.29,
+        "min": -17.51,
+        "max": -12.28
+      }
+    },
+    "SEC_MTC_MOZ|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 12,
+      "running_time": {
+        "mean": 51.73,
+        "std": 23.15,
+        "median": 41.47,
+        "p10": 40.56,
+        "p25": 40.96,
+        "p75": 43.48,
+        "p90": 95.78,
+        "min": 40.25,
+        "max": 101.11
+      },
+      "delay_delta": {
+        "mean": 6.73,
+        "std": 23.15,
+        "median": -3.54,
+        "p10": -4.44,
+        "p25": -4.04,
+        "p75": -1.51,
+        "p90": 50.78,
+        "min": -4.75,
+        "max": 56.11
+      },
+      "exit_delay": {
+        "mean": 12.76,
+        "std": 27.64,
+        "median": 0.79,
+        "p10": -13.91,
+        "p25": -10.76,
+        "p75": 33.76,
+        "p90": 48.99,
+        "min": -14.9,
+        "max": 62.97
+      }
+    },
+    "SEC_MTC_MOZ|PASSENGER|MEDIUM|RAIN": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 46.44,
+        "std": 0.0,
+        "median": 46.44,
+        "p10": 46.44,
+        "p25": 46.44,
+        "p75": 46.44,
+        "p90": 46.44,
+        "min": 46.44,
+        "max": 46.44
+      },
+      "delay_delta": {
+        "mean": 1.44,
+        "std": 0.0,
+        "median": 1.44,
+        "p10": 1.44,
+        "p25": 1.44,
+        "p75": 1.44,
+        "p90": 1.44,
+        "min": 1.44,
+        "max": 1.44
+      },
+      "exit_delay": {
+        "mean": -9.64,
+        "std": 0.0,
+        "median": -9.64,
+        "p10": -9.64,
+        "p25": -9.64,
+        "p75": -9.64,
+        "p90": -9.64,
+        "min": -9.64,
+        "max": -9.64
+      }
+    },
+    "SEC_MTC_MOZ|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 51.63,
+        "std": 0.0,
+        "median": 51.63,
+        "p10": 51.63,
+        "p25": 51.63,
+        "p75": 51.63,
+        "p90": 51.63,
+        "min": 51.63,
+        "max": 51.63
+      },
+      "delay_delta": {
+        "mean": 6.63,
+        "std": 0.0,
+        "median": 6.63,
+        "p10": 6.63,
+        "p25": 6.63,
+        "p75": 6.63,
+        "p90": 6.63,
+        "min": 6.63,
+        "max": 6.63
+      },
+      "exit_delay": {
+        "mean": -3.49,
+        "std": 0.0,
+        "median": -3.49,
+        "p10": -3.49,
+        "p25": -3.49,
+        "p75": -3.49,
+        "p90": -3.49,
+        "min": -3.49,
+        "max": -3.49
+      }
+    },
+    "SEC_MTC_MOZ|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 31,
+      "running_time": {
+        "mean": 43.62,
+        "std": 18.68,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 38.25,
+        "min": 38.25,
+        "max": 131.33
+      },
+      "delay_delta": {
+        "mean": -1.38,
+        "std": 18.68,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": -6.75,
+        "min": -6.75,
+        "max": 86.33
+      },
+      "exit_delay": {
+        "mean": -2.82,
+        "std": 26.21,
+        "median": -16.67,
+        "p10": -18.24,
+        "p25": -17.86,
+        "p75": -1.49,
+        "p90": 35.62,
+        "min": -18.6,
+        "max": 83.5
+      }
+    },
+    "SEC_MTC_MOZ|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 38.25,
+        "std": 0.0,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 38.25,
+        "min": 38.25,
+        "max": 38.25
+      },
+      "delay_delta": {
+        "mean": -6.75,
+        "std": 0.0,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": -6.75,
+        "min": -6.75,
+        "max": -6.75
+      },
+      "exit_delay": {
+        "mean": -17.57,
+        "std": 1.52,
+        "median": -17.57,
+        "p10": -18.43,
+        "p25": -18.11,
+        "p75": -17.04,
+        "p90": -16.71,
+        "min": -18.65,
+        "max": -16.5
+      }
+    },
+    "SEC_MTC_MOZ|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 4,
+      "running_time": {
+        "mean": 57.39,
+        "std": 33.23,
+        "median": 40.82,
+        "p10": 40.72,
+        "p25": 40.77,
+        "p75": 57.44,
+        "p90": 87.32,
+        "min": 40.69,
+        "max": 107.24
+      },
+      "delay_delta": {
+        "mean": 12.39,
+        "std": 33.23,
+        "median": -4.18,
+        "p10": -4.28,
+        "p25": -4.23,
+        "p75": 12.44,
+        "p90": 42.32,
+        "min": -4.31,
+        "max": 62.24
+      },
+      "exit_delay": {
+        "mean": 3.31,
+        "std": 32.82,
+        "median": -11.34,
+        "p10": -15.76,
+        "p25": -14.85,
+        "p75": 6.82,
+        "p90": 34.1,
+        "min": -16.37,
+        "max": 52.28
+      }
+    },
+    "SEC_MTC_MOZ|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 6,
+      "running_time": {
+        "mean": 52.11,
+        "std": 0.43,
+        "median": 52.16,
+        "p10": 51.67,
+        "p25": 51.98,
+        "p75": 52.26,
+        "p90": 52.48,
+        "min": 51.4,
+        "max": 52.69
+      },
+      "delay_delta": {
+        "mean": 7.11,
+        "std": 0.43,
+        "median": 7.17,
+        "p10": 6.67,
+        "p25": 6.99,
+        "p75": 7.26,
+        "p90": 7.49,
+        "min": 6.4,
+        "max": 7.69
+      },
+      "exit_delay": {
+        "mean": 22.01,
+        "std": 36.54,
+        "median": 0.03,
+        "p10": -3.08,
+        "p25": -2.0,
+        "p75": 50.83,
+        "p90": 69.08,
+        "min": -4.14,
+        "max": 71.05
+      }
+    },
+    "SEC_MTC_MOZ|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 23,
+      "running_time": {
+        "mean": 39.82,
+        "std": 7.53,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 38.25,
+        "min": 38.25,
+        "max": 74.35
+      },
+      "delay_delta": {
+        "mean": -5.18,
+        "std": 7.53,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": -6.75,
+        "min": -6.75,
+        "max": 29.35
+      },
+      "exit_delay": {
+        "mean": -8.33,
+        "std": 15.35,
+        "median": -16.38,
+        "p10": -18.31,
+        "p25": -17.96,
+        "p75": -7.54,
+        "p90": 17.38,
+        "min": -18.55,
+        "max": 25.92
+      }
+    },
+    "SEC_MTC_MOZ|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 63.64,
+        "std": 41.13,
+        "median": 41.92,
+        "p10": 41.21,
+        "p25": 41.51,
+        "p75": 61.55,
+        "p90": 116.67,
+        "min": 41.11,
+        "max": 151.43
+      },
+      "delay_delta": {
+        "mean": 18.64,
+        "std": 41.13,
+        "median": -3.08,
+        "p10": -3.79,
+        "p25": -3.49,
+        "p75": 16.55,
+        "p90": 71.67,
+        "min": -3.89,
+        "max": 106.43
+      },
+      "exit_delay": {
+        "mean": 36.12,
+        "std": 69.44,
+        "median": -7.74,
+        "p10": -15.47,
+        "p25": -15.3,
+        "p75": 92.35,
+        "p90": 123.77,
+        "min": -15.67,
+        "max": 153.72
+      }
+    },
+    "SEC_MTC_MOZ|SUPERFAST|MEDIUM|RAIN": {
+      "section_id": "SEC_MTC_MOZ",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 46.06,
+        "std": 0.0,
+        "median": 46.06,
+        "p10": 46.06,
+        "p25": 46.06,
+        "p75": 46.06,
+        "p90": 46.06,
+        "min": 46.06,
+        "max": 46.06
+      },
+      "delay_delta": {
+        "mean": 1.06,
+        "std": 0.0,
+        "median": 1.06,
+        "p10": 1.06,
+        "p25": 1.06,
+        "p75": 1.06,
+        "p90": 1.06,
+        "min": 1.06,
+        "max": 1.06
+      },
+      "exit_delay": {
+        "mean": -10.86,
+        "std": 0.0,
+        "median": -10.86,
+        "p10": -10.86,
+        "p25": -10.86,
+        "p75": -10.86,
+        "p90": -10.86,
+        "min": -10.86,
+        "max": -10.86
+      }
+    },
+    "SEC_NDLS_GZB|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -5.6,
+        "std": 0.0,
+        "median": -5.6,
+        "p10": -5.6,
+        "p25": -5.6,
+        "p75": -5.6,
+        "p90": -5.6,
+        "min": -5.6,
+        "max": -5.6
+      }
+    },
+    "SEC_NDLS_GZB|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 31,
+      "running_time": {
+        "mean": 24.53,
+        "std": 2.87,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 37.18
+      },
+      "delay_delta": {
+        "mean": -3.47,
+        "std": 2.87,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": 9.18
+      },
+      "exit_delay": {
+        "mean": -2.05,
+        "std": 4.84,
+        "median": -3.87,
+        "p10": -5.65,
+        "p25": -5.15,
+        "p75": -2.17,
+        "p90": 7.69,
+        "min": -6.07,
+        "max": 10.09
+      }
+    },
+    "SEC_NDLS_GZB|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 5,
+      "running_time": {
+        "mean": 24.73,
+        "std": 2.08,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 26.6,
+        "min": 23.8,
+        "max": 28.46
+      },
+      "delay_delta": {
+        "mean": -3.27,
+        "std": 2.08,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -1.4,
+        "min": -4.2,
+        "max": 0.46
+      },
+      "exit_delay": {
+        "mean": -4.13,
+        "std": 1.68,
+        "median": -4.76,
+        "p10": -5.29,
+        "p25": -4.88,
+        "p75": -4.18,
+        "p90": -2.43,
+        "min": -5.56,
+        "max": -1.26
+      }
+    },
+    "SEC_NDLS_GZB|EXPRESS|MEDIUM|RAIN": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -4.08,
+        "std": 0.0,
+        "median": -4.08,
+        "p10": -4.08,
+        "p25": -4.08,
+        "p75": -4.08,
+        "p90": -4.08,
+        "min": -4.08,
+        "max": -4.08
+      }
+    },
+    "SEC_NDLS_GZB|PASSENGER|HIGH|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 7,
+      "running_time": {
+        "mean": 25.89,
+        "std": 3.62,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 26.89,
+        "p90": 30.87,
+        "min": 23.8,
+        "max": 32.22
+      },
+      "delay_delta": {
+        "mean": -2.11,
+        "std": 3.62,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -1.1,
+        "p90": 2.87,
+        "min": -4.2,
+        "max": 4.22
+      },
+      "exit_delay": {
+        "mean": -2.19,
+        "std": 4.47,
+        "median": -3.81,
+        "p10": -5.67,
+        "p25": -5.24,
+        "p75": 0.19,
+        "p90": 4.17,
+        "min": -5.96,
+        "max": 4.53
+      }
+    },
+    "SEC_NDLS_GZB|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 16,
+      "running_time": {
+        "mean": 26.61,
+        "std": 8.28,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 30.77,
+        "min": 23.8,
+        "max": 54.8
+      },
+      "delay_delta": {
+        "mean": -1.39,
+        "std": 8.28,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": 2.77,
+        "min": -4.2,
+        "max": 26.8
+      },
+      "exit_delay": {
+        "mean": -1.36,
+        "std": 8.57,
+        "median": -4.37,
+        "p10": -5.55,
+        "p25": -5.27,
+        "p75": -3.56,
+        "p90": 6.03,
+        "min": -5.81,
+        "max": 26.83
+      }
+    },
+    "SEC_NDLS_GZB|PASSENGER|LOW|RAIN": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -0.7,
+        "std": 0.0,
+        "median": -0.7,
+        "p10": -0.7,
+        "p25": -0.7,
+        "p75": -0.7,
+        "p90": -0.7,
+        "min": -0.7,
+        "max": -0.7
+      }
+    },
+    "SEC_NDLS_GZB|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 14,
+      "running_time": {
+        "mean": 28.34,
+        "std": 12.47,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 36.21,
+        "min": 23.8,
+        "max": 68.71
+      },
+      "delay_delta": {
+        "mean": 0.34,
+        "std": 12.47,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": 8.21,
+        "min": -4.2,
+        "max": 40.71
+      },
+      "exit_delay": {
+        "mean": 0.5,
+        "std": 12.45,
+        "median": -4.47,
+        "p10": -5.36,
+        "p25": -5.02,
+        "p75": -0.64,
+        "p90": 9.1,
+        "min": -6.2,
+        "max": 40.39
+      }
+    },
+    "SEC_NDLS_GZB|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -4.43,
+        "std": 0.5,
+        "median": -4.43,
+        "p10": -4.71,
+        "p25": -4.6,
+        "p75": -4.25,
+        "p90": -4.14,
+        "min": -4.78,
+        "max": -4.07
+      }
+    },
+    "SEC_NDLS_GZB|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 30,
+      "running_time": {
+        "mean": 25.16,
+        "std": 5.95,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 55.3
+      },
+      "delay_delta": {
+        "mean": -2.84,
+        "std": 5.95,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": 27.3
+      },
+      "exit_delay": {
+        "mean": -1.27,
+        "std": 7.98,
+        "median": -4.04,
+        "p10": -5.76,
+        "p25": -5.15,
+        "p75": -2.12,
+        "p90": 4.92,
+        "min": -6.12,
+        "max": 30.29
+      }
+    },
+    "SEC_NDLS_GZB|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -4.93,
+        "std": 0.0,
+        "median": -4.93,
+        "p10": -4.93,
+        "p25": -4.93,
+        "p75": -4.93,
+        "p90": -4.93,
+        "min": -4.93,
+        "max": -4.93
+      }
+    },
+    "SEC_NDLS_GZB|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 5,
+      "running_time": {
+        "mean": 24.85,
+        "std": 2.35,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 26.96,
+        "min": 23.8,
+        "max": 29.06
+      },
+      "delay_delta": {
+        "mean": -3.15,
+        "std": 2.35,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -1.04,
+        "min": -4.2,
+        "max": 1.06
+      },
+      "exit_delay": {
+        "mean": 0.31,
+        "std": 9.57,
+        "median": -5.34,
+        "p10": -5.73,
+        "p25": -5.55,
+        "p75": 1.83,
+        "p90": 10.6,
+        "min": -5.85,
+        "max": 16.44
+      }
+    },
+    "SEC_NDLS_GZB|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 52.17,
+        "std": 0.0,
+        "median": 52.17,
+        "p10": 52.17,
+        "p25": 52.17,
+        "p75": 52.17,
+        "p90": 52.17,
+        "min": 52.17,
+        "max": 52.17
+      },
+      "delay_delta": {
+        "mean": 24.17,
+        "std": 0.0,
+        "median": 24.17,
+        "p10": 24.17,
+        "p25": 24.17,
+        "p75": 24.17,
+        "p90": 24.17,
+        "min": 24.17,
+        "max": 24.17
+      },
+      "exit_delay": {
+        "mean": 23.39,
+        "std": 0.0,
+        "median": 23.39,
+        "p10": 23.39,
+        "p25": 23.39,
+        "p75": 23.39,
+        "p90": 23.39,
+        "min": 23.39,
+        "max": 23.39
+      }
+    },
+    "SEC_NDLS_GZB|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 27,
+      "running_time": {
+        "mean": 25.81,
+        "std": 6.61,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 27.52,
+        "min": 23.8,
+        "max": 54.84
+      },
+      "delay_delta": {
+        "mean": -2.19,
+        "std": 6.61,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -0.48,
+        "min": -4.2,
+        "max": 26.84
+      },
+      "exit_delay": {
+        "mean": -2.11,
+        "std": 6.94,
+        "median": -4.18,
+        "p10": -5.94,
+        "p25": -5.7,
+        "p75": -3.02,
+        "p90": 4.87,
+        "min": -6.09,
+        "max": 25.27
+      }
+    },
+    "SEC_NDLS_GZB|SUPERFAST|LOW|RAIN": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -3.42,
+        "std": 1.96,
+        "median": -3.27,
+        "p10": -5.01,
+        "p25": -4.36,
+        "p75": -2.41,
+        "p90": -1.89,
+        "min": -5.45,
+        "max": -1.54
+      }
+    },
+    "SEC_NDLS_GZB|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 6,
+      "running_time": {
+        "mean": 28.84,
+        "std": 12.34,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 38.91,
+        "min": 23.8,
+        "max": 54.02
+      },
+      "delay_delta": {
+        "mean": 0.84,
+        "std": 12.34,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": 10.91,
+        "min": -4.2,
+        "max": 26.02
+      },
+      "exit_delay": {
+        "mean": 2.65,
+        "std": 17.67,
+        "median": -4.08,
+        "p10": -5.5,
+        "p25": -5.19,
+        "p75": -3.62,
+        "p90": 17.53,
+        "min": -5.59,
+        "max": 38.67
+      }
+    },
+    "SEC_NDLS_GZB|SUPERFAST|MEDIUM|RAIN": {
+      "section_id": "SEC_NDLS_GZB",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 23.8,
+        "std": 0.0,
+        "median": 23.8,
+        "p10": 23.8,
+        "p25": 23.8,
+        "p75": 23.8,
+        "p90": 23.8,
+        "min": 23.8,
+        "max": 23.8
+      },
+      "delay_delta": {
+        "mean": -4.2,
+        "std": 0.0,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": -4.2
+      },
+      "exit_delay": {
+        "mean": -3.65,
+        "std": 0.0,
+        "median": -3.65,
+        "p10": -3.65,
+        "p25": -3.65,
+        "p75": -3.65,
+        "p90": -3.65,
+        "min": -3.65,
+        "max": -3.65
+      }
+    },
+    "SEC_RK_HW|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 54.55,
+        "std": 0.57,
+        "median": 54.55,
+        "p10": 54.23,
+        "p25": 54.35,
+        "p75": 54.75,
+        "p90": 54.87,
+        "min": 54.15,
+        "max": 54.95
+      },
+      "delay_delta": {
+        "mean": 9.55,
+        "std": 0.57,
+        "median": 9.55,
+        "p10": 9.23,
+        "p25": 9.35,
+        "p75": 9.75,
+        "p90": 9.87,
+        "min": 9.15,
+        "max": 9.95
+      },
+      "exit_delay": {
+        "mean": 65.98,
+        "std": 91.58,
+        "median": 65.98,
+        "p10": 14.17,
+        "p25": 33.6,
+        "p75": 98.36,
+        "p90": 117.79,
+        "min": 1.22,
+        "max": 130.74
+      }
+    },
+    "SEC_RK_HW|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 23,
+      "running_time": {
+        "mean": 39.29,
+        "std": 4.99,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 38.25,
+        "min": 38.25,
+        "max": 62.18
+      },
+      "delay_delta": {
+        "mean": -5.71,
+        "std": 4.99,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": -6.75,
+        "min": -6.75,
+        "max": 17.18
+      },
+      "exit_delay": {
+        "mean": 14.81,
+        "std": 46.97,
+        "median": 5.63,
+        "p10": -35.14,
+        "p25": -23.43,
+        "p75": 34.98,
+        "p90": 95.3,
+        "min": -37.7,
+        "max": 107.71
+      }
+    },
+    "SEC_RK_HW|EXPRESS|LOW|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 38.59,
+        "std": 0.3,
+        "median": 38.71,
+        "p10": 38.34,
+        "p25": 38.48,
+        "p75": 38.77,
+        "p90": 38.8,
+        "min": 38.25,
+        "max": 38.82
+      },
+      "delay_delta": {
+        "mean": -6.41,
+        "std": 0.3,
+        "median": -6.29,
+        "p10": -6.66,
+        "p25": -6.52,
+        "p75": -6.23,
+        "p90": -6.2,
+        "min": -6.75,
+        "max": -6.18
+      },
+      "exit_delay": {
+        "mean": 44.07,
+        "std": 73.37,
+        "median": 67.57,
+        "p10": -17.02,
+        "p25": 14.7,
+        "p75": 85.19,
+        "p90": 95.76,
+        "min": -38.17,
+        "max": 102.81
+      }
+    },
+    "SEC_RK_HW|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 10,
+      "running_time": {
+        "mean": 44.02,
+        "std": 3.38,
+        "median": 42.55,
+        "p10": 42.31,
+        "p25": 42.41,
+        "p75": 43.35,
+        "p90": 47.58,
+        "min": 41.88,
+        "max": 52.69
+      },
+      "delay_delta": {
+        "mean": -0.98,
+        "std": 3.38,
+        "median": -2.46,
+        "p10": -2.69,
+        "p25": -2.59,
+        "p75": -1.65,
+        "p90": 2.58,
+        "min": -3.12,
+        "max": 7.69
+      },
+      "exit_delay": {
+        "mean": 0.16,
+        "std": 32.08,
+        "median": -4.25,
+        "p10": -29.84,
+        "p25": -27.83,
+        "p75": 13.94,
+        "p90": 38.96,
+        "min": -32.22,
+        "max": 62.27
+      }
+    },
+    "SEC_RK_HW|PASSENGER|HIGH|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 70.78,
+        "std": 22.61,
+        "median": 70.78,
+        "p10": 58.0,
+        "p25": 62.79,
+        "p75": 78.78,
+        "p90": 83.57,
+        "min": 54.8,
+        "max": 86.77
+      },
+      "delay_delta": {
+        "mean": 25.79,
+        "std": 22.61,
+        "median": 25.79,
+        "p10": 13.0,
+        "p25": 17.79,
+        "p75": 33.78,
+        "p90": 38.57,
+        "min": 9.8,
+        "max": 41.77
+      },
+      "exit_delay": {
+        "mean": 93.12,
+        "std": 47.33,
+        "median": 93.12,
+        "p10": 66.35,
+        "p25": 76.39,
+        "p75": 109.86,
+        "p90": 119.9,
+        "min": 59.66,
+        "max": 126.59
+      }
+    },
+    "SEC_RK_HW|PASSENGER|HIGH|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "PASSENGER",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 61.29,
+        "std": 0.0,
+        "median": 61.29,
+        "p10": 61.29,
+        "p25": 61.29,
+        "p75": 61.29,
+        "p90": 61.29,
+        "min": 61.29,
+        "max": 61.29
+      },
+      "delay_delta": {
+        "mean": 16.29,
+        "std": 0.0,
+        "median": 16.29,
+        "p10": 16.29,
+        "p25": 16.29,
+        "p75": 16.29,
+        "p90": 16.29,
+        "min": 16.29,
+        "max": 16.29
+      },
+      "exit_delay": {
+        "mean": 119.28,
+        "std": 0.0,
+        "median": 119.28,
+        "p10": 119.28,
+        "p25": 119.28,
+        "p75": 119.28,
+        "p90": 119.28,
+        "min": 119.28,
+        "max": 119.28
+      }
+    },
+    "SEC_RK_HW|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 27,
+      "running_time": {
+        "mean": 38.96,
+        "std": 3.68,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 38.25,
+        "min": 38.25,
+        "max": 57.39
+      },
+      "delay_delta": {
+        "mean": -6.04,
+        "std": 3.68,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": -6.75,
+        "min": -6.75,
+        "max": 12.39
+      },
+      "exit_delay": {
+        "mean": -0.65,
+        "std": 34.57,
+        "median": -6.87,
+        "p10": -35.09,
+        "p25": -29.15,
+        "p75": 19.14,
+        "p90": 38.35,
+        "min": -36.78,
+        "max": 105.85
+      }
+    },
+    "SEC_RK_HW|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 7,
+      "running_time": {
+        "mean": 43.55,
+        "std": 1.7,
+        "median": 43.15,
+        "p10": 42.34,
+        "p25": 42.7,
+        "p75": 43.37,
+        "p90": 44.93,
+        "min": 42.3,
+        "max": 47.27
+      },
+      "delay_delta": {
+        "mean": -1.45,
+        "std": 1.7,
+        "median": -1.85,
+        "p10": -2.66,
+        "p25": -2.3,
+        "p75": -1.63,
+        "p90": -0.07,
+        "min": -2.7,
+        "max": 2.27
+      },
+      "exit_delay": {
+        "mean": -14.28,
+        "std": 21.74,
+        "median": -24.17,
+        "p10": -31.58,
+        "p25": -28.93,
+        "p75": -6.42,
+        "p90": 12.32,
+        "min": -31.98,
+        "max": 26.93
+      }
+    },
+    "SEC_RK_HW|PASSENGER|MEDIUM|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 48.37,
+        "std": 0.0,
+        "median": 48.37,
+        "p10": 48.37,
+        "p25": 48.37,
+        "p75": 48.37,
+        "p90": 48.37,
+        "min": 48.37,
+        "max": 48.37
+      },
+      "delay_delta": {
+        "mean": 3.37,
+        "std": 0.0,
+        "median": 3.37,
+        "p10": 3.37,
+        "p25": 3.37,
+        "p75": 3.37,
+        "p90": 3.37,
+        "min": 3.37,
+        "max": 3.37
+      },
+      "exit_delay": {
+        "mean": -26.17,
+        "std": 0.0,
+        "median": -26.17,
+        "p10": -26.17,
+        "p25": -26.17,
+        "p75": -26.17,
+        "p90": -26.17,
+        "min": -26.17,
+        "max": -26.17
+      }
+    },
+    "SEC_RK_HW|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 11,
+      "running_time": {
+        "mean": 60.27,
+        "std": 12.54,
+        "median": 54.8,
+        "p10": 53.89,
+        "p25": 54.36,
+        "p75": 60.28,
+        "p90": 66.26,
+        "min": 53.34,
+        "max": 95.89
+      },
+      "delay_delta": {
+        "mean": 15.27,
+        "std": 12.54,
+        "median": 9.8,
+        "p10": 8.89,
+        "p25": 9.36,
+        "p75": 15.29,
+        "p90": 21.26,
+        "min": 8.34,
+        "max": 50.89
+      },
+      "exit_delay": {
+        "mean": 26.41,
+        "std": 24.16,
+        "median": 21.77,
+        "p10": -2.66,
+        "p25": 12.35,
+        "p75": 44.64,
+        "p90": 56.87,
+        "min": -8.84,
+        "max": 64.7
+      }
+    },
+    "SEC_RK_HW|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 10,
+      "running_time": {
+        "mean": 38.34,
+        "std": 0.29,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 38.34,
+        "min": 38.25,
+        "max": 39.16
+      },
+      "delay_delta": {
+        "mean": -6.66,
+        "std": 0.29,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": -6.66,
+        "min": -6.75,
+        "max": -5.84
+      },
+      "exit_delay": {
+        "mean": 9.3,
+        "std": 45.12,
+        "median": -6.32,
+        "p10": -33.08,
+        "p25": -27.09,
+        "p75": 39.22,
+        "p90": 55.02,
+        "min": -34.78,
+        "max": 99.19
+      }
+    },
+    "SEC_RK_HW|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 38.92,
+        "std": 0.0,
+        "median": 38.92,
+        "p10": 38.92,
+        "p25": 38.92,
+        "p75": 38.92,
+        "p90": 38.92,
+        "min": 38.92,
+        "max": 38.92
+      },
+      "delay_delta": {
+        "mean": -6.08,
+        "std": 0.0,
+        "median": -6.08,
+        "p10": -6.08,
+        "p25": -6.08,
+        "p75": -6.08,
+        "p90": -6.08,
+        "min": -6.08,
+        "max": -6.08
+      },
+      "exit_delay": {
+        "mean": -29.44,
+        "std": 0.0,
+        "median": -29.44,
+        "p10": -29.44,
+        "p25": -29.44,
+        "p75": -29.44,
+        "p90": -29.44,
+        "min": -29.44,
+        "max": -29.44
+      }
+    },
+    "SEC_RK_HW|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 15,
+      "running_time": {
+        "mean": 43.31,
+        "std": 2.96,
+        "median": 42.43,
+        "p10": 42.13,
+        "p25": 42.34,
+        "p75": 42.87,
+        "p90": 43.43,
+        "min": 41.81,
+        "max": 53.88
+      },
+      "delay_delta": {
+        "mean": -1.69,
+        "std": 2.96,
+        "median": -2.57,
+        "p10": -2.87,
+        "p25": -2.67,
+        "p75": -2.13,
+        "p90": -1.57,
+        "min": -3.19,
+        "max": 8.88
+      },
+      "exit_delay": {
+        "mean": -9.97,
+        "std": 25.5,
+        "median": -19.77,
+        "p10": -28.84,
+        "p25": -27.02,
+        "p75": -0.63,
+        "p90": 17.63,
+        "min": -33.25,
+        "max": 60.92
+      }
+    },
+    "SEC_RK_HW|SHATABDI|MEDIUM|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 58.59,
+        "std": 0.0,
+        "median": 58.59,
+        "p10": 58.59,
+        "p25": 58.59,
+        "p75": 58.59,
+        "p90": 58.59,
+        "min": 58.59,
+        "max": 58.59
+      },
+      "delay_delta": {
+        "mean": 13.59,
+        "std": 0.0,
+        "median": 13.59,
+        "p10": 13.59,
+        "p25": 13.59,
+        "p75": 13.59,
+        "p90": 13.59,
+        "min": 13.59,
+        "max": 13.59
+      },
+      "exit_delay": {
+        "mean": -1.45,
+        "std": 0.0,
+        "median": -1.45,
+        "p10": -1.45,
+        "p25": -1.45,
+        "p75": -1.45,
+        "p90": -1.45,
+        "min": -1.45,
+        "max": -1.45
+      }
+    },
+    "SEC_RK_HW|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 11,
+      "running_time": {
+        "mean": 56.32,
+        "std": 3.26,
+        "median": 54.89,
+        "p10": 53.76,
+        "p25": 54.03,
+        "p75": 58.08,
+        "p90": 60.76,
+        "min": 53.37,
+        "max": 63.15
+      },
+      "delay_delta": {
+        "mean": 11.32,
+        "std": 3.26,
+        "median": 9.89,
+        "p10": 8.76,
+        "p25": 9.03,
+        "p75": 13.09,
+        "p90": 15.76,
+        "min": 8.37,
+        "max": 18.15
+      },
+      "exit_delay": {
+        "mean": 39.25,
+        "std": 48.47,
+        "median": 29.22,
+        "p10": -3.05,
+        "p25": 1.26,
+        "p75": 74.87,
+        "p90": 101.02,
+        "min": -21.22,
+        "max": 128.3
+      }
+    },
+    "SEC_RK_HW|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 12,
+      "running_time": {
+        "mean": 41.25,
+        "std": 7.01,
+        "median": 38.25,
+        "p10": 38.25,
+        "p25": 38.25,
+        "p75": 38.25,
+        "p90": 54.41,
+        "min": 38.25,
+        "max": 56.29
+      },
+      "delay_delta": {
+        "mean": -3.75,
+        "std": 7.01,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.75,
+        "p90": 9.41,
+        "min": -6.75,
+        "max": 11.29
+      },
+      "exit_delay": {
+        "mean": -9.45,
+        "std": 25.45,
+        "median": -13.98,
+        "p10": -32.08,
+        "p25": -28.53,
+        "p75": -6.12,
+        "p90": 30.25,
+        "min": -33.59,
+        "max": 46.06
+      }
+    },
+    "SEC_RK_HW|SUPERFAST|LOW|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 38.34,
+        "std": 0.0,
+        "median": 38.34,
+        "p10": 38.34,
+        "p25": 38.34,
+        "p75": 38.34,
+        "p90": 38.34,
+        "min": 38.34,
+        "max": 38.34
+      },
+      "delay_delta": {
+        "mean": -6.66,
+        "std": 0.0,
+        "median": -6.66,
+        "p10": -6.66,
+        "p25": -6.66,
+        "p75": -6.66,
+        "p90": -6.66,
+        "min": -6.66,
+        "max": -6.66
+      },
+      "exit_delay": {
+        "mean": -7.31,
+        "std": 0.0,
+        "median": -7.31,
+        "p10": -7.31,
+        "p25": -7.31,
+        "p75": -7.31,
+        "p90": -7.31,
+        "min": -7.31,
+        "max": -7.31
+      }
+    },
+    "SEC_RK_HW|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 13,
+      "running_time": {
+        "mean": 47.11,
+        "std": 8.46,
+        "median": 42.74,
+        "p10": 42.17,
+        "p25": 42.27,
+        "p75": 49.05,
+        "p90": 52.34,
+        "min": 42.05,
+        "max": 72.33
+      },
+      "delay_delta": {
+        "mean": 2.11,
+        "std": 8.46,
+        "median": -2.26,
+        "p10": -2.83,
+        "p25": -2.73,
+        "p75": 4.05,
+        "p90": 7.34,
+        "min": -2.95,
+        "max": 27.33
+      },
+      "exit_delay": {
+        "mean": 23.58,
+        "std": 77.08,
+        "median": -6.27,
+        "p10": -19.54,
+        "p25": -16.65,
+        "p75": 18.64,
+        "p90": 69.17,
+        "min": -28.78,
+        "max": 259.01
+      }
+    },
+    "SEC_RK_HW|SUPERFAST|MEDIUM|RAIN": {
+      "section_id": "SEC_RK_HW",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 75.79,
+        "std": 0.0,
+        "median": 75.79,
+        "p10": 75.79,
+        "p25": 75.79,
+        "p75": 75.79,
+        "p90": 75.79,
+        "min": 75.79,
+        "max": 75.79
+      },
+      "delay_delta": {
+        "mean": 30.79,
+        "std": 0.0,
+        "median": 30.79,
+        "p10": 30.79,
+        "p25": 30.79,
+        "p75": 30.79,
+        "p90": 30.79,
+        "min": 30.79,
+        "max": 30.79
+      },
+      "exit_delay": {
+        "mean": 16.16,
+        "std": 0.0,
+        "median": 16.16,
+        "p10": 16.16,
+        "p25": 16.16,
+        "p75": 16.16,
+        "p90": 16.16,
+        "min": 16.16,
+        "max": 16.16
+      }
+    },
+    "SEC_SRE_RK|EXPRESS|HIGH|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 3,
+      "running_time": {
+        "mean": 54.13,
+        "std": 25.62,
+        "median": 39.58,
+        "p10": 39.2,
+        "p25": 39.34,
+        "p75": 61.65,
+        "p90": 74.89,
+        "min": 39.1,
+        "max": 83.72
+      },
+      "delay_delta": {
+        "mean": 22.13,
+        "std": 25.62,
+        "median": 7.58,
+        "p10": 7.2,
+        "p25": 7.34,
+        "p75": 29.65,
+        "p90": 42.89,
+        "min": 7.1,
+        "max": 51.72
+      },
+      "exit_delay": {
+        "mean": 48.93,
+        "std": 58.59,
+        "median": 45.62,
+        "p10": 2.78,
+        "p25": 18.84,
+        "p75": 77.36,
+        "p90": 96.4,
+        "min": -7.93,
+        "max": 109.1
+      }
+    },
+    "SEC_SRE_RK|EXPRESS|HIGH|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "EXPRESS",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 38.8,
+        "std": 0.0,
+        "median": 38.8,
+        "p10": 38.8,
+        "p25": 38.8,
+        "p75": 38.8,
+        "p90": 38.8,
+        "min": 38.8,
+        "max": 38.8
+      },
+      "delay_delta": {
+        "mean": 6.8,
+        "std": 0.0,
+        "median": 6.8,
+        "p10": 6.8,
+        "p25": 6.8,
+        "p75": 6.8,
+        "p90": 6.8,
+        "min": 6.8,
+        "max": 6.8
+      },
+      "exit_delay": {
+        "mean": 6.6,
+        "std": 0.0,
+        "median": 6.6,
+        "p10": 6.6,
+        "p25": 6.6,
+        "p75": 6.6,
+        "p90": 6.6,
+        "min": 6.6,
+        "max": 6.6
+      }
+    },
+    "SEC_SRE_RK|EXPRESS|LOW|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 22,
+      "running_time": {
+        "mean": 31.34,
+        "std": 11.26,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.2,
+        "p90": 44.27,
+        "min": 27.2,
+        "max": 75.42
+      },
+      "delay_delta": {
+        "mean": -0.66,
+        "std": 11.26,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.8,
+        "p90": 12.27,
+        "min": -4.8,
+        "max": 43.42
+      },
+      "exit_delay": {
+        "mean": 12.29,
+        "std": 46.48,
+        "median": -9.82,
+        "p10": -29.49,
+        "p25": -24.82,
+        "p75": 38.7,
+        "p90": 73.03,
+        "min": -31.42,
+        "max": 120.79
+      }
+    },
+    "SEC_SRE_RK|EXPRESS|LOW|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "EXPRESS",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 4,
+      "running_time": {
+        "mean": 51.36,
+        "std": 27.9,
+        "median": 51.29,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 75.45,
+        "p90": 75.58,
+        "min": 27.2,
+        "max": 75.67
+      },
+      "delay_delta": {
+        "mean": 19.36,
+        "std": 27.9,
+        "median": 19.29,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": 43.45,
+        "p90": 43.58,
+        "min": -4.8,
+        "max": 43.67
+      },
+      "exit_delay": {
+        "mean": 48.8,
+        "std": 72.1,
+        "median": 55.34,
+        "p10": -19.36,
+        "p25": -3.47,
+        "p75": 107.6,
+        "p90": 111.72,
+        "min": -29.95,
+        "max": 114.46
+      }
+    },
+    "SEC_SRE_RK|EXPRESS|MEDIUM|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 7,
+      "running_time": {
+        "mean": 35.43,
+        "std": 13.46,
+        "median": 27.87,
+        "p10": 27.2,
+        "p25": 27.23,
+        "p75": 41.62,
+        "p90": 55.1,
+        "min": 27.2,
+        "max": 55.26
+      },
+      "delay_delta": {
+        "mean": 3.43,
+        "std": 13.46,
+        "median": -4.13,
+        "p10": -4.8,
+        "p25": -4.77,
+        "p75": 9.61,
+        "p90": 23.1,
+        "min": -4.8,
+        "max": 23.26
+      },
+      "exit_delay": {
+        "mean": 16.62,
+        "std": 40.82,
+        "median": 11.3,
+        "p10": -12.57,
+        "p25": -0.49,
+        "p75": 15.32,
+        "p90": 51.3,
+        "min": -27.44,
+        "max": 102.79
+      }
+    },
+    "SEC_SRE_RK|EXPRESS|MEDIUM|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "EXPRESS",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 31.01,
+        "std": 0.0,
+        "median": 31.01,
+        "p10": 31.01,
+        "p25": 31.01,
+        "p75": 31.01,
+        "p90": 31.01,
+        "min": 31.01,
+        "max": 31.01
+      },
+      "delay_delta": {
+        "mean": -0.99,
+        "std": 0.0,
+        "median": -0.99,
+        "p10": -0.99,
+        "p25": -0.99,
+        "p75": -0.99,
+        "p90": -0.99,
+        "min": -0.99,
+        "max": -0.99
+      },
+      "exit_delay": {
+        "mean": 12.38,
+        "std": 0.0,
+        "median": 12.38,
+        "p10": 12.38,
+        "p25": 12.38,
+        "p75": 12.38,
+        "p90": 12.38,
+        "min": 12.38,
+        "max": 12.38
+      }
+    },
+    "SEC_SRE_RK|PASSENGER|LOW|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 25,
+      "running_time": {
+        "mean": 30.79,
+        "std": 10.97,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.2,
+        "p90": 38.16,
+        "min": 27.2,
+        "max": 75.53
+      },
+      "delay_delta": {
+        "mean": -1.21,
+        "std": 10.97,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.8,
+        "p90": 6.16,
+        "min": -4.8,
+        "max": 43.53
+      },
+      "exit_delay": {
+        "mean": 6.01,
+        "std": 38.54,
+        "median": -5.14,
+        "p10": -28.45,
+        "p25": -24.93,
+        "p75": 19.16,
+        "p90": 55.84,
+        "min": -30.35,
+        "max": 112.6
+      }
+    },
+    "SEC_SRE_RK|PASSENGER|LOW|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "PASSENGER",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 27.2,
+        "std": 0.0,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.2,
+        "p90": 27.2,
+        "min": 27.2,
+        "max": 27.2
+      },
+      "delay_delta": {
+        "mean": -4.8,
+        "std": 0.0,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.8,
+        "p90": -4.8,
+        "min": -4.8,
+        "max": -4.8
+      },
+      "exit_delay": {
+        "mean": -13.57,
+        "std": 0.0,
+        "median": -13.57,
+        "p10": -13.57,
+        "p25": -13.57,
+        "p75": -13.57,
+        "p90": -13.57,
+        "min": -13.57,
+        "max": -13.57
+      }
+    },
+    "SEC_SRE_RK|PASSENGER|MEDIUM|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 11,
+      "running_time": {
+        "mean": 30.09,
+        "std": 8.35,
+        "median": 27.64,
+        "p10": 27.2,
+        "p25": 27.24,
+        "p75": 27.93,
+        "p90": 28.16,
+        "min": 27.2,
+        "max": 55.25
+      },
+      "delay_delta": {
+        "mean": -1.91,
+        "std": 8.35,
+        "median": -4.36,
+        "p10": -4.8,
+        "p25": -4.76,
+        "p75": -4.07,
+        "p90": -3.84,
+        "min": -4.8,
+        "max": 23.25
+      },
+      "exit_delay": {
+        "mean": 11.1,
+        "std": 42.22,
+        "median": 11.13,
+        "p10": -29.65,
+        "p25": -25.4,
+        "p75": 31.15,
+        "p90": 53.15,
+        "min": -30.03,
+        "max": 102.99
+      }
+    },
+    "SEC_SRE_RK|PASSENGER|MEDIUM|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "PASSENGER",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 30.9,
+        "std": 0.0,
+        "median": 30.9,
+        "p10": 30.9,
+        "p25": 30.9,
+        "p75": 30.9,
+        "p90": 30.9,
+        "min": 30.9,
+        "max": 30.9
+      },
+      "delay_delta": {
+        "mean": -1.1,
+        "std": 0.0,
+        "median": -1.1,
+        "p10": -1.1,
+        "p25": -1.1,
+        "p75": -1.1,
+        "p90": -1.1,
+        "min": -1.1,
+        "max": -1.1
+      },
+      "exit_delay": {
+        "mean": 5.21,
+        "std": 0.0,
+        "median": 5.21,
+        "p10": 5.21,
+        "p25": 5.21,
+        "p75": 5.21,
+        "p90": 5.21,
+        "min": 5.21,
+        "max": 5.21
+      }
+    },
+    "SEC_SRE_RK|SHATABDI|HIGH|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 36.59,
+        "std": 4.38,
+        "median": 35.24,
+        "p10": 34.48,
+        "p25": 34.95,
+        "p75": 35.62,
+        "p90": 39.17,
+        "min": 33.82,
+        "max": 47.33
+      },
+      "delay_delta": {
+        "mean": 4.59,
+        "std": 4.38,
+        "median": 3.24,
+        "p10": 2.49,
+        "p25": 2.95,
+        "p75": 3.62,
+        "p90": 7.17,
+        "min": 1.82,
+        "max": 15.33
+      },
+      "exit_delay": {
+        "mean": -9.41,
+        "std": 10.74,
+        "median": -11.76,
+        "p10": -19.15,
+        "p25": -15.77,
+        "p75": -4.99,
+        "p90": 0.83,
+        "min": -21.96,
+        "max": 12.7
+      }
+    },
+    "SEC_SRE_RK|SHATABDI|HIGH|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SHATABDI",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 44.44,
+        "std": 0.41,
+        "median": 44.44,
+        "p10": 44.21,
+        "p25": 44.3,
+        "p75": 44.58,
+        "p90": 44.67,
+        "min": 44.15,
+        "max": 44.73
+      },
+      "delay_delta": {
+        "mean": 12.44,
+        "std": 0.41,
+        "median": 12.44,
+        "p10": 12.21,
+        "p25": 12.29,
+        "p75": 12.59,
+        "p90": 12.67,
+        "min": 12.15,
+        "max": 12.73
+      },
+      "exit_delay": {
+        "mean": 79.14,
+        "std": 37.89,
+        "median": 79.14,
+        "p10": 57.71,
+        "p25": 65.75,
+        "p75": 92.54,
+        "p90": 100.58,
+        "min": 52.35,
+        "max": 105.94
+      }
+    },
+    "SEC_SRE_RK|SHATABDI|LOW|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 10,
+      "running_time": {
+        "mean": 32.06,
+        "std": 15.37,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.2,
+        "p90": 32.06,
+        "min": 27.2,
+        "max": 75.8
+      },
+      "delay_delta": {
+        "mean": 0.06,
+        "std": 15.37,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.8,
+        "p90": 0.06,
+        "min": -4.8,
+        "max": 43.8
+      },
+      "exit_delay": {
+        "mean": -7.13,
+        "std": 32.85,
+        "median": -23.94,
+        "p10": -30.55,
+        "p25": -26.61,
+        "p75": -0.14,
+        "p90": 47.63,
+        "min": -30.72,
+        "max": 56.86
+      }
+    },
+    "SEC_SRE_RK|SHATABDI|LOW|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SHATABDI",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 27.2,
+        "std": 0.0,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.2,
+        "p90": 27.2,
+        "min": 27.2,
+        "max": 27.2
+      },
+      "delay_delta": {
+        "mean": -4.8,
+        "std": 0.0,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.8,
+        "p90": -4.8,
+        "min": -4.8,
+        "max": -4.8
+      },
+      "exit_delay": {
+        "mean": 44.89,
+        "std": 0.0,
+        "median": 44.89,
+        "p10": 44.89,
+        "p25": 44.89,
+        "p75": 44.89,
+        "p90": 44.89,
+        "min": 44.89,
+        "max": 44.89
+      }
+    },
+    "SEC_SRE_RK|SHATABDI|MEDIUM|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 15,
+      "running_time": {
+        "mean": 32.8,
+        "std": 11.6,
+        "median": 28.09,
+        "p10": 27.31,
+        "p25": 27.48,
+        "p75": 30.27,
+        "p90": 49.39,
+        "min": 27.2,
+        "max": 61.26
+      },
+      "delay_delta": {
+        "mean": 0.8,
+        "std": 11.6,
+        "median": -3.91,
+        "p10": -4.69,
+        "p25": -4.53,
+        "p75": -1.73,
+        "p90": 17.39,
+        "min": -4.8,
+        "max": 29.26
+      },
+      "exit_delay": {
+        "mean": 2.41,
+        "std": 30.21,
+        "median": -6.51,
+        "p10": -25.88,
+        "p25": -22.09,
+        "p75": 18.95,
+        "p90": 46.42,
+        "min": -28.94,
+        "max": 63.23
+      }
+    },
+    "SEC_SRE_RK|SHATABDI|MEDIUM|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SHATABDI",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "RAIN",
+      "sample_size": 2,
+      "running_time": {
+        "mean": 30.66,
+        "std": 0.08,
+        "median": 30.66,
+        "p10": 30.61,
+        "p25": 30.63,
+        "p75": 30.68,
+        "p90": 30.7,
+        "min": 30.6,
+        "max": 30.71
+      },
+      "delay_delta": {
+        "mean": -1.34,
+        "std": 0.08,
+        "median": -1.34,
+        "p10": -1.39,
+        "p25": -1.37,
+        "p75": -1.32,
+        "p90": -1.3,
+        "min": -1.4,
+        "max": -1.29
+      },
+      "exit_delay": {
+        "mean": 13.34,
+        "std": 18.5,
+        "median": 13.34,
+        "p10": 2.87,
+        "p25": 6.79,
+        "p75": 19.88,
+        "p90": 23.8,
+        "min": 0.25,
+        "max": 26.42
+      }
+    },
+    "SEC_SRE_RK|SUPERFAST|HIGH|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "CLEAR",
+      "sample_size": 8,
+      "running_time": {
+        "mean": 47.89,
+        "std": 28.45,
+        "median": 36.33,
+        "p10": 35.35,
+        "p25": 35.61,
+        "p75": 42.44,
+        "p90": 66.79,
+        "min": 35.01,
+        "max": 117.76
+      },
+      "delay_delta": {
+        "mean": 15.89,
+        "std": 28.45,
+        "median": 4.33,
+        "p10": 3.35,
+        "p25": 3.61,
+        "p75": 10.43,
+        "p90": 34.79,
+        "min": 3.01,
+        "max": 85.76
+      },
+      "exit_delay": {
+        "mean": 42.18,
+        "std": 84.78,
+        "median": 8.95,
+        "p10": -17.44,
+        "p25": -14.28,
+        "p75": 67.36,
+        "p90": 120.47,
+        "min": -20.74,
+        "max": 231.68
+      }
+    },
+    "SEC_SRE_RK|SUPERFAST|HIGH|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SUPERFAST",
+      "congestion_level": "HIGH",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 39.2,
+        "std": 0.0,
+        "median": 39.2,
+        "p10": 39.2,
+        "p25": 39.2,
+        "p75": 39.2,
+        "p90": 39.2,
+        "min": 39.2,
+        "max": 39.2
+      },
+      "delay_delta": {
+        "mean": 7.2,
+        "std": 0.0,
+        "median": 7.2,
+        "p10": 7.2,
+        "p25": 7.2,
+        "p75": 7.2,
+        "p90": 7.2,
+        "min": 7.2,
+        "max": 7.2
+      },
+      "exit_delay": {
+        "mean": -16.7,
+        "std": 0.0,
+        "median": -16.7,
+        "p10": -16.7,
+        "p25": -16.7,
+        "p75": -16.7,
+        "p90": -16.7,
+        "min": -16.7,
+        "max": -16.7
+      }
+    },
+    "SEC_SRE_RK|SUPERFAST|LOW|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "CLEAR",
+      "sample_size": 11,
+      "running_time": {
+        "mean": 31.07,
+        "std": 8.59,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.4,
+        "p90": 45.87,
+        "min": 27.2,
+        "max": 50.73
+      },
+      "delay_delta": {
+        "mean": -0.93,
+        "std": 8.59,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.6,
+        "p90": 13.87,
+        "min": -4.8,
+        "max": 18.73
+      },
+      "exit_delay": {
+        "mean": -0.03,
+        "std": 26.98,
+        "median": -6.87,
+        "p10": -26.27,
+        "p25": -20.82,
+        "p75": 13.38,
+        "p90": 21.02,
+        "min": -26.84,
+        "max": 62.74
+      }
+    },
+    "SEC_SRE_RK|SUPERFAST|LOW|RAIN": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SUPERFAST",
+      "congestion_level": "LOW",
+      "weather_condition": "RAIN",
+      "sample_size": 1,
+      "running_time": {
+        "mean": 27.2,
+        "std": 0.0,
+        "median": 27.2,
+        "p10": 27.2,
+        "p25": 27.2,
+        "p75": 27.2,
+        "p90": 27.2,
+        "min": 27.2,
+        "max": 27.2
+      },
+      "delay_delta": {
+        "mean": -4.8,
+        "std": 0.0,
+        "median": -4.8,
+        "p10": -4.8,
+        "p25": -4.8,
+        "p75": -4.8,
+        "p90": -4.8,
+        "min": -4.8,
+        "max": -4.8
+      },
+      "exit_delay": {
+        "mean": -16.7,
+        "std": 0.0,
+        "median": -16.7,
+        "p10": -16.7,
+        "p25": -16.7,
+        "p75": -16.7,
+        "p90": -16.7,
+        "min": -16.7,
+        "max": -16.7
+      }
+    },
+    "SEC_SRE_RK|SUPERFAST|MEDIUM|CLEAR": {
+      "section_id": "SEC_SRE_RK",
+      "train_type": "SUPERFAST",
+      "congestion_level": "MEDIUM",
+      "weather_condition": "CLEAR",
+      "sample_size": 17,
+      "running_time": {
+        "mean": 36.04,
+        "std": 17.05,
+        "median": 28.04,
+        "p10": 27.28,
+        "p25": 27.39,
+        "p75": 36.09,
+        "p90": 54.46,
+        "min": 27.2,
+        "max": 92.11
+      },
+      "delay_delta": {
+        "mean": 4.04,
+        "std": 17.05,
+        "median": -3.96,
+        "p10": -4.72,
+        "p25": -4.61,
+        "p75": 4.09,
+        "p90": 22.46,
+        "min": -4.8,
+        "max": 60.11
+      },
+      "exit_delay": {
+        "mean": 11.7,
+        "std": 41.4,
+        "median": -5.72,
+        "p10": -24.51,
+        "p25": -13.49,
+        "p75": 34.77,
+        "p90": 65.72,
+        "min": -30.06,
+        "max": 115.11
+      }
+    }
+  },
+  "hourly_profiles": {
+    "0": {
+      "sample_size": 47,
+      "delay_delta": {
+        "mean": -1.21,
+        "std": 11.51,
+        "median": -6.75,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": -3.9,
+        "p90": 23.1,
+        "min": -7.8,
+        "max": 27.21
+      },
+      "congestion_dist": {
+        "LOW": 0.7446808510638298,
+        "MEDIUM": 0.19148936170212766,
+        "HIGH": 0.06382978723404255
+      }
+    },
+    "1": {
+      "sample_size": 46,
+      "delay_delta": {
+        "mean": -0.7,
+        "std": 12.16,
+        "median": -4.8,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -2.31,
+        "p90": 9.45,
+        "min": -7.8,
+        "max": 54.87
+      },
+      "congestion_dist": {
+        "LOW": 0.6521739130434783,
+        "MEDIUM": 0.2608695652173913,
+        "HIGH": 0.08695652173913043
+      }
+    },
+    "2": {
+      "sample_size": 45,
+      "delay_delta": {
+        "mean": 0.21,
+        "std": 15.33,
+        "median": -6.75,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": 2.01,
+        "p90": 18.6,
+        "min": -10.2,
+        "max": 51.72
+      },
+      "congestion_dist": {
+        "LOW": 0.7555555555555555,
+        "MEDIUM": 0.17777777777777778,
+        "HIGH": 0.06666666666666667
+      }
+    },
+    "3": {
+      "sample_size": 19,
+      "delay_delta": {
+        "mean": -2.36,
+        "std": 12.41,
+        "median": -6.29,
+        "p10": -10.2,
+        "p25": -6.75,
+        "p75": -2.19,
+        "p90": 3.02,
+        "min": -10.2,
+        "max": 44.55
+      },
+      "congestion_dist": {
+        "LOW": 0.7368421052631579,
+        "MEDIUM": 0.21052631578947367,
+        "HIGH": 0.05263157894736842
+      }
+    },
+    "4": {
+      "sample_size": 6,
+      "delay_delta": {
+        "mean": 14.44,
+        "std": 47.09,
+        "median": -10.2,
+        "p10": -10.2,
+        "p25": -10.2,
+        "p75": 12.51,
+        "p90": 63.7,
+        "min": -10.2,
+        "max": 107.33
+      },
+      "congestion_dist": {
+        "LOW": 0.6666666666666666,
+        "HIGH": 0.3333333333333333
+      }
+    },
+    "6": {
+      "sample_size": 38,
+      "delay_delta": {
+        "mean": -2.98,
+        "std": 5.33,
+        "median": -4.2,
+        "p10": -4.2,
+        "p25": -4.2,
+        "p75": -4.2,
+        "p90": -4.2,
+        "min": -4.2,
+        "max": 27.3
+      },
+      "congestion_dist": {
+        "LOW": 0.8157894736842105,
+        "MEDIUM": 0.13157894736842105,
+        "HIGH": 0.05263157894736842
+      }
+    },
+    "7": {
+      "sample_size": 73,
+      "delay_delta": {
+        "mean": -0.58,
+        "std": 18.21,
+        "median": -6.0,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -6.0,
+        "p90": 3.88,
+        "min": -6.75,
+        "max": 86.33
+      },
+      "congestion_dist": {
+        "LOW": 0.8356164383561644,
+        "MEDIUM": 0.136986301369863,
+        "HIGH": 0.0273972602739726
+      }
+    },
+    "8": {
+      "sample_size": 34,
+      "delay_delta": {
+        "mean": 4.89,
+        "std": 20.63,
+        "median": -3.86,
+        "p10": -7.8,
+        "p25": -6.75,
+        "p75": 8.26,
+        "p90": 30.71,
+        "min": -7.8,
+        "max": 82.91
+      },
+      "congestion_dist": {
+        "MEDIUM": 0.47058823529411764,
+        "LOW": 0.35294117647058826,
+        "HIGH": 0.17647058823529413
+      }
+    },
+    "9": {
+      "sample_size": 52,
+      "delay_delta": {
+        "mean": 0.69,
+        "std": 11.52,
+        "median": -3.34,
+        "p10": -6.06,
+        "p25": -4.8,
+        "p75": 2.06,
+        "p90": 9.73,
+        "min": -7.8,
+        "max": 50.89
+      },
+      "congestion_dist": {
+        "MEDIUM": 0.5,
+        "LOW": 0.3076923076923077,
+        "HIGH": 0.19230769230769232
+      }
+    },
+    "10": {
+      "sample_size": 41,
+      "delay_delta": {
+        "mean": 6.63,
+        "std": 19.2,
+        "median": 0.71,
+        "p10": -10.2,
+        "p25": -4.54,
+        "p75": 9.71,
+        "p90": 21.26,
+        "min": -10.2,
+        "max": 70.88
+      },
+      "congestion_dist": {
+        "MEDIUM": 0.5121951219512195,
+        "LOW": 0.2682926829268293,
+        "HIGH": 0.21951219512195122
+      }
+    },
+    "11": {
+      "sample_size": 97,
+      "delay_delta": {
+        "mean": 0.95,
+        "std": 14.01,
+        "median": -4.2,
+        "p10": -6.0,
+        "p25": -6.0,
+        "p75": 0.93,
+        "p90": 12.77,
+        "min": -10.2,
+        "max": 65.01
+      },
+      "congestion_dist": {
+        "LOW": 0.4536082474226804,
+        "MEDIUM": 0.30927835051546393,
+        "HIGH": 0.23711340206185566
+      }
+    },
+    "12": {
+      "sample_size": 41,
+      "delay_delta": {
+        "mean": 1.35,
+        "std": 19.46,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": -3.49,
+        "p90": 20.13,
+        "min": -10.2,
+        "max": 78.68
+      },
+      "congestion_dist": {
+        "LOW": 0.6341463414634146,
+        "MEDIUM": 0.2926829268292683,
+        "HIGH": 0.07317073170731707
+      }
+    },
+    "13": {
+      "sample_size": 52,
+      "delay_delta": {
+        "mean": 3.05,
+        "std": 20.44,
+        "median": -4.8,
+        "p10": -7.8,
+        "p25": -7.8,
+        "p75": 3.44,
+        "p90": 27.28,
+        "min": -7.8,
+        "max": 108.17
+      },
+      "congestion_dist": {
+        "LOW": 0.7115384615384616,
+        "MEDIUM": 0.23076923076923078,
+        "HIGH": 0.057692307692307696
+      }
+    },
+    "14": {
+      "sample_size": 50,
+      "delay_delta": {
+        "mean": -1.94,
+        "std": 11.32,
+        "median": -4.8,
+        "p10": -6.85,
+        "p25": -6.75,
+        "p75": -3.02,
+        "p90": 4.88,
+        "min": -10.2,
+        "max": 54.43
+      },
+      "congestion_dist": {
+        "LOW": 0.66,
+        "MEDIUM": 0.32,
+        "HIGH": 0.02
+      }
+    },
+    "15": {
+      "sample_size": 111,
+      "delay_delta": {
+        "mean": -0.7,
+        "std": 14.72,
+        "median": -4.8,
+        "p10": -10.2,
+        "p25": -6.0,
+        "p75": -4.2,
+        "p90": 12.39,
+        "min": -10.2,
+        "max": 67.11
+      },
+      "congestion_dist": {
+        "LOW": 0.8018018018018018,
+        "MEDIUM": 0.15315315315315314,
+        "HIGH": 0.04504504504504504
+      }
+    },
+    "16": {
+      "sample_size": 49,
+      "delay_delta": {
+        "mean": -0.09,
+        "std": 15.07,
+        "median": -6.75,
+        "p10": -7.44,
+        "p25": -6.75,
+        "p75": 1.06,
+        "p90": 9.41,
+        "min": -10.2,
+        "max": 63.86
+      },
+      "congestion_dist": {
+        "LOW": 0.6938775510204082,
+        "MEDIUM": 0.16326530612244897,
+        "HIGH": 0.14285714285714285
+      }
+    },
+    "17": {
+      "sample_size": 53,
+      "delay_delta": {
+        "mean": 6.66,
+        "std": 21.12,
+        "median": 0.49,
+        "p10": -7.8,
+        "p25": -4.67,
+        "p75": 8.82,
+        "p90": 20.59,
+        "min": -7.8,
+        "max": 106.43
+      },
+      "congestion_dist": {
+        "MEDIUM": 0.3584905660377358,
+        "LOW": 0.32075471698113206,
+        "HIGH": 0.32075471698113206
+      }
+    },
+    "18": {
+      "sample_size": 48,
+      "delay_delta": {
+        "mean": 2.15,
+        "std": 12.43,
+        "median": -3.22,
+        "p10": -6.75,
+        "p25": -4.8,
+        "p75": 8.4,
+        "p90": 13.81,
+        "min": -6.75,
+        "max": 60.11
+      },
+      "congestion_dist": {
+        "MEDIUM": 0.5,
+        "LOW": 0.3333333333333333,
+        "HIGH": 0.16666666666666666
+      }
+    },
+    "19": {
+      "sample_size": 41,
+      "delay_delta": {
+        "mean": 5.9,
+        "std": 15.06,
+        "median": 3.73,
+        "p10": -10.2,
+        "p25": -6.75,
+        "p75": 18.15,
+        "p90": 19.95,
+        "min": -10.2,
+        "max": 61.1
+      },
+      "congestion_dist": {
+        "HIGH": 0.36585365853658536,
+        "LOW": 0.34146341463414637,
+        "MEDIUM": 0.2926829268292683
+      }
+    },
+    "20": {
+      "sample_size": 13,
+      "delay_delta": {
+        "mean": 11.32,
+        "std": 26.95,
+        "median": 9.67,
+        "p10": -10.2,
+        "p25": -5.0,
+        "p75": 12.29,
+        "p90": 38.83,
+        "min": -10.2,
+        "max": 85.76
+      },
+      "congestion_dist": {
+        "LOW": 0.38461538461538464,
+        "MEDIUM": 0.3076923076923077,
+        "HIGH": 0.3076923076923077
+      }
+    },
+    "21": {
+      "sample_size": 3,
+      "delay_delta": {
+        "mean": 9.57,
+        "std": 29.91,
+        "median": -5.06,
+        "p10": -9.17,
+        "p25": -7.63,
+        "p75": 19.46,
+        "p90": 34.17,
+        "min": -10.2,
+        "max": 43.98
+      },
+      "congestion_dist": {
+        "LOW": 1.0
+      }
+    },
+    "22": {
+      "sample_size": 75,
+      "delay_delta": {
+        "mean": 3.87,
+        "std": 21.09,
+        "median": -4.2,
+        "p10": -6.0,
+        "p25": -5.36,
+        "p75": -3.08,
+        "p90": 32.02,
+        "min": -6.0,
+        "max": 122.49
+      },
+      "congestion_dist": {
+        "LOW": 0.6933333333333334,
+        "MEDIUM": 0.24,
+        "HIGH": 0.06666666666666667
+      }
+    },
+    "23": {
+      "sample_size": 30,
+      "delay_delta": {
+        "mean": 10.31,
+        "std": 32.8,
+        "median": -6.75,
+        "p10": -6.75,
+        "p25": -6.75,
+        "p75": 5.18,
+        "p90": 79.35,
+        "min": -10.2,
+        "max": 107.63
+      },
+      "congestion_dist": {
+        "LOW": 0.7666666666666667,
+        "MEDIUM": 0.2,
+        "HIGH": 0.03333333333333333
+      }
+    }
+  },
+  "disruption_priors": {
+    "unscheduled_halt": {
+      "probability": 0.0808,
+      "duration_stats": {
+        "mean": 7.31,
+        "std": 2.77,
+        "median": 7.41,
+        "p10": 3.5,
+        "p25": 4.84,
+        "p75": 9.46,
+        "p90": 10.95,
+        "min": 2.02,
+        "max": 11.82
+      }
+    },
+    "speed_restriction": {
+      "probability": 0.1147,
+      "delay_delta_stats": {
+        "mean": 40.13,
+        "std": 25.53,
+        "median": 31.99,
+        "p10": 11.4,
+        "p25": 23.34,
+        "p75": 56.1,
+        "p90": 77.9,
+        "min": -0.1,
+        "max": 122.49
+      }
+    }
+  }
+}
