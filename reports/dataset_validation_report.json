@@ -1,7 +1,7 @@
 {
-  "dataset_path": "D:\\Projects\\railway\\Data\\ml\\ml_ready_dataset.csv",
-  "total_observations": 1136,
-  "total_columns": 51,
+  "dataset_path": "D:\\Supernova\\Data\\ml\\ml_ready_dataset.csv",
+  "total_observations": 753,
+  "total_columns": 54,
   "validation_passed": true,
   "anti_leakage_audit": "PASSED (Zero future state leakage detected)",
   "errors_count": 0,
