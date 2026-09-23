@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Train, Clock, AlertTriangle, Activity, CheckCircle2, Info, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { useWebSocket, type Train as TrainType } from '../context/WebSocketContext';
 import { MonthContextSelector } from '../components/MonthContextSelector';
+import { TrainSearch } from '../components/TrainSearch';
 
 const RouteModal: React.FC<{ routeName: string; trains: TrainType[]; onClose: () => void }> = ({ routeName, trains, onClose }) => {
   const [expandedWhy, setExpandedWhy] = useState<Record<string, boolean>>({});
@@ -347,6 +348,11 @@ export const Dashboard: React.FC = () => {
       
       {/* 1. Compact Historical Context Toolbar */}
       <MonthContextSelector simTime={simTime} />
+
+      {/* Train Search UI */}
+      <div className="mb-6">
+        <TrainSearch />
+      </div>
 
       {/* 2. Operational KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
