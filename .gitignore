@@ -25,3 +25,7 @@ htmlcov/
 .DS_Store
 Thumbs.db
 indian-railways-predict-train-delay/*.csv
+
+# Large Data Files
+*.csv
+*.gpkg

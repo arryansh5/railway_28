@@ -6,6 +6,7 @@ import { LiveTrains } from './pages/LiveTrains';
 import { TrainDetails } from './pages/TrainDetails';
 import { AiExplanations } from './pages/AiExplanations';
 import { AlertsAccuracy } from './pages/AlertsAccuracy';
+import { MapView } from './pages/MapPage/Map';
 
 import { WebSocketProvider } from './context/WebSocketContext';
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="details" element={<TrainDetails />} />
             <Route path="predictions" element={<AiExplanations />} />
             <Route path="alerts" element={<AlertsAccuracy />} />
+            <Route path="map" element={<MapView />} />
           </Route>
         </Routes>
       </BrowserRouter>

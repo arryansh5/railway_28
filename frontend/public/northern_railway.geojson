@@ -1,0 +1,380 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2197,
+          28.6433
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "New Delhi",
+        "id": "NDLS"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.554,
+          29.964
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Saharanpur",
+        "id": "SRE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8286,
+          30.334
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Ambala Cantt",
+        "id": "UMB"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8,
+          30.7046
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Chandigarh",
+        "id": "CDG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8573,
+          30.901
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Ludhiana",
+        "id": "LDH"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.5792,
+          31.3256
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Jalandhar City",
+        "id": "JUC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8723,
+          31.634
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Amritsar",
+        "id": "ASR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.6469,
+          32.2689
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Pathankot",
+        "id": "PTK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.8756,
+          32.7099
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Jammu Tawi",
+        "id": "JAT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.9312,
+          32.9904
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Katra (SVDK)",
+        "id": "SVDK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.9398,
+          30.2104
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Bathinda",
+        "id": "BTI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.6069,
+          30.9295
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Firozpur",
+        "id": "FZR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.7766,
+          28.8351
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Moradabad",
+        "id": "MB"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.923,
+          26.83
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Lucknow",
+        "id": "LKO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.4182,
+          28.3512
+        ]
+      },
+      "properties": {
+        "type": "station",
+        "name": "Bareilly",
+        "id": "BE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.2197,
+            28.6433
+          ],
+          [
+            76.8286,
+            30.334
+          ],
+          [
+            75.8573,
+            30.901
+          ],
+          [
+            75.5792,
+            31.3256
+          ],
+          [
+            75.6469,
+            32.2689
+          ],
+          [
+            74.8756,
+            32.7099
+          ],
+          [
+            74.9312,
+            32.9904
+          ]
+        ]
+      },
+      "properties": {
+        "type": "track"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.8286,
+            30.334
+          ],
+          [
+            76.8,
+            30.7046
+          ]
+        ]
+      },
+      "properties": {
+        "type": "track"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.5792,
+            31.3256
+          ],
+          [
+            74.8723,
+            31.634
+          ]
+        ]
+      },
+      "properties": {
+        "type": "track"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.2197,
+            28.6433
+          ],
+          [
+            74.9398,
+            30.2104
+          ],
+          [
+            74.6069,
+            30.9295
+          ]
+        ]
+      },
+      "properties": {
+        "type": "track"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            77.2197,
+            28.6433
+          ],
+          [
+            78.7766,
+            28.8351
+          ],
+          [
+            79.4182,
+            28.3512
+          ],
+          [
+            80.923,
+            26.83
+          ]
+        ]
+      },
+      "properties": {
+        "type": "track"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.8286,
+            30.334
+          ],
+          [
+            77.554,
+            29.964
+          ],
+          [
+            78.7766,
+            28.8351
+          ]
+        ]
+      },
+      "properties": {
+        "type": "track"
+      }
+    }
+  ]
+}
